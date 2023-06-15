@@ -97,7 +97,7 @@
             </ul>
             <ul class="menu-sub ">
                 <li class="menu-item @if (Request::is('setklaster')) active open @endif">
-                    <a href="#" class="menu-link ">
+                    <a href="{{ route('setklaster.index') }}" class="menu-link ">
                         <div data-i18n="Account">Klaster Badan Usaha</div>
                     </a>
                 </li>

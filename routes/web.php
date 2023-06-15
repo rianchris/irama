@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfilbuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\SetPenggunaController;
+use App\Http\Controllers\SetKlasterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,4 @@ Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 Route::resource('/profilebu', ProfilbuController::class)->middleware('auth');
 
 Route::resource('/setpengguna', SetPenggunaController::class)->middleware('auth');
-// Route::resource('/setklaster', SetKlasterController::class)->middleware('auth');
+Route::resource('/setklaster', SetKlasterController::class)->middleware('auth');
