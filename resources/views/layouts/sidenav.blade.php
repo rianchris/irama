@@ -12,42 +12,42 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item @if (Request::is('/')) active @endif">
             <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
 
-        <!-- QA -->
+        <!-- Warga BPKP -->
         <li class="menu-header small text-uppercase ">
             <span class="menu-header-text">Warga BPKP</span>
         </li>
-        <li class="menu-item ">
+        <li class="menu-item  ">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Quality Assurance</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
+            <ul class="menu-sub ">
+                <li class="menu-item ">
+                    <a href="pages-account-settings-account.html" class="menu-link ">
                         <div data-i18n="Account">Badan Usaha</div>
                     </a>
                 </li>
             </ul>
         </li>
 
-        <!-- Badan Usaha -->
+        <!-- Mitra BPKP -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
         <!-- Forms -->
-        <li class="menu-item">
+        <li class="menu-item @if (Request::is('profilebu')) active @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">Profils</div>
+                <i class="menu-icon tf-icons bx bxs-server"></i>
+                <div data-i18n="Form Elements">Profile </div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="forms-basic-inputs.html" class="menu-link">
+                    <a href="{{ route('profilebu.index') }}" class="menu-link">
                         <div data-i18n="Basic Inputs"> Badan Usaha</div>
                     </a>
                 </li>
@@ -60,7 +60,7 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
                 <div data-i18n="Form Layouts">Input Paramater</div>
             </a>
             <ul class="menu-sub">
@@ -76,19 +76,57 @@
                 </li>
             </ul>
         </li>
+
+
+
+        <!-- Administrator -->
+        <li class="menu-header small text-uppercase ">
+            <span class="menu-header-text">Administrator</span>
+        </li>
+        <li class="menu-item @if (Request::is('set*')) active open @endif ">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Account Settings">Setting</div>
+            </a>
+            <ul class="menu-sub ">
+                <li class="menu-item @if (Request::is('setpengguna')) active open @endif ">
+                    <a href="{{ route('setpengguna.index') }}" class="menu-link ">
+                        <div data-i18n="Account">Pengguna Aplikasi</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-sub ">
+                <li class="menu-item @if (Request::is('setklaster')) active open @endif">
+                    <a href="#" class="menu-link ">
+                        <div data-i18n="Account">Klaster Badan Usaha</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+
+        <li class="menu-item @if (Request::is('myprofile')) active @endif">
+            <a href="{{ route('myprofile.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Support">My Profile</div>
+            </a>
+        </li>
+
         <li class="menu-item">
-            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="menu-link">
+            <a href="{{ kontak() }}" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-support"></i>
                 <div data-i18n="Support">Support</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="menu-link">
+
+        {{-- <li class="menu-item">
+            <a href="#" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </aside>

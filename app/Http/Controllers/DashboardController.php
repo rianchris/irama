@@ -12,9 +12,12 @@ class DashboardController extends Controller
     public function index()
     {
         // $data = Sima_klpbu::get();
-        $data = User::get();
-        // $data = MyProfile::get();
-        dd($data);
+        // // $data = User::get();
+        // $user = auth()->user();
+        // $data = MyProfile::find($user);
+        // dd($data[0]);
+        // $pegawai = session('pegawai');
+        // dd($pegawai);
         return view('dashboard.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use GuzzleHttp\Client;
+use App\Models\MyProfile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,12 +26,14 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             // Authentication passed
-
+            $finduser = User::where('username', $credentials['username'])->first();
+            $findprofile = MyProfile::where('id', $finduser->id)->first();
+            $request->session()->put('pegawai', $findprofile);
             return redirect()->intended(route('dashboard'));
         } else {
             // Authentication failed
-            // return redirect()->back()->withErrors(['message' => 'Invalid credentials']);
-            return redirect()->intended(route('dashboard'));
+            return redirect()->back()->with(['message' => 'Login Failed!']);
+            // return redirect()->intended(route('dashboard'));
         }
         // $client = new Client();
         // $url = "http://10.10.20.135/forsa/api/sso";

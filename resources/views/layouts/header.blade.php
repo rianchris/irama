@@ -7,12 +7,13 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-        {{-- <div class="navbar-nav align-items-center">
+        <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+
+                {{-- <i class="bx bx-search fs-4 lh-0"></i> --}}
+                {{-- <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." /> --}}
             </div>
-        </div> --}}
+        </div>
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -38,8 +39,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
-                                    <small class="text-muted">role: {{ auth()->user()->role }}</small>
+                                    <span class="fw-semibold d-block">{{ $pegawai->name }}</span>
+                                    <small class="text-muted">role: {{ $pegawai->role }}</small>
                                 </div>
                             </div>
                         </a>

@@ -2,82 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MyProfile;
 use Illuminate\Http\Request;
 
 class MyProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('myprofile.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
+
+    public function show(MyProfile $myprofile)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
+    public function edit(MyProfile $myprofile)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
+    public function update(Request $request, MyProfile $myprofile)
     {
-        //
+        // dd($request);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'organization' => $request->organization,
+            'phone' => $request->phoneNumber
+        ];
+        // dd($myprofile);
+        MyProfile::where('id', $myprofile->id)->update($data);
+
+        $findprofile = MyProfile::where('id', $myprofile->id)->first();
+        $request->session()->put('pegawai', $findprofile);
+        // dd($tes);
+        return redirect(route('myprofile.index'))->with('success', 'Update data berhasil!');
+        // dd($request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
+
+    public function destroy(MyProfile $myprofile)
     {
         //
     }
