@@ -32,6 +32,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th>Username</th>
                                         <th>Name</th>
                                         <th>Organization</th>
                                         <th>Role</th>
@@ -43,6 +44,7 @@
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($pengguna as $pengguna)
                                         <tr>
+                                            <td>{{ $pengguna->user->username }}</td>
                                             <td>{{ $pengguna->name }}</td>
                                             <td>{{ $pengguna->organization }}</td>
                                             <td>{{ $pengguna->role }}</td>

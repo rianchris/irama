@@ -26,7 +26,7 @@ class SetPenggunaController extends Controller
     {
         $user = new User();
         $user->username = $request->input('username');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->save();
 
         $myprofile = new MyProfile();

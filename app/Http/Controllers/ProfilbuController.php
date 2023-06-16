@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profilbu;
+use App\Models\Klaster;
 use Illuminate\Http\Request;
 
 class ProfilbuController extends Controller
 {
     public function index()
     {
-        return view('mitra.profilebu.index');
+        $klaster = Klaster::all();
+        $data = [
+            'klaster' => $klaster,
+        ];
+        return view('mitra.profilebu.index', $data);
     }
 
     public function create()

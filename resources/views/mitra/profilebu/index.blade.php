@@ -28,32 +28,39 @@
                     </div>
                     <hr class="my-0" />
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                        <form id="formAccountSettings" method="POST">
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <label for="firstName" class="form-label">Nama Badan Usaha</label>
-                                    <input class="form-control" type="text" id="firstName" name="firstName" value="John" autofocus />
+                                    <input class="form-control" type="text" id="firstName" name="firstName" placeholder="Enter your company's name" />
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="language" class="form-label">Klaster</label>
                                     <select id="language" class="select2 form-select">
                                         <option value="">Pilih Klaster</option>
-                                        <option value="en">Jasa Keuangan</option>
-                                        <option value="fr">Manufaktur</option>
-                                        < </select>
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="language" class="form-label">Jenis Kepemilikan</label>
-                                    <select id="language" class="select2 form-select">
-                                        <option value="">Select Language</option>
-                                        <option value="en">English</option>
-                                        <option value="fr">French</option>
+                                        @foreach ($klaster as $klaster)
+                                            <option name="klaster_id" value="{{ $klaster->id }}">{{ $klaster->nama_klaster }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="mb-3 col-md-6">
-                                    <label for="lastName" class="form-label">Klaster</label>
+                                    <label for="language" class="form-label">Jenis </label>
+                                    <select id="language" class="select2 form-select">
+                                        <option value="">Pilih Jenis</option>
+                                        <option value="en">BUMN</option>
+                                        <option value="fr">BUMD</option>
+                                        <option value="fr">BLU</option>
+                                        <option value="fr">BLUD</option>
+                                    </select>
+                                </div>
+                                <div class="input-group w-50 mb-3 col-md-6 ">
+
+                                    <span class="input-group-text" id="basic-addon14">https://</span>
+                                    <input type="text" class="form-control" placeholder="URL" id="basic-url1" aria-describedby="basic-addon14" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="lastName" class="form-label">Website</label>
                                     <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
                                 </div>
                                 <div class="mb-3 col-md-6">

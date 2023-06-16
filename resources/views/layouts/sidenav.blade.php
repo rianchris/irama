@@ -40,13 +40,13 @@
         <!-- Mitra BPKP -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
         <!-- Forms -->
-        <li class="menu-item @if (Request::is('profilebu')) active @endif">
+        <li class="menu-item @if (Request::is('profile*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-server"></i>
                 <div data-i18n="Form Elements">Profile </div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item @if (Request::is('profilebu')) active open @endif">
                     <a href="{{ route('profilebu.index') }}" class="menu-link">
                         <div data-i18n="Basic Inputs"> Badan Usaha</div>
                     </a>
