@@ -10,12 +10,15 @@ class SetPenggunaController extends Controller
 {
     public function index()
     {
-        $data_pengguna = MyProfile::all();
+        $mitra = MyProfile::where('role', 'mitra')->count();
+        $pengguna = MyProfile::get();
         $data = [
-            "pengguna" => $data_pengguna
+            'pengguna' => $pengguna,
+            'mitra' => $mitra
         ];
         return view('set_pengguna.index', $data);
     }
+
 
     public function create()
     {

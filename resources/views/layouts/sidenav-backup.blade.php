@@ -53,7 +53,7 @@
                 </li>
                 <li class="menu-item">
                     <a href="forms-input-groups.html" class="menu-link">
-                        <div data-i18n="Input groups"> Struktur Organisasi</div>
+                        <div data-i18n="Input groups">Struktur Organisasi</div>
                     </a>
                 </li>
             </ul>
@@ -83,13 +83,13 @@
         <li class="menu-header small text-uppercase ">
             <span class="menu-header-text">Administrator</span>
         </li>
-        <li class="menu-item @if (Request::is('set*')) active open @endif ">
+        <li class="menu-item @if (Request::is('set*')) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="Account Settings">Setting</div>
             </a>
             <ul class="menu-sub ">
-                <li class="menu-item @if (Request::is('setpengguna')) active open @endif ">
+                <li class="menu-item @if (Request::is('setpengguna')) active open @endif">
                     <a href="{{ route('setpengguna.index') }}" class="menu-link ">
                         <div data-i18n="Account">Pengguna Aplikasi</div>
                     </a>

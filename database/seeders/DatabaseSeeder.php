@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(MyProfileSeeder::class);
         $this->call(KlasterSeeder::class);
+        $this->call(DimensiSeeder::class);
+        $this->call(ParamSeeder::class);
         // User::factory(10)->create();
     }
 }
