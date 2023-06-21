@@ -28,7 +28,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed
             $finduser = User::where('username', $credentials['username'])->first();
-            $findprofile = MyProfile::where('id', $finduser->id)->first();
+            $findprofile = Myprofile::where('id', $finduser->id)->first();
             $request->session()->put('pegawai', $findprofile);
             return redirect()->intended(route('dashboard'));
         } else {

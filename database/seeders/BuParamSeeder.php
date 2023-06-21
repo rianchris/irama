@@ -17,21 +17,6 @@ class BuParamSeeder extends Seeder
      */
     public function run()
     {
-        $faker = new Faker();
-
-        $bu = BadanUsaha::pluck('id')->toArray();
-        $param = Param::pluck('id')->toArray();
-
-        foreach (range(1, 100) as $index) {
-            $bus = $faker->randomElement($bu);
-            $params = $faker->randomElement($param);
-
-            // Create a post with the generated foreign keys
-            // Example: 
-            BuParam::create([
-                'bu_id' => $bus,
-                'param_id' => $params
-            ]);
-        }
+        //
     }
 }

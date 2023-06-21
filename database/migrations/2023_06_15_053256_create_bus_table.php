@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBadanUsahasTable extends Migration
+class CreateBusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBadanUsahasTable extends Migration
      */
     public function up()
     {
-        Schema::create('badan_usahas', function (Blueprint $table) {
+        Schema::create('bus', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('my_profile_id')->unique();
+            $table->unsignedBigInteger('myprofile_id')->unique();
 
             $table->foreignId('klaster_id')->nullable();
-            $table->foreign('my_profile_id')->references('id')->on('my_profiles')->onDelete('cascade');
+            $table->foreign('myprofile_id')->references('id')->on('myprofiles')->onDelete('cascade');
 
             $table->string('kode_klpbu_id', 20)->nullable();
 

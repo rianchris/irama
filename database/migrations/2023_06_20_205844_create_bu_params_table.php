@@ -18,6 +18,13 @@ class CreateBuParamsTable extends Migration
             $table->foreignId('badan_usaha_id');
             $table->foreignId('param_id');
             $table->string('skorparam');
+            $table->string('per_inf_d');
+            $table->string('per_inf_w');
+            $table->string('per_inf_k');
+            $table->string('per_inf_o');
+            $table->string('sumberinfo');
+            $table->string('catatan');
+            $table->string('hasilreviu');
             $table->timestamps();
         });
     }

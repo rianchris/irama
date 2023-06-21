@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MyProfile extends Model
+class Myprofile extends Model
 {
     use HasFactory;
     // protected $guarded = ['id'];
@@ -17,8 +17,8 @@ class MyProfile extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function badanusaha()
+    public function bu()
     {
-        return $this->hasOne(BadanUsaha::class);
+        return $this->hasOne(Bu::class);
     }
 }

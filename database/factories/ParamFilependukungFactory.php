@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MyprofileFactory extends Factory
+class ParamFilependukungFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MyProfile;
+use App\Models\Myprofile;
 use App\Models\User;
 use App\Models\Sima_klpbu;
-use App\Models\Badanusaha;
+use App\Models\Bu;
 use App\Models\Klaster;
 use Illuminate\Http\Request;
 
@@ -14,8 +14,8 @@ class SetPenggunaController extends Controller
     public function index()
     {
         $klaster = Klaster::all();
-        $mitra = MyProfile::where('role', 'mitra')->count();
-        $pengguna = MyProfile::get();
+        $mitra = Myprofile::where('role', 'mitra')->count();
+        $pengguna = Myprofile::get();
         $data = [
             'klaster' => $klaster,
             'pengguna' => $pengguna,
@@ -37,18 +37,18 @@ class SetPenggunaController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        $myprofile = new MyProfile();
+        $myprofile = new Myprofile();
         $myprofile->user_id = $user->id;
         $myprofile->name = $request->input('name');
         $myprofile->email = $request->input('email');
         $myprofile->phone = $request->input('phone');
         $myprofile->save();
 
-        $badanusaha = new BadanUsaha();
-        $badanusaha->my_profile_id = $user->id;
-        $badanusaha->kode_klpbu_id = $request->input('kode_klpbu_id');
-        $badanusaha->klaster_id = $request->input('klaster_id');
-        $badanusaha->save();
+        $bu = new Bu();
+        $bu->myprofile_id = $user->id;
+        $bu->kode_klpbu_id = $request->input('kode_klpbu_id');
+        $bu->klaster_id = $request->input('klaster_id');
+        $bu->save();
 
         // Additional logic if needed
         return redirect()->route('setpengguna.index')->with('success', 'Data stored successfully.');
@@ -62,7 +62,7 @@ class SetPenggunaController extends Controller
     public function edit($myprofile)
     {
 
-        $edit = MyProfile::where('id', $myprofile)->first();
+        $edit = Myprofile::where('id', $myprofile)->first();
         $editArray = $edit->toArray();
         // dd($editArray);
         return response()->json($editArray);
@@ -73,9 +73,9 @@ class SetPenggunaController extends Controller
         //
     }
 
-    public function destroy(MyProfile $pengguna)
+    public function destroy(Myprofile $pengguna)
     {
-        MyProfile::destroy($pengguna);
+        Myprofile::destroy($pengguna);
         return redirect(route('setpengguna.index'))->with('deleted', 'User has been deleted!');
     }
 }

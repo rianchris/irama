@@ -40,21 +40,21 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    @foreach ($badanusaha as $badanusaha)
+                                    @foreach ($bu as $bu)
                                         <tr>
-                                            <td>{{ $badanusaha->myprofile->name }}</td>
-                                            <td>{{ $badanusaha->myprofile->role }}</td>
-                                            <td>{{ $badanusaha->sima_klpbu->kode_klpbu }}</td>
-                                            <td>{{ $badanusaha->sima_klpbu->nama_klpbu }}</td>
-                                            <td>{{ $badanusaha->klaster->nama_klaster }}</td>
+                                            <td>{{ $bu->myprofile->name }}</td>
+                                            <td>{{ $bu->myprofile->role }}</td>
+                                            <td>{{ $bu->sima_klpbu->kode_klpbu }}</td>
+                                            <td>{{ $bu->sima_klpbu->nama_klpbu }}</td>
+                                            <td>{{ $bu->klaster->nama_klaster }}</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                         <i class="bx bx-dots-vertical-rounded"></i>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item edit-klaster" data-bs-toggle="modal" data-bs-target="#edit-klaster" data-id="{{ $badanusaha->id }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                        <form action="{{ route('setklaster.destroy', $badanusaha) }}" method="post">
+                                                        <a class="dropdown-item edit-klaster" data-bs-toggle="modal" data-bs-target="#edit-klaster" data-id="{{ $bu->id }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                        <form action="{{ route('setklaster.destroy', $bu) }}" method="post">
                                                             @method('delete')
                                                             @csrf
                                                             <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>

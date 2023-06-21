@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParamsTable extends Migration
+class CreateParamFilependukungsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateParamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('params', function (Blueprint $table) {
+        Schema::create('param_filependukungs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dimensi_id')->nullable();
-            $table->string('tujuan')->nullable();
-            $table->string('deskripsi')->nullable();
-            $table->string('ref')->nullable();
-            $table->string('pertanyaan')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateParamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('params');
+        Schema::dropIfExists('param_filependukungs');
     }
 }

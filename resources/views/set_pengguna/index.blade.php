@@ -52,8 +52,8 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $pengguna->user->username }}</td>
                                             <td>{{ $pengguna->name }}</td>
-                                            <td>{{ $pengguna->badanusaha->kode_klpbu_id }}</td>
-                                            <td>{{ $pengguna->badanusaha->sima_klpbu->nama_klpbu }}</td>
+                                            <td>{{ $pengguna->bu->kode_klpbu_id }}</td>
+                                            <td>{{ $pengguna->bu->sima_klpbu->nama_klpbu }}</td>
                                             <td>{{ $pengguna->role }}</td>
                                             <td>{{ $pengguna->email }}</td>
                                             <td> <a target="blank" href="https://wa.me/62{{ $pengguna->phone }}">{{ '+62' . $pengguna->phone }}</a> </td>

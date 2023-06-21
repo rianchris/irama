@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MyProfile;
+use App\Models\Myprofile;
 use Illuminate\Http\Request;
 
-class MyProfileController extends Controller
+class MyprofileController extends Controller
 {
 
     public function index()
@@ -34,7 +34,7 @@ class MyProfileController extends Controller
         //
     }
 
-    public function update(Request $request, MyProfile $myprofile)
+    public function update(Request $request, Myprofile $myprofile)
     {
         // dd($request);
         $data = [
@@ -44,9 +44,9 @@ class MyProfileController extends Controller
             'phone' => $request->phoneNumber
         ];
         // dd($myprofile);
-        MyProfile::where('id', $myprofile->id)->update($data);
+        Myprofile::where('id', $myprofile->id)->update($data);
 
-        $findprofile = MyProfile::where('id', $myprofile->id)->first();
+        $findprofile = Myprofile::where('id', $myprofile->id)->first();
         $request->session()->put('pegawai', $findprofile);
         // dd($tes);
         return redirect(route('myprofile.index'))->with('success', 'Update data berhasil!');

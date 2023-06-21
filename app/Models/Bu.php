@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BadanUsaha extends Model
+class Bu extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class BadanUsaha extends Model
 
     public function myprofile()
     {
-        return $this->belongsTo(MyProfile::class, 'my_profile_id');
+        return $this->belongsTo(Myprofile::class, 'myprofile_id');
     }
 
     public function sima_klpbu()
@@ -28,6 +28,6 @@ class BadanUsaha extends Model
 
     public function param()
     {
-        return $this->belongsToMany(Param::class, 'bu_params', 'badan_usaha_id', 'param_id')->withPivot('skorparam');
+        return $this->belongsToMany(Param::class, 'bu_params', 'badan_usaha_id', 'param_id')->withPivot('skorparam', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'sumberinfo', 'catatan', 'hasilreviu');
     }
 }

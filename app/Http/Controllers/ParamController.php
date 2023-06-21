@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Param;
 use App\Models\Dimensi;
-use App\Models\BadanUsaha;
+use App\Models\Bu;
 use Illuminate\Http\Request;
 use App\Models\Deskripsiskor;
 use App\Models\MyProfile;
@@ -19,17 +19,17 @@ class ParamController extends Controller
     public function index()
     {
         $pegawai = session('pegawai');
-        $badanusaha = BadanUsaha::where('my_profile_id', $pegawai->id)->first();
-        dd($badanusaha->param[0]->pivot);
+        $badanusaha = Bu::where('myprofile_id', $pegawai->id)->first();
+        // dd($badanusaha->param->first()->pivot);
 
         // $param = Param::first();
         // $deskripsiskor = Deskripsiskor::find(25);
-        // $request = request('dimensi');
-        // $dimensi = Dimensi::where('id', $request)->first();
-        // $data = [
-        //     'dimensi' => $dimensi,
-        // ];
-        // return view('mitra.parameter.index', $data);
+        $request = request('dimensi');
+        $dimensi = Dimensi::where('id', $request)->first();
+        $data = [
+            'dimensi' => $dimensi,
+        ];
+        return view('mitra.parameter.index', $data);
     }
 
     /**

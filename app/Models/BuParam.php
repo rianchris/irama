@@ -9,8 +9,8 @@ class BuParam extends Model
 {
     use HasFactory;
 
-    // public function teknikassessment()
-    // {
-    //     return $this->hasMany(Filependukung::class);
-    // }
+    public function filependukung()
+    {
+        return $this->hasManyThrough(Filependukung::class, 'bu_param_id', 'id');
+    }
 }

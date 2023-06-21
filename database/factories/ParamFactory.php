@@ -17,13 +17,8 @@ class ParamFactory extends Factory
             'dimensi_id' => mt_rand(1, 5),
             'tujuan' => $this->faker->paragraph(),
             'deskripsi' => $this->faker->paragraph(),
+            'ref' => $this->faker->paragraph(),
             'pertanyaan' => $this->faker->paragraph(),
-            'per_info_d' => mt_rand(0, 1),
-            'per_info_w' => mt_rand(0, 1),
-            'per_info_k' => mt_rand(0, 1),
-            'per_info_o' => mt_rand(0, 1),
-            'catatan' => $this->faker->paragraph(),
-            'hasil_reviu' => $this->faker->paragraph()
         ];
     }
 }

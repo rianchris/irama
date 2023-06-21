@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
-class MyprofileFactory extends Factory
+class FilependukungFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -13,8 +14,10 @@ class MyprofileFactory extends Factory
      */
     public function definition()
     {
+        $tipefile = ['pdf', 'docx', 'xlsx'];
         return [
-            //
+            'namafile' => $this->faker->paragraph(),
+            'tipefile' => Arr::random($tipefile),
         ];
     }
 }
