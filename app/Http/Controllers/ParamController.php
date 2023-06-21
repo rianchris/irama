@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Param;
-use App\Http\Requests\StoreParamRequest;
-use App\Http\Requests\UpdateParamRequest;
+use App\Models\Dimensi;
+use App\Models\BadanUsaha;
+use Illuminate\Http\Request;
+use App\Models\Deskripsiskor;
+use App\Models\MyProfile;
 
 class ParamController extends Controller
 {
@@ -15,7 +18,18 @@ class ParamController extends Controller
      */
     public function index()
     {
-        //
+        $pegawai = session('pegawai');
+        $badanusaha = BadanUsaha::where('my_profile_id', $pegawai->id)->first();
+        dd($badanusaha->param[0]->pivot);
+
+        // $param = Param::first();
+        // $deskripsiskor = Deskripsiskor::find(25);
+        // $request = request('dimensi');
+        // $dimensi = Dimensi::where('id', $request)->first();
+        // $data = [
+        //     'dimensi' => $dimensi,
+        // ];
+        // return view('mitra.parameter.index', $data);
     }
 
     /**
@@ -34,9 +48,9 @@ class ParamController extends Controller
      * @param  \App\Http\Requests\StoreParamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreParamRequest $request)
+    public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -68,9 +82,10 @@ class ParamController extends Controller
      * @param  \App\Models\Param  $param
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateParamRequest $request, Param $param)
+    public function update(Request $request, Param $param)
     {
-        //
+        dd($request);
+        return "test";
     }
 
     /**

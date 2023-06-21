@@ -10,11 +10,26 @@
                 <div class="row g-2">
                     <div class="col mb-3">
                         <label for="username" class="form-label">Username (*) </label>
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" />
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" required />
                     </div>
                     <div class="col mb-3">
                         <label for="password" class="form-label">Password (*)</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" />
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required />
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col mb-3">
+                        <label for="organization" class="form-label">Kode SIMA KLPBU (*)</label>
+                        <input type="text" name="kode_klpbu_id" id="organization" class="form-control" placeholder="Enter Kode Sima KLPBU" required />
+                    </div>
+                    <div class="col mb-3">
+                        <label for="klaster" class="form-label">Klaster BU</label>
+                        <select class="form-select" id="klaster" name="klaster_id" required>
+                            <option selected>Pilih klaster</option>
+                            @foreach ($klaster as $klaster)
+                                <option value="{{ $klaster->id }}">{{ $klaster->nama_klaster }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="row g-2">
@@ -28,10 +43,6 @@
                     </div>
                 </div>
                 <div class="row g-2">
-                    <div class="col mb-3">
-                        <label for="organization" class="form-label">Organization</label>
-                        <input type="text" name="organization" id="organization" class="form-control" placeholder="Enter Organization" />
-                    </div>
                     <div class="col mb-3">
                         <label for="phone" class="form-label">Phone</label>
                         <input type="number" name="phone" id="phone" class="form-control" placeholder="Enter Phone Number" />

@@ -15,8 +15,13 @@ class Sima_klpbu extends Model
     protected $primaryKey = 'kode_klpbu';
     public $incrementing = false;
 
+
     public function badanusaha()
     {
-        return $this->hasOne(BadanUsaha::class, 'bu_id', 'kode_klpbu');
+        return $this->belongsTo(BadanUsaha::class, 'kode_klpbu', 'kode_klpbu_id');
     }
+    // public function myprofile()
+    // {
+    //     return $this->hasOne(MyProfile::class, 'kode_klpbu_id', 'kode_klpbu');
+    // }
 }

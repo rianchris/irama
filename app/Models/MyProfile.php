@@ -9,9 +9,16 @@ class MyProfile extends Model
 {
     use HasFactory;
     // protected $guarded = ['id'];
-    protected $with = 'user';
+    // protected $connection = 'mysql';
+    // protected $with = ['user', 'badanusaha'];
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function badanusaha()
+    {
+        return $this->hasOne(BadanUsaha::class);
     }
 }

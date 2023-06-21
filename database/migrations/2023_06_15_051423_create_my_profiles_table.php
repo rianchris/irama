@@ -16,12 +16,10 @@ class CreateMyProfilesTable extends Migration
         Schema::create('my_profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
-            // $table->foreignId('user_id');
             $table->string('name')->nullable();
             $table->string('role')->default('mitra');
             $table->string('email')->nullable()->default('name@example.net');
-            $table->string('organization')->nullable()->default('PT Indonesia Jaya Makmur');
-            $table->string('phone')->nullable()->default('081234567890');
+            $table->string('phone')->nullable()->default('81234567890');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

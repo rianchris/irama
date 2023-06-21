@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BadanUsaha;
 use Illuminate\Http\Request;
 use App\Models\Klaster;
 
@@ -9,8 +10,10 @@ class SetKlasterController extends Controller
 {
     public function index()
     {
+        $badanusaha = BadanUsaha::all();
         $klaster = Klaster::all();
         $data = [
+            'badanusaha' => $badanusaha,
             'klaster' => $klaster
         ];
         return view('set_klaster.index', $data);

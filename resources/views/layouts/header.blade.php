@@ -7,14 +7,14 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-        {{-- <div class="navbar-nav align-items-center">
+        <div class="navbar-nav align-items-center">
             <div class="nav-item navbar-search-wrapper mb-0">
-                <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
+                {{-- <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
                     <i class="bx bx-search bx-sm"></i>
-                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
-                </a>
+                </a> --}}
+                <span class="text-muted h5">{{ $pegawai->badanusaha->sima_klpbu->nama_klpbu }}</span>
             </div>
-        </div> --}}
+        </div>
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
