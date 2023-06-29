@@ -114,9 +114,9 @@
                         <div data-i18n="Pengguna Aplikasi">Pengguna Aplikasi</div>
                     </a>
                 </li>
-                <li class="menu-item @if (Request::is('setklaster')) active open @endif">
-                    <a href="{{ route('setklaster.index') }}" class="menu-link">
-                        <div data-i18n="Klaster Badan Usaha">Klaster Badan Usaha</div>
+                <li class="menu-item @if (Request::is('setparam*')) active open @endif">
+                    <a href="{{ route('setparam.index') }}" class="menu-link">
+                        <div data-i18n="Parameter">Parameter</div>
                     </a>
                 </li>
                 <li class="menu-item @if (Request::is('setting/sima_klpbu')) active open @endif">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Param;
 use App\Models\Dimensi;
 use App\Models\Bu;
+use App\Models\BuParam;
 use Illuminate\Http\Request;
 use App\Models\Deskripsiskor;
 use App\Models\MyProfile;
@@ -18,39 +19,88 @@ class ParamController extends Controller
      */
     public function index()
     {
-        $pegawai = session('pegawai');
-        $badanusaha = Bu::where('myprofile_id', $pegawai->id)->first();
-        // dd($badanusaha->param->first()->pivot);
 
-        // $param = Param::first();
-        // $deskripsiskor = Deskripsiskor::find(25);
-        $request = request('dimensi');
-        $dimensi = Dimensi::where('id', $request)->first();
-        $data = [
-            'dimensi' => $dimensi,
+        //session pegawai
+        $pegawai = session('pegawai');
+        $pengguna = MyProfile::where('id', $pegawai->id)->first();
+
+        //request url
+        $request_dimensi = request('dimensi');
+        $request_param = request('param');
+        $request = [
+            'dimensi' => $request_dimensi,
+            'param' => $request_param
         ];
-        return view('mitra.parameter.index', $data);
+
+        //data tabel dimensi dan bu
+        $bu = Bu::where('myprofile_id', $pengguna->id)->get();
+        // $dimensi = $bu->param->where('dimensi_id', $request['dimensi']);
+
+        //data tabel dimensi
+        $dimensi = Dimensi::where('id', $request['dimensi'])->first();
+
+        //data param
+        $param = Param::where('dimensi_id', $request['dimensi'])->get();
+        // $param = Param::first();
+        // dd($param);
+
+        // data bu param
+        $buparam = BuParam::where('param_id', $request['param'])->where('bu_id', $pengguna->bu->id)->first();
+
+        $data = [
+            'bu' => $bu,
+            'dimensi' => $dimensi,
+            'param' => $param,
+            'pengguna' => $pengguna,
+            'buparam' => $buparam
+        ];
+
+        // dd($data['param']);
+
+        if (request('dimensi')) {
+            if (request('param')) {
+                // dd($data['param']);
+                return view('mitra.parameter.index', $data);
+            }
+            // dd($data);
+            return view('mitra.parameter.landing', $data);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreParamRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        dd($request);
+
+        $buparamid = $request->input('bu_param_id');
+        // dd($buparamid);
+        if ($buparamid == true) {
+            $data = [
+                'tahun' => date("Y"),
+                'bu_id' => $request->input('bu_id'),
+                'param_id' => $request->input('param_id'),
+                'skorparam' => $request->input('skor'),
+                'filepdf' => $request->input('filepdf'),
+                'filexlsx' => $request->input('filexlsx'),
+                'filedocx' => $request->input('filedocx'),
+            ];
+            BuParam::where('id', $buparamid)->where('tahun', date("Y"))->update($data);
+        } elseif ($buparamid == null) {
+            $buparam = new BuParam();
+            $buparam->tahun = date("Y");
+            // $buparam->id = $request->input('bu_param_id');
+            $buparam->bu_id = $request->input('bu_id');
+            $buparam->param_id = $request->input('param_id');
+            $buparam->skorparam = $request->input('skor');
+            $buparam->filepdf = $request->input('filepdf');
+            $buparam->filexlsx = $request->input('filexlsx');
+            $buparam->filedocx = $request->input('filedocx');
+            $buparam->save();
+        }
+        return redirect()->back()->with('success', 'Simpan data berhasil!');
     }
 
     /**
@@ -59,9 +109,8 @@ class ParamController extends Controller
      * @param  \App\Models\Param  $param
      * @return \Illuminate\Http\Response
      */
-    public function show(Param $param)
+    public function show($param)
     {
-        //
     }
 
     /**
@@ -84,8 +133,6 @@ class ParamController extends Controller
      */
     public function update(Request $request, Param $param)
     {
-        dd($request);
-        return "test";
     }
 
     /**

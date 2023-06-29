@@ -14,6 +14,7 @@ class ParamFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->faker->unique()->numberBetween(1, 100),
             'dimensi_id' => mt_rand(1, 5),
             'tujuan' => $this->faker->paragraph(),
             'deskripsi' => $this->faker->paragraph(),

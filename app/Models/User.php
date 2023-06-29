@@ -21,6 +21,6 @@ class User extends Authenticatable
 
     public function myprofile()
     {
-        return $this->hasOne(Myprofile::class, 'user_id');
+        return $this->hasOne(Myprofile::class);
     }
 }

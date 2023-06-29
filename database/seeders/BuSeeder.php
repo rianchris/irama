@@ -32,22 +32,12 @@ class BuSeeder extends Seeder
         Bu::create([
             'kode_klpbu_id' => '734',
             'myprofile_id' => '4',
-            'klaster_id' => '3',
+            'klaster_id' => '1',
         ]);
         Bu::create([
-            'kode_klpbu_id' => '735',
+            'kode_klpbu_id' => '734',
             'myprofile_id' => '5',
-            'klaster_id' => '3',
-        ]);
-        Bu::create([
-            'kode_klpbu_id' => '736',
-            'myprofile_id' => '6',
-            'klaster_id' => '3',
-        ]);
-        Bu::create([
-            'kode_klpbu_id' => '737',
-            'myprofile_id' => '7',
-            'klaster_id' => '3',
+            'klaster_id' => '1',
         ]);
     }
 }

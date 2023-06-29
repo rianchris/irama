@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\SetKlasterController;
 use App\Http\Controllers\SetPenggunaController;
+use App\Http\Controllers\SetParamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 Route::resource('/profilebu', ProfilbuController::class)->middleware('auth');
 
 Route::resource('/setpengguna', SetPenggunaController::class)->middleware('auth');
-Route::resource('/setklaster', SetKlasterController::class)->middleware('auth');
+Route::resource('/setparam', SetParamController::class)->middleware('auth');
 
 Route::resource('/parameter', ParamController::class)->middleware('auth');
 

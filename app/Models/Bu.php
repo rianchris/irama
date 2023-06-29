@@ -28,6 +28,6 @@ class Bu extends Model
 
     public function param()
     {
-        return $this->belongsToMany(Param::class, 'bu_params', 'badan_usaha_id', 'param_id')->withPivot('skorparam', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'sumberinfo', 'catatan', 'hasilreviu');
+        return $this->belongsToMany(Param::class, 'bu_params', 'bu_id', 'param_id')->withPivot('skorparam', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'filepdf', 'filedocx', 'filexlsx', 'sumberinfo', 'catatan', 'hasilreviu');
     }
 }

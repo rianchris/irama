@@ -16,7 +16,12 @@ class CreateDeskripsiskorsTable extends Migration
         Schema::create('deskripsiskors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('param_id');
-            $table->string('deskripsi')->nullable();
+            $table->string('skor0')->nullable();
+            $table->string('skor1')->nullable();
+            $table->string('skor2')->nullable();
+            $table->string('skor3')->nullable();
+            $table->string('skor4')->nullable();
+            $table->string('skor5')->nullable();
             $table->timestamps();
         });
     }

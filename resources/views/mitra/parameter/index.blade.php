@@ -2,139 +2,165 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-12">
-                {{-- Deskrpsi Dimensi --}}
-                <h4>Dimensi: {{ $dimensi->deskripsi }}</h4>
-            </div>
-
-            <!-- Default Wizard -->
-            <div class="col-12 mb-4">
-                {{-- <small class="text-light fw-semibold">Basic</small> --}}
-                <div class="bs-stepper wizard-numbered">
-                    <div class="bs-stepper-header" role="tablist">
-                        {{-- Tab Paramater --}}
-                        @foreach ($dimensi->param as $param)
-                            <div class="step" data-target="{{ '#parameter' . $param->id }}">
-                                <button type="button" class="step-trigger  p-0">
-                                    <span class="bs-stepper-circle">{{ $param->id }}</span>
-                                </button>
+            <div class="col">
+                <div class="card ">
+                    <div class="card-header">
+                        {{-- ambil data pivot parameter --}}
+                        @php
+                            $tes = $pengguna->bu->param->where('id', request('param'))->isNotEmpty();
+                            if ($tes) {
+                                $pivot = $pengguna->bu->param->where('id', request('param'))->first()->pivot;
+                                $buparams = $buparam;
+                            }
+                            $deskripsiskor = $param
+                                ->where('id', request('param'))
+                                ->first()
+                                ->deskripsiskor->first();
+                            // dd($tes);
+                        @endphp
+                        @if (session()->has('success'))
+                            <div class="alert alert-primary alert-dismissible " role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="bs-stepper-content">
-                        {{-- Form Paramater --}}
-                        @foreach ($dimensi->param as $param)
-                            <form id="form{{ $param->id }}" action="{{ route('parameter.update', $param->id) }}" method="post">
-                                @csrf
-                                @method('put')
-                                {{-- @csrf --}}
-                                <!-- Detail Paramater -->
-                                <div id="{{ 'parameter' . $param->id }}" class="content">
-                                    <div class="content-header mb-3">
-                                        <h4 class="mb-2">Parameter: {{ $param->deskripsi }}</h4>
-                                        {{ $param->pertanyaan }}
-                                    </div>
-                                    <!--  Radios Skor Parameter-->
-                                    <div class="col-xl-12 mb-4">
-                                        <div class="card shadow">
-                                            <h5 class="card-header">Skor Parameter: </h5>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    @foreach ($param->deskripsiskor->take(5) as $deskripsiskor)
-                                                        <div class="col-md mb-md-0 mb-2">
-                                                            <div class="form-check custom-option custom-option-icon">
-                                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id }}">
-                                                                    <span class="custom-option-body">
-                                                                        <span class="custom-option-title">{{ $loop->iteration }}</span>
-                                                                        <small> {{ $deskripsiskor->deskripsi }}</small>
-                                                                    </span>
-                                                                    <input name="skor" class="form-check-input" type="radio" value="{{ $loop->iteration }}" id="{{ $deskripsiskor->id }}" @if ($deskripsiskor->param->skor == $loop->iteration) selected @endif />
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                        @endif
+                        <h4 class="card-title">
+                            Dimensi : {{ $param->first()->dimensi->deskripsi }}
+                        </h4>
+                        <div class="demo-vertical-spacing ">
 
-                                            <!-- Perolehan Informasi -->
-                                            {{-- @include('mitra.parameter.perolehan_informasi') --}}
-                                            <!-- Custom Icon Checkbox -->
-                                            <button type="submit" class="btn btn-success">
-                                                <span class="align-middle d-sm-inline-block d-none me-sm-1">Save</span>
-                                                <i class='bx bx-save'></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </form>
-                        @endforeach
-                        <!-- /Custom Icon Radios -->
-                        <div class="row g-3">
-                            <div class="col-12 d-flex justify-content-between">
-                                <button class="btn btn-label-secondary btn-prev">
-                                    <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                </button>
-
-                                <button class="btn btn-primary btn-next">
-                                    <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                    <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-                                </button>
-                            </div>
+                            @foreach ($param as $p)
+                                @php
+                                    $url = route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
+                                @endphp
+                                <a href="{{ $url }}" type="button" class=" text-dark btn border-2 px-3 py-1 me-1
+                                @php if(Request::fullUrlIs($url) ){
+                                    echo 'text-white btn-primary';
+                                }
+                                else {
+                                    echo 'text-secondary btn-outline-secondary';
+                                } @endphp">
+                                    {{ $p->id }}
+                                </a>
+                            @endforeach
                         </div>
                     </div>
+                    <div class="card-body">
+
+                        <form action="{{ route('parameter.store') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="bu_param_id" value="@if (isset($buparams->id)) {{ $buparams->id }} @endif">
+                            <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->bu->id }}">
+                            <input type="hidden" name="param_id" value="{{ request('param') }}">
+                            <div class="row">
+                                <div class="col-md-6 mt-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <figure class="text-center mt-2">
+                                                <blockquote class="blockquote">
+                                                    <h3 class="card-title text-primary mt-1">
+                                                        {{ $param->where('id', request('param'))->first()->deskripsi }}
+                                                    </h3>
+                                                </blockquote>
+                                                <figcaption class="blockquote-footer">
+                                                    <h6 class="card-title mb-1 ">{{ $param->where('id', request('param'))->first()->tujuan }}</h6>
+                                                </figcaption>
 
 
+                                                @if (isset($pivot))
+                                                    <span class="mt-3 badge rounded-pill bg-info">Skor: {{ $pivot->skorparam }}</span>
+                                                @endif
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="card mt-3">
+                                        <div class="card-body">
+                                            {{-- {{ dd($pivot) }} --}}
+                                            <div class="demo-inline-spacing d-flex justify-content-between align-items-center mb-3">
+                                                <h5 class="card-title ">Referensi File Pendukung :</h5>
+                                                <button type="button" class="btn p-1 btn-outline-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-bell bx-xs' ></i> <span>Input URL Referensi File Pendukung terhadap Isian Parameter. File dapat berupa PDF, Doc, Docx, Xls, Xlsx</span>">
+                                                    <i class='bx bx-bell bx-xs'></i>
+                                                </button>
+                                            </div>
+                                            <div class="mb-3 input-group">
+                                                <span class="input-group-text" id="basic-addon14"><i class='bx bx-md bxs-file-pdf size-lg'></i></span>
+                                                <input name="filepdf" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon14" value="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" />
+                                            </div>
+                                            <div class="mb-3 input-group">
+                                                <span class="input-group-text" id="basic-addon14"><i class='bx bx-md bxs-file-doc'></i></span>
+                                                <input name="filedocx" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon14" value="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" />
+                                            </div>
+                                            <div class="mb-3 input-group">
+                                                <span class="input-group-text" id="basic-addon14"><i class='bx bx-md bxs-file'></i></span>
+                                                <input name="filexlsx" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon14" value="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-check custom-option custom-option-basic mt-2">
+                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'a' }}">
+                                                    <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skorparam)) @if ($pivot->skorparam == 0) checked @endif @endif />
+                                                    <span class="custom-option-body">
+                                                        <span class="custom-option-header">{{ $deskripsiskor->skor0 }} </span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check custom-option custom-option-basic mt-2">
+                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'b' }}">
+                                                    <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skorparam)) @if ($pivot->skorparam == 1) checked @endif @endif />
+                                                    <span class="custom-option-body">
+                                                        <span class="custom-option-header">{{ $deskripsiskor->skor1 }}</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check custom-option custom-option-basic mt-2">
+                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'c' }}">
+                                                    <input name="skor" class="form-check-input" type="radio" value="2" id="{{ $deskripsiskor->id . 'c' }}" @if (isset($pivot->skorparam)) @if ($pivot->skorparam == 2) checked @endif @endif />
+                                                    <span class="custom-option-body">
+                                                        <span class="custom-option-header">{{ $deskripsiskor->skor2 }}</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check custom-option custom-option-basic mt-2">
+                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'd' }}">
+                                                    <input name="skor" class="form-check-input" type="radio" value="3" id="{{ $deskripsiskor->id . 'd' }}" @if (isset($pivot->skorparam)) @if ($pivot->skorparam == 3) checked @endif @endif />
+                                                    <span class="custom-option-body">
+                                                        <span class="custom-option-header">{{ $deskripsiskor->skor3 }}</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check custom-option custom-option-basic mt-2">
+                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'e' }}">
+                                                    <input name="skor" class="form-check-input" type="radio" value="4" id="{{ $deskripsiskor->id . 'e' }}" @if (isset($pivot->skorparam)) @if ($pivot->skorparam == 4) checked @endif @endif />
+                                                    <span class="custom-option-body">
+                                                        <span class="custom-option-header">{{ $deskripsiskor->skor4 }}</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check custom-option custom-option-basic mt-2">
+                                                <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'f' }}">
+                                                    <input name="skor" class="form-check-input" type="radio" value="5" id="{{ $deskripsiskor->id . 'f' }}" @if (isset($pivot->skorparam)) @if ($pivot->skorparam == 5) checked @endif @endif />
+                                                    <span class="custom-option-body">
+                                                        <span class="custom-option-header">{{ $deskripsiskor->skor5 }}</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col d-flex justify-content-center">
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <!-- /Default Wizard -->
-
         </div>
-        <hr class="container-m-nx mb-5" />
     </div>
-    <!-- /Vertical Wizard -->
-    </div>
-
-    @push('vendorjs')
-        <script src="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
-    @endpush
-
-    @push('pagejs')
-        <script src="{{ asset('assets/js/form-wizard-numbered.js') }}"></script>
-        <script src="{{ asset('assets/js/form-wizard-validation.js') }}"></script>
-    @endpush
-
-    @push('vendorcss')
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
-    @endpush
-
-    @push('inlinejs')
-        {{-- <script>
-            $(document).ready(function() {
-                // Event listener for submit buttons
-                $('button[type="submit"]').on('click', function(e) {
-                    e.preventDefault(); // Prevent  default form submission
-
-                    var form = $(this).closest('form'); // Find the parent form of the clicked button
-                    var formId = form.attr('id'); // Get the ID of the form
-
-                    // Perform additional validation or operations if needed
-
-                    // Submit the corresponding form
-                    form.submit();
-                });
-            });
-        </script> --}}
-    @endpush
 @endsection

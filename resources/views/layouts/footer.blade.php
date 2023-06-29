@@ -9,12 +9,8 @@
             <a href="https://wa.me/628523456789" target="_blank" class="footer-link fw-bolder">TIM Pengembangan MR</a>
         </div>
         <div>
-            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-            <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
-
-            <a href="https://themeselection.com/support/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+            <a href="https://bpkp.go.id" target="_blank" class="footer-link me-4">BPKP</a>
+            <a href="https://dan.bpkp.go.id/portal" class="footer-link me-4" target="_blank">Deputi Bidang Akuntan Negara</a>
         </div>
     </div>
 </footer>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Myprofile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MyprofileController extends Controller
@@ -10,7 +11,10 @@ class MyprofileController extends Controller
 
     public function index()
     {
-        return view('myprofile.index');
+
+        $user = User::first();
+        // dd($user->myprofile->bu->param->first()->pivot->skorparam);
+        return view('myprofile.index', $user);
     }
 
     public function create()
