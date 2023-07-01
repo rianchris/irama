@@ -13,7 +13,7 @@
                     <i class="bx bx-search bx-sm"></i>
                 </a> --}}
 
-                @if ($pegawai->bu->sima_klpbu)
+                @if (isset($pegawai->bu->sima_klpbu))
                     <span class="text-primary h4">{{ $pegawai->bu->sima_klpbu->nama_klpbu }}</span>
                 @endif
             </div>
@@ -40,8 +40,8 @@
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                    <div class="avatar avatar-md avatar-online">
+                        <span class="avatar-initial rounded-circle bg-label-primary">{{ Str::limit($pegawai->name, 2, '') }}</span>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -49,8 +49,8 @@
                         <a class="dropdown-item" href="pages-account-settings-account.html">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <div class="avatar avatar-online">
-                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                                    <div class="avatar avatar-md avatar-online">
+                                        <span class="avatar-initial rounded-circle bg-label-primary">{{ Str::limit($pegawai->name, 2, '') }}</span>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">

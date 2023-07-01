@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="organization" class="form-label">Organization </label>
-                                    <input type="text" class="form-control" id="organization" name="organization" value="{{ $pegawai->bu->sima_klpbu->nama_klpbu }}" placeholder="PT Indonesia Jaya Makmur " disabled />
+                                    <input type="text" class="form-control" id="organization" name="organization" value="@if (isset($pegawai->bu->sima_klpbu)) {{ $pegawai->bu->sima_klpbu->nama_klpbu }} @endif" disabled />
 
                                 </div>
                                 <div class="mb-3 col-md-6">

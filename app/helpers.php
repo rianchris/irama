@@ -2,7 +2,7 @@
 
 function kontak()
 {
-    return "https://wa.me/6285264153647";
+    return "https://api.whatsapp.com/send?phone=62085264153647&text=Hai, My Name is Rian Chris. Need Help?";
 }
 
 

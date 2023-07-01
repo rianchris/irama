@@ -14,11 +14,11 @@ class BuSeeder extends Seeder
      */
     public function run()
     {
-        Bu::create([
-            'kode_klpbu_id' => '731',
-            'myprofile_id' => '1',
-            'klaster_id' => '1',
-        ]);
+        // Bu::create([
+        //     // 'kode_klpbu_id' => '731',
+        //     // 'myprofile_id' => '1',
+        //     // 'klaster_id' => '1',
+        // ]);
         Bu::create([
             'kode_klpbu_id' => '732',
             'myprofile_id' => '2',
@@ -35,7 +35,7 @@ class BuSeeder extends Seeder
             'klaster_id' => '1',
         ]);
         Bu::create([
-            'kode_klpbu_id' => '734',
+            'kode_klpbu_id' => '735',
             'myprofile_id' => '5',
             'klaster_id' => '1',
         ]);

@@ -39,5 +39,9 @@ class MyprofileSeeder extends Seeder
             'name' => 'Gilang',
             'role' => 'mitra',
         ]);
+        Myprofile::create([
+            'user_id' => '6',
+            'role' => 'warga',
+        ]);
     }
 }

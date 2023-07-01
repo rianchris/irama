@@ -18,8 +18,9 @@ class CreateBusTable extends Migration
             $table->unsignedBigInteger('myprofile_id')->unique();
 
             $table->foreignId('klaster_id')->nullable();
-            $table->foreign('myprofile_id')->references('id')->on('myprofiles')->onDelete('cascade');
+            $table->foreignId('warga_id')->nullable();
 
+            $table->foreign('myprofile_id')->references('id')->on('myprofiles')->onDelete('cascade');
             $table->string('kode_klpbu_id', 20)->nullable();
 
             $table->string('website')->nullable();

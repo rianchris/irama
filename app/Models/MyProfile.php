@@ -21,4 +21,9 @@ class Myprofile extends Model
     {
         return $this->hasOne(Bu::class);
     }
+
+    public function ref_peg_data()
+    {
+        return $this->hasOne(Ref_peg_data::class, 'warga_id', 'nip');
+    }
 }

@@ -9,21 +9,21 @@
             <div class="modal-body">
                 <div class="row g-2">
                     <div class="col mb-3">
-                        <label for="username" class="form-label">Username (*) </label>
+                        <label for="username" class="form-label">Username <i class='bx bx-error-circle'></i></label>
                         <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" required />
                     </div>
                     <div class="col mb-3">
-                        <label for="password" class="form-label">Password (*)</label>
+                        <label for="password" class="form-label">Password <i class='bx bx-error-circle'></i></label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required />
                     </div>
                 </div>
                 <div class="row g-2">
                     <div class="col mb-3">
-                        <label for="organization" class="form-label">Kode SIMA KLPBU (*)</label>
+                        <label for="organization" class="form-label">Kode SIMA KLPBU <i class='bx bx-error-circle'></i></label>
                         <input type="text" name="kode_klpbu_id" id="organization" class="form-control" placeholder="Enter Kode Sima KLPBU" required />
                     </div>
                     <div class="col mb-3">
-                        <label for="klaster" class="form-label">Klaster BU</label>
+                        <label for="klaster" class="form-label">Klaster BU <i class='bx bx-error-circle'></i></label>
                         <select class="form-select" id="klaster" name="klaster_id" required>
                             <option selected>Pilih klaster</option>
                             @foreach ($klaster as $klaster)

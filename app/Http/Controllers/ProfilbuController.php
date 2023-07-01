@@ -11,7 +11,7 @@ class ProfilbuController extends Controller
     public function index()
     {
         $my_profile_id = auth()->user()->id;
-        $bu = Bu::where('id', $my_profile_id)->first();
+        $bu = Bu::where('myprofile_id', $my_profile_id)->first();
         $data = [
             'bu' => $bu,
         ];

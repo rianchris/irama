@@ -40,6 +40,24 @@
                         </div>
                         <button type="submit" class="btn btn-primary d-grid w-100">Sign in</button>
                     </form>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li> Admin
+                                    <ol>username: adminirama</ol>
+                                    <ol>password: iramaadmin</ol>
+                                </li>
+                                <li> Mitra 1
+                                    <ol>username: yohana</ol>
+                                    <ol>password: yohana</ol>
+                                </li>
+                                <li> Mitra 2
+                                    <ol>username: gilang</ol>
+                                    <ol>password: gilang</ol>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /Login -->

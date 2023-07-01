@@ -61,11 +61,6 @@ class SetPenggunaController extends Controller
 
     public function edit($myprofile)
     {
-
-        $edit = Myprofile::where('id', $myprofile)->first();
-        $editArray = $edit->toArray();
-        // dd($editArray);
-        return response()->json($editArray);
     }
 
     public function update(Request $request, Myprofile $myprofile)
@@ -73,9 +68,10 @@ class SetPenggunaController extends Controller
         //
     }
 
-    public function destroy(Myprofile $pengguna)
+    public function destroy($request)
     {
-        Myprofile::destroy($pengguna);
+        Myprofile::destroy($request);
+        User::destroy($request);
         return redirect(route('setpengguna.index'))->with('deleted', 'User has been deleted!');
     }
 }

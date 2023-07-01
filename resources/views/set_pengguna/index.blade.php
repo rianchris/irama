@@ -71,8 +71,7 @@
                                                         <i class="bx bx-dots-vertical-rounded"></i>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item edit-pengguna" data-bs-toggle="modal" data-bs-target="#edit-pengguna" data-id="{{ $pengguna->id }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                        <form action="{{ route('setpengguna.destroy', $pengguna) }}" method="post">
+                                                        <form action="{{ route('setpengguna.destroy', $pengguna->id) }}" method="post">
                                                             @method('delete')
                                                             @csrf
                                                             <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>
@@ -99,10 +98,6 @@
     <!-- Modal tambah pengguna -->
     @include('set_pengguna.modal_tambah_pengguna')
     <!--/ Modal tambah pengguna -->
-
-    <!-- Modal edit pengguna -->
-    @include('set_pengguna.modal_edit_pengguna')
-    <!--/ Modal edit pengguna -->
 
     @push('inlinejs')
         <script>
