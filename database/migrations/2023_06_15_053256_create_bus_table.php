@@ -16,19 +16,16 @@ class CreateBusTable extends Migration
         Schema::create('bus', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('myprofile_id')->unique();
-
-            $table->foreignId('klaster_id')->nullable();
-            $table->foreignId('warga_id')->nullable();
-
             $table->foreign('myprofile_id')->references('id')->on('myprofiles')->onDelete('cascade');
+            $table->foreignId('klaster_id')->nullable();
             $table->string('kode_klpbu_id', 20)->nullable();
-
             $table->string('website')->nullable();
             $table->string('email')->nullable();
             $table->string('telepon')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kodepos')->nullable();
             $table->string('logo')->nullable();
+            $table->string('skorsebelumnya')->nullable();
 
             $table->timestamps();
             $table->engine = 'InnoDB';

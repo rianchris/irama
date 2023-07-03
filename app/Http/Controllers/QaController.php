@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bu;
 
+use App\Models\Param;
 use App\Models\BuParam;
 use App\Models\Dimensi;
 use Illuminate\Http\Request;
@@ -80,8 +81,12 @@ class QaController extends Controller
     public function edit($id)
     {
         $buParam = BuParam::where('bu_id', $id)->get();
+        $bu = Bu::where('id', $id)->first();
+        $param = Param::get();
         $data = [
-            'buParam' => $buParam
+            'buParam' => $buParam,
+            'bu' => $bu,
+            'param' => $param
         ];
         return view('qa.edit', $data);
     }

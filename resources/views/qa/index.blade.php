@@ -15,36 +15,36 @@
                     </li> --}}
                 </ul>
                 <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive table-nowrap ">
-                            <table class="table table-hover bordered" id="qa">
-                                <thead>
+                    <div class="card-datatable">
+                        <table class="table table-responsive table-bordered" id="qa">
+                            <thead>
+                                <tr>
+                                    <th>Kode Sima KLPBU</th>
+                                    <th>Klaster</th>
+                                    <th>Badan Usaha</th>
+                                    <th>Pic</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($bu as $bu)
                                     <tr>
-                                        <th>Kode Sima KLPBU</th>
-                                        <th>Badan Usaha</th>
-                                        <th>User</th>
-                                        <th>Aksi</th>
+                                        <td>{{ $bu->sima_klpbu->kode_klpbu }}</td>
+                                        <td>{{ $bu->klaster->nama_klaster }}</td>
+                                        <td>{{ $bu->sima_klpbu->nama_klpbu }}</td>
+                                        <td>{{ $bu->myprofile->name }}</td>
+                                        <td>
+                                            <button id="rincian" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rincianparam" data-id="{{ $bu->id }}">
+                                                <i class='bx bx-show-alt'></i>
+                                            </button>
+                                            <a href="{{ route('qa.edit', $bu->id) }}" class="btn btn-sm btn-warning">
+                                                <i class='bx bx-edit'></i>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($bu as $bu)
-                                        <tr>
-                                            <td>{{ $bu->sima_klpbu->kode_klpbu }}</td>
-                                            <td>{{ $bu->sima_klpbu->nama_klpbu }}</td>
-                                            <td>{{ $bu->myprofile->name }}</td>
-                                            <td>
-                                                <button id="rincian" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rincianparam" data-id="{{ $bu->id }}">
-                                                    <i class='bx bx-show-alt'></i>
-                                                </button>
-                                                <a href="{{ route('qa.edit', $bu->id) }}" class="btn btn-sm btn-warning">
-                                                    <i class='bx bx-edit'></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -78,11 +78,12 @@
         </div>
     </div>
     @push('vendorcss')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     @endpush
 
     @push('vendorjs')
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     @endpush
     @push('inlinejs')
         <script>

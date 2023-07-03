@@ -6,7 +6,7 @@
                 document.write(new Date().getFullYear());
             </script>
             , made with ❤️ by
-            <a target="_blank" class="footer-link fw-bolder">TIM Pengembangan MR</a>
+            <a target="_blank" class="footer-link fw-bolder">TIM Pandan Irama</a>
         </div>
         <div>
             <a href="https://bpkp.go.id" target="_blank" class="footer-link me-4">BPKP</a>

@@ -25,40 +25,35 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <div class="card-body">
-                        <div class="table-responsive table-nowrap">
-                            <table class="table table-hover" id="set_param">
-                                <thead>
-                                    <tr>
-                                        <th>PK</th>
-                                        <th>FK</th>
-                                        <th>Tujuan</th>
-                                        <th>Deskripsi</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-border-bottom-0">
-                                    <div class="row">
-                                        @foreach ($param as $param)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $param->dimensi_id }}</td>
-                                                <td>{{ $param->tujuan }}</td>
-                                                <td>{{ $param->deskripsi }}</td>
-                                                <td>
-                                                    <a class="btn text-white btn-sm btn-warning editparam" href="{{ route('setparam.edit', $param->id) }}">
-                                                        <i class="bx bxs-pencil"></i> </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </div>
+                    <div class="card-datatable">
+                        <table class="table table-responsive table-bordered table-hover" id="set_param">
+                            <thead>
+                                <tr>
+                                    <th>PK</th>
+                                    <th>FK</th>
+                                    <th>Tujuan</th>
+                                    <th>Deskripsi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                <div class="row">
+                                    @foreach ($param as $param)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $param->dimensi_id }}</td>
+                                            <td>{{ $param->tujuan }}</td>
+                                            <td>{{ $param->deskripsi }}</td>
+                                            <td>
+                                                <a class="btn text-white btn-sm btn-warning editparam" href="{{ route('setparam.edit', $param->id) }}">
+                                                    <i class="bx bxs-pencil"></i> </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </div>
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer border-top">
-                            {{--  --}}
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -67,11 +62,12 @@
     <!-- / Content -->
 
     @push('vendorcss')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     @endpush
 
     @push('vendorjs')
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     @endpush
 
     @push('pagejs')

@@ -78,6 +78,10 @@
                                         <label for="kodepos" class="form-label">Kode Pos</label>
                                         <input type="text" class="form-control" id="kodepos" name="kodepos" placeholder="29433" maxlength="6" value="{{ $bu->kodepos }}" />
                                     </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="skorsebelumnya" class="form-label">Skor Sebelumnya</label>
+                                        <input type="number" class="form-control" id="kodepos" name="skorsebelumnya" maxlength="6" value="{{ $bu->skorsebelumnya }}" />
+                                    </div>
                                 </div>
                                 <div class="mt-2">
                                     <button type="submit" class="btn btn-primary me-2">Simpan</button>

@@ -19,6 +19,7 @@ class CreateBuParamsTable extends Migration
             $table->foreignId('bu_id');
             $table->foreignId('param_id');
             $table->string('skorparam')->default('0');
+            $table->string('skorqa')->default('0');
             $table->string('per_inf_d');
             $table->string('per_inf_w');
             $table->string('per_inf_k');

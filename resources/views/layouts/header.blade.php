@@ -8,13 +8,14 @@
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
         <div class="navbar-nav align-items-center">
-            <div class="nav-item navbar-search-wrapper mb-0">
-                {{-- <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
-                    <i class="bx bx-search bx-sm"></i>
-                </a> --}}
-
+            <div class="nav-item navbar-search-wrapper mb-0 d-flex flex-row align-items-center">
                 @if (isset($pegawai->bu->sima_klpbu))
-                    <span class="text-primary h4">{{ $pegawai->bu->sima_klpbu->nama_klpbu }}</span>
+                    {{-- <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-primary">{{ Str::limit($pegawai->bu->sima_klpbu->nama_klpbu, 2, '') }}</span>
+                    </div> --}}
+                    <a href="{{ route('profilebu.index') }}" class="h6 text-primary ms-1 m-0">
+                        {{ Str::limit($pegawai->bu->sima_klpbu->nama_klpbu, 50, ' ...') }}
+                    </a>
                 @endif
             </div>
         </div>
@@ -22,21 +23,6 @@
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-            <!-- Style Switcher -->
-            <li class="nav-item me-2 me-xl-0">
-                <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
-                    <i class="bx bx-sm"></i>
-                </a>
-            </li>
-            <!--/ Style Switcher -->
-
-            <!-- Quick links  -->
-
-            <!-- Quick links -->
-
-            <!-- Notification -->
-
-            <!--/ Notification -->
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -87,9 +73,4 @@
         </ul>
     </div>
 
-    <!-- Search Small Screens -->
-    <div class="navbar-search-wrapper search-input-wrapper d-none">
-        <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search..." />
-        <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
-    </div>
 </nav>

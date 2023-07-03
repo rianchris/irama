@@ -9,25 +9,23 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive text-nowrap">
-                            <table class="table table-hover" id="sima_klpbu">
-                                <thead>
+                    <div class="card-datatable">
+                        <table class="table table-responsive table-bordered table-hover" id="sima_klpbu">
+                            <thead>
+                                <tr>
+                                    <th>Kode KLPBU</th>
+                                    <th>Nama KLPBU </th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach ($sima_klpbu as $data)
                                     <tr>
-                                        <th>Kode KLPBU</th>
-                                        <th>Nama KLPBU </th>
+                                        <td>{{ $data->kode_klpbu }}</td>
+                                        <td>{{ $data->nama_klpbu }}</td>
                                     </tr>
-                                </thead>
-                                <tbody class="table-border-bottom-0">
-                                    @foreach ($sima_klpbu as $data)
-                                        <tr>
-                                            <td>{{ $data->kode_klpbu }}</td>
-                                            <td>{{ $data->nama_klpbu }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
@@ -35,10 +33,12 @@
         </div>
     </div>
     @push('vendorcss')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     @endpush
+
     @push('vendorjs')
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     @endpush
     @push('inlinejs')
         <script>

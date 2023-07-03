@@ -26,18 +26,11 @@
         @can('mitra')
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
             <!-- Cards -->
-            <li class="menu-item @if (Request::is('profile*')) active open @endif">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <li class="menu-item @if (Request::is('profilebu')) active @endif">
+                <a href="{{ route('profilebu.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bxs-server"></i>
-                    <div data-i18n="Profile">Profile</div>
+                    <div data-i18n="Profile">Profil</div>
                 </a>
-                <ul class="menu-sub">
-                    <li class="menu-item @if (Request::is('profilebu')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-i18n="Badan Usaha">Badan Usaha</div>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <!-- Input Parameter -->
             <li class="menu-item @if (Request::is('parameter*')) active open @endif">
@@ -123,5 +116,14 @@
                 <div data-i18n="My Profile">My Profile</div>
             </a>
         </li>
+        {{-- <li class="menu-item pb-3">
+            <form action="{{ route('logout.post') }}" method="post">
+                @csrf
+                <button type="submit" href="{{ route('myprofile.index') }}" class="menu-link btn btn-outline-secondary px-3 py-2 ">
+                    <i class="menu-icon tf-icons bx bx-power-off"></i>
+                    <div data-i18n="Logout">Logout</div>
+                </button>
+            </form>
+        </li> --}}
     </ul>
 </aside>

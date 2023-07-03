@@ -47,6 +47,7 @@ class ProfilbuController extends Controller
         $bu->telepon = $request->input('telepon');
         $bu->alamat = $request->input('alamat');
         $bu->kodepos = $request->input('kodepos');
+        $bu->skorsebelumnya = $request->input('skorsebelumnya');
         $bu->save();
         return redirect()->back()->with('success', 'Badan Usaha updated successfully');
     }

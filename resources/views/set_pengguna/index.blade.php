@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <ul class="nav nav-pills flex-column flex-md-row mb-3">
+        <ul class="nav nav-pills flex-row flex-md-row mb-3">
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('setpengguna.index') }}"><i class="bx bx-user me-1"></i> Data Pengguna</a>
             </li>
@@ -30,64 +30,58 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <div class="card-body">
-                        <div class="table-responsive text-nowrap">
-                            <table class="table table-hover" id="set_pengguna">
-                                <thead>
+                    <div class="card-datatable">
+                        <table class="table table-responsive table-bordered table-hover" id="set_pengguna">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>Name</th>
+                                    <th>Kode BU</th>
+                                    <th>Nama BU</th>
+                                    <th>Role</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach ($pengguna as $pengguna)
                                     <tr>
-                                        <th>#</th>
-                                        <th>Username</th>
-                                        <th>Name</th>
-                                        <th>Kode BU</th>
-                                        <th>Nama BU</th>
-                                        <th>Role</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-border-bottom-0">
-                                    @foreach ($pengguna as $pengguna)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $pengguna->user->username }}</td>
-                                            <td>{{ $pengguna->name }}</td>
-                                            <td>
-                                                @if ($pengguna->bu)
-                                                    {{ $pengguna->bu->kode_klpbu_id }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($pengguna->bu)
-                                                    {{ $pengguna->bu->sima_klpbu->nama_klpbu }}
-                                                @endif
-                                            </td>
-                                            <td>{{ $pengguna->role }}</td>
-                                            <td>{{ $pengguna->email }}</td>
-                                            <td> <a target="blank" href="https://wa.me/62{{ $pengguna->phone }}">{{ '+62' . $pengguna->phone }}</a> </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <form action="{{ route('setpengguna.destroy', $pengguna->id) }}" method="post">
-                                                            @method('delete')
-                                                            @csrf
-                                                            <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>
-                                                        </form>
-                                                    </div>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $pengguna->user->username }}</td>
+                                        <td>{{ $pengguna->name }}</td>
+                                        <td>
+                                            @if ($pengguna->bu)
+                                                {{ $pengguna->bu->kode_klpbu_id }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($pengguna->bu)
+                                                {{ $pengguna->bu->sima_klpbu->nama_klpbu }}
+                                            @endif
+                                        </td>
+                                        <td>{{ $pengguna->role }}</td>
+                                        <td>{{ $pengguna->email }}</td>
+                                        <td> <a target="blank" href="https://wa.me/62{{ $pengguna->phone }}">{{ '+62' . $pengguna->phone }}</a> </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <form action="{{ route('setpengguna.destroy', $pengguna->id) }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>
+                                                    </form>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="card-footer border-top">
-                            {{--  --}}
-                        </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -134,11 +128,12 @@
     @endpush
 
     @push('vendorcss')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     @endpush
 
     @push('vendorjs')
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     @endpush
 
     @push('pagejs')

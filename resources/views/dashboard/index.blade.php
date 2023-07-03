@@ -3,10 +3,15 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <div class="col-lg-8 mb-4 order-0">
-                @include('dashboard.welcome')
+                @can('admin')
+                    @include('dashboard.welcomeAdmin')
+                @endcan
+                @can('mitra')
+                    @include('dashboard.welcomeMitra')
+                @endcan
             </div>
             <div class="col-lg-4 col-md-4 order-1">
-                @include('dashboard.stat1')
+                {{-- @include('dashboard.stat1') --}}
             </div>
         </div>
         <div class="row">

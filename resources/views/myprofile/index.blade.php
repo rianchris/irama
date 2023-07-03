@@ -52,12 +52,12 @@
                                     <input class="form-control" type="text" id="email" name="email" value="{{ $pegawai->email }}" placeholder="yourname@organization.com" />
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="organization" class="form-label">Organization </label>
+                                    <label for="organization" class="form-label">Organisasi </label>
                                     <input type="text" class="form-control" id="organization" name="organization" value="@if (isset($pegawai->bu->sima_klpbu)) {{ $pegawai->bu->sima_klpbu->nama_klpbu }} @endif" disabled />
 
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                                    <label class="form-label" for="phoneNumber">Kontak</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text">ID (+62)</span>
                                         <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="{{ $pegawai->phone }}" placeholder="8123456789" />
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="mt-2">
-                                <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                                <button type="submit" class="btn btn-primary me-2">Simpan</button>
                             </div>
                         </form>
                     </div>

@@ -77,7 +77,7 @@
                                         <div class="card-body">
                                             {{-- {{ dd($pivot) }} --}}
                                             <div class="demo-inline-spacing d-flex justify-content-between align-items-center mb-3">
-                                                <h5 class="card-title ">Referensi File Pendukung :</h5>
+                                                <h6 class="card-title ">Referensi File Pendukung :</h6>
                                                 <button type="button" class="btn p-1 btn-outline-primary" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-bell bx-xs' ></i> <span>Input URL Referensi File Pendukung terhadap Isian Parameter. File dapat berupa PDF, Doc, Docx, Xls, Xlsx</span>">
                                                     <i class='bx bx-bell bx-xs'></i>
                                                 </button>

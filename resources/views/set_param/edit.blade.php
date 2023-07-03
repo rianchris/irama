@@ -22,14 +22,14 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <form class="card-body" method="post" action="{{ route('setparam.update', $param->id) }}">
+                        <form method="post" action="{{ route('setparam.update', $param->id) }}">
                             @csrf
                             @method('put')
                             <h5 class="">Rincian Parameter : {{ $param->id }}</h5>
 
                             <div class="row g-3 mt-3">
                                 <label class="col-sm-2 col-form-label" for="dimensi">Dimensi</label>
-                                <div class="col-sm-10">
+                                <div class="col-lg-6 col-md-8 col-sm-12">
                                     <select id="dimensi" class="form-select" name="dimensi">
                                         <option>Pilih Dimensi</option>
                                         @foreach ($dimensi as $dimensi)
@@ -40,68 +40,67 @@
                             </div>
                             <div class="row mt-2">
                                 <label class="col-sm-2 col-form-label" for="tujuan">Tujuan</label>
-                                <div class="col-sm-10">
-                                    <textarea id="tujuan" class="form-control" name="tujuan" rows="3">{{ $param->tujuan }}</textarea>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="tujuan" class="form-control" name="tujuan" rows="2">{{ $param->tujuan }}</textarea>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <label class="col-sm-2 col-form-label" for="deskripsi">Deskripsi</label>
-                                <div class="col-sm-10">
-                                    <textarea id="deskripsi" class="form-control" name="deskripsi" rows="3">{{ $param->deskripsi }}</textarea>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="deskripsi" class="form-control" name="deskripsi" rows="2">{{ $param->deskripsi }}</textarea>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <label class="col-sm-2 col-form-label" for="referensi">Referensi</label>
-                                <div class="col-sm-10">
-                                    <textarea id="referensi" class="form-control" name="ref" rows="3">{{ $param->ref }}</textarea>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="referensi" class="form-control" name="ref" rows="2">{{ $param->ref }}</textarea>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <label class="col-sm-2 col-form-label" for="pertanyaan">Pertanyaan</label>
-                                <div class="col-sm-10">
-                                    <textarea id="pertanyaan" class="form-control" name="pertanyaan" rows="3">{{ $param->pertanyaan }}</textarea>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="pertanyaan" class="form-control" name="pertanyaan" rows="2">{{ $param->pertanyaan }}</textarea>
                                 </div>
                             </div>
                             <hr class="my-4 mx-n4" />
                             <h5>Deskripsi Skor Parameter : {{ $param->id }}</h5>
-                            <div class="row g-3 mt-3">
-                                <div class="row mt-2">
-                                    <label class="col-sm-2 col-form-label" for="skor0">Skor 0</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="skor0" class="form-control" name="skor0" rows="3">{{ $param->deskripsiskor->first()->skor0 }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="col-sm-2 col-form-label" for="skor1">Skor 1</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="skor1" class="form-control" name="skor1" rows="3">{{ $param->deskripsiskor->first()->skor1 }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="col-sm-2 col-form-label" for="skor2">Skor 2</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="skor2" class="form-control" name="skor2" rows="3">{{ $param->deskripsiskor->first()->skor2 }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="col-sm-2 col-form-label" for="skor3">Skor 3</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="skor3" class="form-control" name="skor3" rows="3">{{ $param->deskripsiskor->first()->skor3 }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="col-sm-2 col-form-label" for="skor4">Skor 4</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="skor4" class="form-control" name="skor4" rows="3">{{ $param->deskripsiskor->first()->skor4 }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="col-sm-2 col-form-label" for="skor5">Skor 5</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="skor5" class="form-control" name="skor5" rows="3">{{ $param->deskripsiskor->first()->skor5 }}</textarea>
-                                    </div>
+                            <div class="row mt-2">
+                                <label class="col-sm-2 col-form-label" for="skor0">Skor 0</label>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="skor0" class="form-control" name="skor0" rows="2">{{ $param->deskripsiskor->first()->skor0 }}</textarea>
                                 </div>
                             </div>
+                            <div class="row mt-2">
+                                <label class="col-sm-2 col-form-label" for="skor1">Skor 1</label>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="skor1" class="form-control" name="skor1" rows="2">{{ $param->deskripsiskor->first()->skor1 }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-sm-2 col-form-label" for="skor2">Skor 2</label>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="skor2" class="form-control" name="skor2" rows="2">{{ $param->deskripsiskor->first()->skor2 }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-sm-2 col-form-label" for="skor3">Skor 3</label>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="skor3" class="form-control" name="skor3" rows="2">{{ $param->deskripsiskor->first()->skor3 }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-sm-2 col-form-label" for="skor4">Skor 4</label>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="skor4" class="form-control" name="skor4" rows="2">{{ $param->deskripsiskor->first()->skor4 }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="col-sm-2 col-form-label" for="skor5">Skor 5</label>
+                                <div class="col-lg-6 col-md-8 col-sm-12">
+                                    <textarea id="skor5" class="form-control" name="skor5" rows="2">{{ $param->deskripsiskor->first()->skor5 }}</textarea>
+                                </div>
+                            </div>
+
                             <div class="pt-4 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
                             </div>
@@ -114,11 +113,10 @@
     <!-- / Content -->
 
     @push('vendorcss')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     @endpush
 
     @push('vendorjs')
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('assets/vendor/libs/autosize/autosize.js') }}"></script>
     @endpush
 
     @push('pagejs')
@@ -129,7 +127,11 @@
         <script>
             $(document).ready(function() {
                 $('#set_param').DataTable();
-            })
+            });
+            const textarea = document.querySelectorAll('textarea');
+            if (textarea) {
+                autosize(textarea);
+            }
         </script>
     @endpush
 @endsection
