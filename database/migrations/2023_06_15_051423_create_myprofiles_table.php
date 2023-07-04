@@ -16,12 +16,12 @@ class CreateMyprofilesTable extends Migration
         Schema::create('myprofiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
-            $table->string('name')->nullable();
-            $table->string('role')->default('mitra');
-            $table->string('email')->nullable()->default('name@example.net');
-            $table->string('phone')->nullable()->default('81234567890');
-            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('name')->nullable();
+            $table->string('role');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->timestamps();
         });
     }
 

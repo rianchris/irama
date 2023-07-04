@@ -11,7 +11,6 @@
                 @endcan
             </div>
             <div class="col-lg-4 col-md-4 order-1">
-                {{-- @include('dashboard.stat1') --}}
             </div>
         </div>
         <div class="row">

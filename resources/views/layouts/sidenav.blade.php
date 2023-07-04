@@ -32,11 +32,11 @@
                     <div data-i18n="Profile">Profil</div>
                 </a>
             </li>
-            <!-- Input Parameter -->
+            <!-- Self Assessment -->
             <li class="menu-item @if (Request::is('parameter*')) active open @endif">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
-                    <div data-i18n="Input Parameter">Input Parameter</div>
+                    <div data-i18n="Self Assessment">Self Assessment</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item @if (Request::is('parameter') && Request::query('dimensi') == 1) active open @endif">
@@ -68,6 +68,18 @@
                 </ul>
             </li>
         @endcan
+
+        <!-- Warga -->
+        @can('warga')
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Warga</span></li>
+            <li class="menu-item @if (Request::is('qa*')) active @endif">
+                <a href="{{ route('qa.index') }}" class="menu-link">
+                    <i class='menu-icon tf-icons bx bx-check-shield'></i>
+                    <div data-i18n="Quality Assurance">Quality Assurance</div>
+                </a>
+            </li>
+        @endcan
+
         <!-- Administrator -->
         @can('admin')
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
@@ -95,13 +107,9 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-item @if (Request::is('qa*')) active @endif">
-                <a href="{{ route('qa.index') }}" class="menu-link">
-                    <i class='menu-icon tf-icons bx bx-check-shield'></i>
-                    <div data-i18n="Quality Assurance">Quality Assurance</div>
-                </a>
-            </li>
         @endcan
+
+
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
         <li class="menu-item">

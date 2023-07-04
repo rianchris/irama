@@ -15,9 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('nip_id')->nullable();
             $table->string('username')->unique()->nullable();
-            $table->string('password')->nullable();
+            $table->string('password')->default(bcrypt('password'));
             $table->rememberToken();
             $table->timestamps();
         });

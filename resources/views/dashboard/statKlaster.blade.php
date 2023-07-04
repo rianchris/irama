@@ -14,21 +14,25 @@
                                          <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
                                      @else
                                          <div class="avatar avatar-sm me-2">
-                                             <span class="avatar-initial rounded-circle bg-danger">
-                                                 {{ Str::limit(Str::after($bu->sima_klpbu->nama_klpbu, 'PT '), 2, '') }}
-                                             </span>
+                                             @if (isset($bu->sima_klpbu))
+                                                 <span class="avatar-initial rounded-circle bg-danger">
+                                                     {{ Str::limit(Str::after($bu->sima_klpbu->nama_klpbu, 'PT '), 2, '') }}
+                                                 </span>
+                                             @endif
                                          </div>
                                      @endif
                                      <div class="d-flex w-100 align-items-start gap-2">
-                                         <div class="d-flex justify-content-between flex-grow-1 flex-wrap">
-                                             <div>
+                                         <div class="d-flex justify-content-between flex-grow-1 ">
+                                             <div class="col-9">
                                                  {{-- {{ dd($bu->id) }} --}}
-                                                 <h6 class="mb-0">{{ $bu->sima_klpbu->nama_klpbu }}</h6>
-                                                 <small class="text-muted">Pic: {{ $bu->myprofile->name }}</small>
+                                                 @if (isset($bu->sima_klpbu))
+                                                     <h6 class="mb-0">{{ $bu->sima_klpbu->nama_klpbu }}</h6>
+                                                 @endif
+                                                 <small class="text-muted">Pic: {{ $bu->myprofileMitra->name }}</small>
+
                                              </div>
 
                                              <div class="user-progress d-flex align-items-center gap-2">
-                                                 <h6 class="mb-0">Progress:</h6>
                                                  <span class="text-muted">{{ $bu->param->count() }} / 100</span>
                                              </div>
                                          </div>

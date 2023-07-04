@@ -33,12 +33,14 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout.post');
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 
-//admin
-Route::resource('/qa', QaController::class)->middleware('admin');
-Route::resource('/setpengguna', SetPenggunaController::class)->middleware('admin');
-Route::resource('/setparam', SetParamController::class)->middleware('admin');
-Route::get('/setting/sima_klpbu', [SettingController::class, 'sima_klpbu'])->middleware('admin')->name('set_simaklpbu');
-
 //mitra
 Route::resource('/profilebu', ProfilbuController::class)->middleware('mitra');
 Route::resource('/parameter', ParamController::class)->middleware('mitra');
+
+///warga
+Route::resource('/qa', QaController::class)->middleware('warga');
+
+//admin
+Route::resource('/setpengguna', SetPenggunaController::class)->middleware('admin');
+Route::resource('/setparam', SetParamController::class)->middleware('admin');
+Route::get('/setting/sima_klpbu', [SettingController::class, 'sima_klpbu'])->middleware('admin')->name('set_simaklpbu');

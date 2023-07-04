@@ -10,8 +10,8 @@ class ProfilbuController extends Controller
 {
     public function index()
     {
-        $my_profile_id = auth()->user()->id;
-        $bu = Bu::where('myprofile_id', $my_profile_id)->first();
+        $myprofileMitra_id = auth()->user()->id;
+        $bu = Bu::where('myprofile_mitra_id', $myprofileMitra_id)->first();
         $data = [
             'bu' => $bu,
         ];
@@ -49,7 +49,7 @@ class ProfilbuController extends Controller
         $bu->kodepos = $request->input('kodepos');
         $bu->skorsebelumnya = $request->input('skorsebelumnya');
         $bu->save();
-        return redirect()->back()->with('success', 'Badan Usaha updated successfully');
+        return redirect()->back()->with('success', 'Profil Badan Usaha berhasil disimpan!');
     }
 
     public function destroy(Bu $profilbu)

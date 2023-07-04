@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DimensiSeeder::class);
         $this->call(ParamSeeder::class);
         $this->call(DeskripsiskorSeeder::class);
+        $this->call(BuParamSeeder::class);
         // $this->call(ParamSeeder::class);
         // Param::factory(100)->create();
         // Deskripsiskor::factory(500)->create();

@@ -16,10 +16,14 @@ class SetPenggunaController extends Controller
         $klaster = Klaster::all();
         $mitra = Myprofile::where('role', 'mitra')->count();
         $pengguna = Myprofile::get();
+        $bu = Bu::all();
+        $bu2 = Bu::where('myprofile_warga_id', null)->get();
         $data = [
             'klaster' => $klaster,
             'pengguna' => $pengguna,
-            'mitra' => $mitra
+            'mitra' => $mitra,
+            'bu' => $bu,
+            'bu2' => $bu2
         ];
         return view('set_pengguna.index', $data);
     }
@@ -32,23 +36,38 @@ class SetPenggunaController extends Controller
 
     public function store(Request $request)
     {
-        $user = new User();
-        $user->username = $request->input('username');
-        $user->password = bcrypt($request->input('password'));
-        $user->save();
+        if ($request->input('role') == 'mitra') {
+            $user = new User();
+            $user->username = $request->input('username');
+            $user->save();
 
-        $myprofile = new Myprofile();
-        $myprofile->user_id = $user->id;
-        $myprofile->name = $request->input('name');
-        $myprofile->email = $request->input('email');
-        $myprofile->phone = $request->input('phone');
-        $myprofile->save();
+            $myprofile = new Myprofile();
+            $myprofile->user_id = $user->id;
+            $myprofile->role = $request->input('role');
+            $myprofile->phone = $request->input('phone');
+            $myprofile->save();
 
-        $bu = new Bu();
-        $bu->myprofile_id = $user->id;
-        $bu->kode_klpbu_id = $request->input('kode_klpbu_id');
-        $bu->klaster_id = $request->input('klaster_id');
-        $bu->save();
+            $bu = new Bu();
+            $bu->myprofile_mitra_id = $user->id;
+            $bu->klaster_id = $request->input('klaster_id');
+            $bu->kode_klpbu_id = $request->input('kode_klpbu_id');
+            $bu->save();
+        } elseif ($request->input('role') == 'warga') {
+            $user = new User();
+            $user->username = $request->input('username');
+            $user->save();
+
+            $myprofile = new Myprofile();
+            $myprofile->user_id = $user->id;
+            $myprofile->role = $request->input('role');
+            $myprofile->phone = $request->input('phone');
+            $myprofile->save();
+
+            $idBu = $request->input('bu_id');
+            $bu = Bu::find($idBu);
+            $bu->myprofile_warga_id = $user->id;
+            $bu->save();
+        }
 
         // Additional logic if needed
         return redirect()->route('setpengguna.index')->with('success', 'Data stored successfully.');

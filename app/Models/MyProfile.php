@@ -14,12 +14,17 @@ class Myprofile extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function bu()
+    public function buMitra()
     {
-        return $this->hasOne(Bu::class);
+        return $this->hasOne(Bu::class, 'myprofile_mitra_id', 'id');
+    }
+
+    public function buWarga()
+    {
+        return $this->hasOne(Bu::class, 'myprofile_warga_id', 'id');
     }
 
     public function ref_peg_data()

@@ -9,12 +9,13 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item navbar-search-wrapper mb-0 d-flex flex-row align-items-center">
-                @if (isset($pegawai->bu->sima_klpbu))
-                    {{-- <div class="avatar avatar-sm">
-                        <span class="avatar-initial rounded-circle bg-label-primary">{{ Str::limit($pegawai->bu->sima_klpbu->nama_klpbu, 2, '') }}</span>
-                    </div> --}}
-                    <a href="{{ route('profilebu.index') }}" class="h6 text-primary ms-1 m-0">
-                        {{ Str::limit($pegawai->bu->sima_klpbu->nama_klpbu, 50, ' ...') }}
+                @if (isset($pegawai->buMitra->sima_klpbu))
+                    <a href="{{ route('profilebu.index') }}" class="fs-5 fw-semibold text-secondary ms-1 m-0">
+                        {{ Str::limit($pegawai->buMitra->sima_klpbu->nama_klpbu, 50, ' ...') }}
+                    </a>
+                @elseif(isset($pegawai->buWarga->sima_klpbu))
+                    <a href="{{ route('profilebu.index') }}" class="fs-5 fw-semibold text-secondary ms-1 m-0">
+                        {{ Str::limit($pegawai->buWarga->sima_klpbu->nama_klpbu, 50, ' ...') }}
                     </a>
                 @endif
             </div>

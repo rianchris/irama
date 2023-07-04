@@ -17,6 +17,11 @@ class BuParamSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Buparam::create([
+            'tahun' => '2023',
+            'bu_id' => 1,
+            'param_id' => 1,
+            'skor_mitra' => 2
+        ]);
     }
 }

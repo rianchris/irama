@@ -15,8 +15,10 @@ class CreateBusTable extends Migration
     {
         Schema::create('bus', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('myprofile_id')->unique();
-            $table->foreign('myprofile_id')->references('id')->on('myprofiles')->onDelete('cascade');
+            // $table->unsignedBigInteger('myprofile_id')->unique();
+            // $table->foreign('myprofile_id')->references('id')->on('myprofiles')->onDelete('cascade');
+            $table->foreignId('myprofile_mitra_id')->nullable();
+            $table->foreignId('myprofile_warga_id')->nullable();
             $table->foreignId('klaster_id')->nullable();
             $table->string('kode_klpbu_id', 20)->nullable();
             $table->string('website')->nullable();

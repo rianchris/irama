@@ -1,21 +1,38 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="card overflow-hidden">
+    <div class="container-xxl flex-grow-1 container-p-y ">
+        <div class="card overflow-hidden ">
             <!-- Popular Articles -->
-            <div class="help-center-popular-articles py-5">
+            <div class="help-center-popular-articles py-4">
                 <div class="container-xl">
-                    <h3 class="text-center mt-2 mb-4">Dimensi : {{ $dimensi->deskripsi }}</h3>
+                    <h4 class="text-center">Dimensi : {{ $dimensi->deskripsi }}</h4>
                     <div class="row">
                         <div class="col-lg-10 mx-auto">
-                            <div class="row mb-3 d-flex justify-content-center">
-                                <div class="col-md-4 mb-md-0 mb-4 ">
+                            <div class="row mb-2 d-flex justify-content-center">
+                                <div class="col-md-8 mb-md-0 mb-2 ">
                                     <div class="card border shadow-none">
                                         <div class="card-body text-center">
-                                            <img class="mb-3" src="../../assets/img/icons/unicons/rocket.png" height="60" alt="Help center articles" />
-                                            <h5>Getting Started</h5>
-                                            <p>Whether you're new or you're a power user, this article will…</p>
-
+                                            @if (request('dimensi') == 1)
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.jpg') }}" height="450" alt="Help center articles" />
+                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
+                                                <p>Whether you're new or you're a power user</p>
+                                            @elseif (request('dimensi') == 2)
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen2.jpg') }}" height="450" alt="Help center articles" />
+                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
+                                                <p>Whether you're new or you're a power user</p>
+                                            @elseif (request('dimensi') == 3)
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen3.jpg') }}" height="450" alt="Help center articles" />
+                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
+                                                <p>Whether you're new or you're a power user</p>
+                                            @elseif (request('dimensi') == 4)
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen4.jpeg') }}" height="450" alt="Help center articles" />
+                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
+                                                <p>Whether you're new or you're a power user</p>
+                                            @elseif (request('dimensi') == 5)
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen5.jpg') }}" height="450" alt="Help center articles" />
+                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
+                                                <p>Whether you're new or you're a power user</p>
+                                            @endif
                                             <a class="btn btn-label-primary" href="{{ route('parameter.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
                                         </div>
                                     </div>

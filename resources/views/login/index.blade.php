@@ -3,9 +3,9 @@
     <div class="authentication-wrapper authentication-cover">
         <div class="authentication-inner row m-0">
             <!-- /Left Text -->
-            <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
+            <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center m-0 p-0">
                 <div class="w-100 d-flex justify-content-center">
-                    <img src="../../assets/img/illustrations/boy-with-rocket-light.png" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png" data-app-light-img="illustrations/boy-with-rocket-light.png" />
+                    <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid" alt="Login image" width="100%" style="filter: grayscale(100%)" />
                 </div>
             </div>
             <!-- /Left Text -->
@@ -45,15 +45,15 @@
                             <ul>
                                 <li> Admin
                                     <ol>username: adminirama</ol>
-                                    <ol>password: iramaadmin</ol>
+                                    <ol>password: password</ol>
                                 </li>
                                 <li> Mitra 1
                                     <ol>username: yohana</ol>
-                                    <ol>password: yohana</ol>
+                                    <ol>password: password</ol>
                                 </li>
                                 <li> Mitra 2
                                     <ol>username: gilang</ol>
-                                    <ol>password: gilang</ol>
+                                    <ol>password: password</ol>
                                 </li>
                             </ul>
                         </div>

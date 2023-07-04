@@ -7,14 +7,16 @@
             </li>
             <li class="nav-item ms-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-pengguna">
-                    <span class="tf-icons bx bx-plus"></span>&nbsp; Tambah Data
+                    <span class="tf-icons bx bx-plus"></span>&nbsp; PIC
+                </button>
+            </li>
+            <li class="nav-item ms-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-wargaqa">
+                    <span class="tf-icons bx bx-plus"></span>&nbsp; Warga QA
                 </button>
             </li>
         </ul>
 
-        <!-- Statistic users -->
-        {{-- @include('set_pengguna.statistic') --}}
-        <!-- Users List Table -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -35,42 +37,45 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Username</th>
-                                    <th>Name</th>
                                     <th>Kode BU</th>
                                     <th>Nama BU</th>
-                                    <th>Role</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
+                                    <th>PIC</th>
+                                    <th>Warga QA</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                @foreach ($pengguna as $pengguna)
+                                @foreach ($bu as $bu)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $pengguna->user->username }}</td>
-                                        <td>{{ $pengguna->name }}</td>
                                         <td>
-                                            @if ($pengguna->bu)
-                                                {{ $pengguna->bu->kode_klpbu_id }}
+                                            @if ($bu->sima_klpbu)
+                                                {{ $bu->sima_klpbu->kode_klpbu }}
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($pengguna->bu)
-                                                {{ $pengguna->bu->sima_klpbu->nama_klpbu }}
+                                            @if ($bu->sima_klpbu)
+                                                {{ $bu->sima_klpbu->nama_klpbu }}
                                             @endif
                                         </td>
-                                        <td>{{ $pengguna->role }}</td>
-                                        <td>{{ $pengguna->email }}</td>
-                                        <td> <a target="blank" href="https://wa.me/62{{ $pengguna->phone }}">{{ '+62' . $pengguna->phone }}</a> </td>
+                                        {{-- {{ dd($bu->myprofile->name) }} --}}
+                                        <td>
+                                            @if ($bu->myprofileMitra)
+                                                {{ $bu->myprofileMitra->user->username }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($bu->myprofileWarga)
+                                                {{ $bu->myprofileWarga->user->username }}
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <form action="{{ route('setpengguna.destroy', $pengguna->id) }}" method="post">
+                                                    <form action="{{ route('setpengguna.destroy', $bu->id) }}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>
@@ -91,6 +96,9 @@
 
     <!-- Modal tambah pengguna -->
     @include('set_pengguna.modal_tambah_pengguna')
+    <!--/ Modal tambah pengguna -->
+    <!-- Modal tambah Warga qa -->
+    @include('set_pengguna.modal_tambah_wargaqa')
     <!--/ Modal tambah pengguna -->
 
     @push('inlinejs')

@@ -11,9 +11,14 @@ class Bu extends Model
 
     protected $connection = 'mysql';
 
-    public function myprofile()
+    public function myprofileMitra()
     {
-        return $this->belongsTo(Myprofile::class, 'myprofile_id');
+        return $this->belongsTo(Myprofile::class, 'myprofile_mitra_id', 'id');
+    }
+
+    public function myprofileWarga()
+    {
+        return $this->belongsTo(Myprofile::class, 'myprofile_warga_id', 'id');
     }
 
     public function sima_klpbu()
@@ -28,6 +33,6 @@ class Bu extends Model
 
     public function param()
     {
-        return $this->belongsToMany(Param::class, 'bu_params', 'bu_id', 'param_id')->withPivot('skorparam', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'filepdf', 'filedocx', 'filexlsx', 'sumberinfo', 'catatan', 'hasilreviu');
+        return $this->belongsToMany(Param::class, 'bu_params', 'bu_id', 'param_id')->withPivot('tahun', 'skor_mitra', 'skor_warga', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'filepdf', 'filedocx', 'filexlsx', 'sumberinfo', 'catatan', 'hasilreviu');
     }
 }

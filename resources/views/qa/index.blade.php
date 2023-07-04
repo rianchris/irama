@@ -19,29 +19,35 @@
                         <table class="table table-responsive table-bordered" id="qa">
                             <thead>
                                 <tr>
-                                    <th>Kode Sima KLPBU</th>
+                                    <th>Kode BU</th>
                                     <th>Klaster</th>
                                     <th>Badan Usaha</th>
-                                    <th>Pic</th>
+                                    <th>PIC</th>
+                                    <th>Warga</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($bu as $bu)
-                                    <tr>
-                                        <td>{{ $bu->sima_klpbu->kode_klpbu }}</td>
-                                        <td>{{ $bu->klaster->nama_klaster }}</td>
-                                        <td>{{ $bu->sima_klpbu->nama_klpbu }}</td>
-                                        <td>{{ $bu->myprofile->name }}</td>
-                                        <td>
-                                            <button id="rincian" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rincianparam" data-id="{{ $bu->id }}">
-                                                <i class='bx bx-show-alt'></i>
-                                            </button>
-                                            <a href="{{ route('qa.edit', $bu->id) }}" class="btn btn-sm btn-warning">
-                                                <i class='bx bx-edit'></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @if ($bu->sima_klpbu)
+                                        <tr>
+                                            <td>{{ $bu->sima_klpbu->kode_klpbu }}</td>
+                                            <td>{{ $bu->klaster->nama_klaster }}</td>
+                                            <td>{{ $bu->sima_klpbu->nama_klpbu }}</td>
+                                            <td>{{ $bu->myprofileMitra->name }}</td>
+                                            <td>{{ $bu->myprofileWarga->name }}</td>
+                                            <td>
+                                                <button id="rincian" type="button" class="mb-1 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rincianparam" data-id="{{ $bu->id }}">
+                                                    <i class='bx bx-show-alt'></i>
+                                                </button>
+                                                @if ($bu->myprofile_warga_id == auth()->user()->myprofile->id)
+                                                    <a href="{{ route('qa.edit', $bu->id) }}" class="mb-1 btn btn-sm btn-warning">
+                                                        <i class='bx bx-edit'></i>
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

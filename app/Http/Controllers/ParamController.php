@@ -33,7 +33,7 @@ class ParamController extends Controller
         ];
 
         //data tabel dimensi dan bu
-        $bu = Bu::where('myprofile_id', $pengguna->id)->get();
+        $bu = Bu::where('myprofile_mitra_id', $pengguna->id)->get();
         // $dimensi = $bu->param->where('dimensi_id', $request['dimensi']);
 
         //data tabel dimensi
@@ -42,10 +42,11 @@ class ParamController extends Controller
         //data param
         $param = Param::where('dimensi_id', $request['dimensi'])->get();
         // $param = Param::first();
-        // dd($param);
 
         // data bu param
-        $buparam = BuParam::where('param_id', $request['param'])->where('bu_id', $pengguna->bu->id)->first();
+        $buparam = BuParam::where('param_id', $request['param'])->where('bu_id', $pengguna->buMitra->id)->first();
+
+        // dd($buparam);
 
         $data = [
             'bu' => $bu,
@@ -55,7 +56,7 @@ class ParamController extends Controller
             'buparam' => $buparam
         ];
 
-        // dd($data['param']);
+
 
         if (request('dimensi')) {
             if (request('param')) {
@@ -82,7 +83,7 @@ class ParamController extends Controller
                 'tahun' => date("Y"),
                 'bu_id' => $request->input('bu_id'),
                 'param_id' => $request->input('param_id'),
-                'skorparam' => $request->input('skor'),
+                'skor_mitra' => $request->input('skor'),
                 'filepdf' => $request->input('filepdf'),
                 'filexlsx' => $request->input('filexlsx'),
                 'filedocx' => $request->input('filedocx'),
@@ -94,7 +95,7 @@ class ParamController extends Controller
             // $buparam->id = $request->input('bu_param_id');
             $buparam->bu_id = $request->input('bu_id');
             $buparam->param_id = $request->input('param_id');
-            $buparam->skorparam = $request->input('skor');
+            $buparam->skor_mitra = $request->input('skor');
             $buparam->filepdf = $request->input('filepdf');
             $buparam->filexlsx = $request->input('filexlsx');
             $buparam->filedocx = $request->input('filedocx');
