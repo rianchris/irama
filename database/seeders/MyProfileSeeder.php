@@ -26,18 +26,18 @@ class MyprofileSeeder extends Seeder
         ]);
         Myprofile::create([
             'user_id' => '3',
-            'name' => 'Putri',
+            'name' => 'Gilang',
             'role' => 'mitra',
         ]);
         Myprofile::create([
             'user_id' => '4',
-            'name' => 'Sani',
-            'role' => 'mitra',
+            'name' => 'Putri',
+            'role' => 'warga',
         ]);
         Myprofile::create([
             'user_id' => '5',
-            'name' => 'Gilang',
-            'role' => 'mitra',
+            'name' => 'Sani',
+            'role' => 'warga',
         ]);
     }
 }

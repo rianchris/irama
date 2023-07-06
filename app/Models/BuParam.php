@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BuParam extends Model
 {
     use HasFactory;
+    public $guarded = ['id'];
 
     public function filependukung()
     {

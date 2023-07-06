@@ -14,8 +14,9 @@
                                         <div class="card-body text-center">
                                             @if (request('dimensi') == 1)
                                                 <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.jpg') }}" height="450" alt="Help center articles" />
-                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
-                                                <p>Whether you're new or you're a power user</p>
+                                                <h5>Total Parameter : {{ $total = $dimensi->param->count() }}</h5>
+                                                <p>
+                                                </p>
                                             @elseif (request('dimensi') == 2)
                                                 <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen2.jpg') }}" height="450" alt="Help center articles" />
                                                 <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
@@ -33,7 +34,11 @@
                                                 <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
                                                 <p>Whether you're new or you're a power user</p>
                                             @endif
-                                            <a class="btn btn-label-primary" href="{{ route('parameter.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
+                                            @if (auth()->user()->myprofile->role == 'mitra')
+                                                <a class="btn btn-label-primary" href="{{ route('parameter.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
+                                            @elseif (auth()->user()->myprofile->role == 'warga')
+                                                <a class="btn btn-label-primary" href="{{ route('qa.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

@@ -1,21 +1,23 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <ul class="nav nav-pills flex-row flex-md-row mb-3">
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('setpengguna.index') }}"><i class="bx bx-user me-1"></i> Data Pengguna</a>
-            </li>
-            <li class="nav-item ms-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-pengguna">
-                    <span class="tf-icons bx bx-plus"></span>&nbsp; PIC
-                </button>
-            </li>
-            <li class="nav-item ms-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-wargaqa">
-                    <span class="tf-icons bx bx-plus"></span>&nbsp; Warga QA
-                </button>
-            </li>
-        </ul>
+        <div class="card mb-4">
+            <ul class="nav nav-pills flex-row flex-md-row p-3">
+                <li class="nav-item">
+                    <a class="m-1 btn btn-outline-primary" href="{{ route('setpengguna.index') }}"><i class="bx bx-user me-1"></i> Data Pengguna</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-pengguna">
+                        <span class="tf-icons bx bx-plus"></span>&nbsp; PIC
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah-wargaqa">
+                        <span class="tf-icons bx bx-plus"></span>&nbsp; Warga QA
+                    </button>
+                </li>
+            </ul>
+        </div>
 
         <div class="row">
             <div class="col-md-12">

@@ -14,30 +14,27 @@ class BuSeeder extends Seeder
      */
     public function run()
     {
-        // Bu::create([
-        //     // 'kode_klpbu_id' => '731',
-        //     // 'myprofile_id' => '1',
-        //     // 'klaster_id' => '1',
-        // ]);
         Bu::create([
             'kode_klpbu_id' => '732',
             'myprofile_mitra_id' => '2',
+            'myprofile_warga_id' => '4',
             'klaster_id' => '2',
         ]);
         Bu::create([
             'kode_klpbu_id' => '733',
             'myprofile_mitra_id' => '3',
+            'myprofile_warga_id' => '5',
             'klaster_id' => '3',
         ]);
-        Bu::create([
-            'kode_klpbu_id' => '734',
-            'myprofile_mitra_id' => '4',
-            'klaster_id' => '1',
-        ]);
-        Bu::create([
-            'kode_klpbu_id' => '735',
-            'myprofile_mitra_id' => '5',
-            'klaster_id' => '1',
-        ]);
+        // Bu::create([
+        //     'kode_klpbu_id' => '734',
+        //     'myprofile_mitra_id' => '4',
+        //     'klaster_id' => '1',
+        // ]);
+        // Bu::create([
+        //     'kode_klpbu_id' => '735',
+        //     'myprofile_mitra_id' => '5',
+        //     'klaster_id' => '1',
+        // ]);
     }
 }

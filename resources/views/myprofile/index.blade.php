@@ -6,11 +6,13 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <div class="col-md-12">
-                <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> My Profile</a>
-                    </li>
-                </ul>
+                <div class="card mb-4">
+                    <ul class="nav nav-pills flex-column flex-md-row p-3">
+                        <li class="nav-item">
+                            <a class="m-1 btn btn-outline-primary" href="javascript:void(0);"><i class="bx bx-user me-1"></i> My Profile</a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="card mb-4">
                     {{-- <h5 class="card-header">Profile Details</h5> --}}
                     @if (session()->has('success'))
@@ -19,7 +21,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <hr class="my-0" />
                     <div class="card-body">
                         <form id="formAccountSettings" method="POST" action="{{ route('myprofile.update', $pegawai->id) }}">
                             @csrf

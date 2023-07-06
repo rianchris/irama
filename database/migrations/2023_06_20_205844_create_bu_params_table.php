@@ -18,8 +18,8 @@ class CreateBuParamsTable extends Migration
             $table->year('tahun');
             $table->foreignId('bu_id');
             $table->foreignId('param_id');
-            $table->string('skor_mitra')->default('0');
-            $table->string('skor_warga')->nullable();
+            $table->bigInteger('skor_mitra')->default('0');
+            $table->bigInteger('skor_warga')->nullable();
             $table->string('per_inf_d')->nullable();
             $table->string('per_inf_w')->nullable();
             $table->string('per_inf_k')->nullable();

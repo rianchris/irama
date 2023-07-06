@@ -1,15 +1,13 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <ul class="nav nav-pills flex-column flex-md-row mb-3">
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('setparam.index') }}"><i class="bx bx-list-ul me-1"></i> Data Parameter</a>
-            </li>
-        </ul>
-
-        <!-- Statistic users -->
-        {{-- @include('set_pengguna.statistic') --}}
-        <!-- Users List Table -->
+        <div class="card mb-4">
+            <ul class="nav nav-pills flex-column flex-md-row p-3">
+                <li class="nav-item">
+                    <a class="m-1 btn btn-outline-primary" href="{{ route('setparam.index') }}"><i class="bx bx-list-ul me-1"></i> Data Parameter</a>
+                </li>
+            </ul>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

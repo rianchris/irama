@@ -9,6 +9,9 @@
                 @can('mitra')
                     @include('dashboard.welcomeMitra')
                 @endcan
+                @can('warga')
+                    @include('dashboard.welcomeWarga')
+                @endcan
             </div>
             <div class="col-lg-4 col-md-4 order-1">
             </div>

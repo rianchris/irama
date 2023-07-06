@@ -1,11 +1,13 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <ul class="nav nav-pills flex-column flex-md-row mb-3">
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('set_simaklpbu') }}"><i class='bx bxs-category-alt me-1'></i> Data Sima KLPBU</a>
-            </li>
-        </ul>
+        <div class="card mb-4">
+            <ul class="nav nav-pills flex-column flex-md-row m-3">
+                <li class="nav-item">
+                    <a class="m-1 btn btn-outline-primary" href="{{ route('set_simaklpbu') }}"><i class='bx bxs-category-alt me-1'></i> Data Sima KLPBU</a>
+                </li>
+            </ul>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

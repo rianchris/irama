@@ -3,17 +3,13 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <div class="col-md-12">
-                <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);"><i class='bx bxs-category me-2'></i> Quality Assurance</a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bx bx-bell me-1"></i> Notifications</a>
-                    </li> --}}
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bx bx-link-alt me-1"></i> Connections</a>
-                    </li> --}}
-                </ul>
+                <div class="card mb-4">
+                    <ul class="nav nav-pills flex-column flex-md-row p-3">
+                        <li class="nav-item">
+                            <a class="m-1 btn btn-outline-primary" href="javascript:void(0);"><i class='bx bxs-category me-2'></i> Quality Assurance</a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="card">
                     <div class="card-datatable">
                         <table class="table table-responsive table-bordered" id="qa">
@@ -24,6 +20,7 @@
                                     <th>Badan Usaha</th>
                                     <th>PIC</th>
                                     <th>Warga</th>
+                                    <th>Progres</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -34,8 +31,11 @@
                                             <td>{{ $bu->sima_klpbu->kode_klpbu }}</td>
                                             <td>{{ $bu->klaster->nama_klaster }}</td>
                                             <td>{{ $bu->sima_klpbu->nama_klpbu }}</td>
-                                            <td>{{ $bu->myprofileMitra->name }}</td>
-                                            <td>{{ $bu->myprofileWarga->name }}</td>
+                                            <td>{{ $bu->myprofileMitra->user->username }}</td>
+                                            <td>{{ $bu->myprofileWarga->user->username }}</td>
+                                            <td>
+                                                {{ $bu->param->count() . '/100' }}
+                                            </td>
                                             <td>
                                                 <button id="rincian" type="button" class="mb-1 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rincianparam" data-id="{{ $bu->id }}">
                                                     <i class='bx bx-show-alt'></i>

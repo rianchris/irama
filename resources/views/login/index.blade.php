@@ -43,16 +43,30 @@
                     <div class="card">
                         <div class="card-body">
                             <ul>
-                                <li> Admin
-                                    <ol>username: adminirama</ol>
-                                    <ol>password: password</ol>
-                                </li>
-                                <li> Mitra 1
+                                <h5 class="fw-semibold p-1 card-header"> Admin</h5>
+                                <ol>username: adminirama</ol>
+                                <ol>password: password</ol>
+                            </ul>
+
+                            <ul>
+                                <h5 class="fw-semibold p-1 card-header"> Bu 1</h5>
+                                <li> Mitra
                                     <ol>username: yohana</ol>
                                     <ol>password: password</ol>
                                 </li>
-                                <li> Mitra 2
+                                <li> Warga
+                                    <ol>username: putri123</ol>
+                                    <ol>password: password</ol>
+                                </li>
+                            </ul>
+                            <ul>
+                                <h5 class="fw-semibold p-1 card-header"> Bu 2</h5>
+                                <li> Mitra
                                     <ol>username: gilang</ol>
+                                    <ol>password: password</ol>
+                                </li>
+                                <li> Warga
+                                    <ol>username: sani123</ol>
                                     <ol>password: password</ol>
                                 </li>
                             </ul>

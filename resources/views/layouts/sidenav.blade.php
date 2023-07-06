@@ -64,7 +64,6 @@
                             <div data-i18n="Dimensi 5">Dimensi 5</div>
                         </a>
                     </li>
-
                 </ul>
             </li>
         @endcan
@@ -72,66 +71,86 @@
         <!-- Warga -->
         @can('warga')
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Warga</span></li>
-            <li class="menu-item @if (Request::is('qa*')) active @endif">
-                <a href="{{ route('qa.index') }}" class="menu-link">
+            <li class="menu-item @if (Request::is('qa*')) active open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class='menu-icon tf-icons bx bx-check-shield'></i>
                     <div data-i18n="Quality Assurance">Quality Assurance</div>
                 </a>
-            </li>
-        @endcan
-
-        <!-- Administrator -->
-        @can('admin')
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
-            <!-- Forms -->
-            <li class="menu-item @if (Request::is('set*')) active open @endif">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-cog"></i>
-                    <div data-i18n="Setting">Setting</div>
-                </a>
                 <ul class="menu-sub">
-                    <li class="menu-item @if (Request::is('setpengguna')) active open @endif">
-                        <a href="{{ route('setpengguna.index') }}" class="menu-link">
-                            <div data-i18n="Pengguna Aplikasi">Pengguna Aplikasi</div>
+                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 1) active open @endif">
+                        <a href="{{ route('qa.index') . '?dimensi=1' }}" class="menu-link">
+                            <div data-i18n="Dimensi 1">Dimensi 1</div>
                         </a>
                     </li>
-                    <li class="menu-item @if (Request::is('setparam*')) active open @endif">
-                        <a href="{{ route('setparam.index') }}" class="menu-link">
-                            <div data-i18n="Parameter">Parameter</div>
+                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 2) active open @endif">
+                        <a href="{{ route('qa.index') . '?dimensi=2' }}" class="menu-link">
+                            <div data-i18n="Dimensi 2">Dimensi 2</div>
                         </a>
                     </li>
-                    <li class="menu-item @if (Request::is('setting/sima_klpbu')) active open @endif">
-                        <a href="{{ route('set_simaklpbu') }}" class="menu-link">
-                            <div data-i18n="Sima KLPBU">Sima KLPBU</div>
+                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 3) active open @endif">
+                        <a href="{{ route('qa.index') . '?dimensi=3' }}" class="menu-link">
+                            <div data-i18n="Dimensi 3">Dimensi 3</div>
                         </a>
                     </li>
-                </ul>
+                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 4) active open @endif">
+                        <a href="{{ route('qa.index') . '?dimensi=4' }}" class="menu-link">
+                            <div data-i18n="Dimensi 4">Dimensi 4</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 5) active open @endif">
+                        <a href="{{ route('qa.index') . '?dimensi=5' }}" class="menu-link">
+                            <div data-i18n="Dimensi 5">Dimensi 5</div>
+                        </a>
+                    </li>
             </li>
-        @endcan
+        </ul>
+        </li>
+    @endcan
+
+    <!-- Administrator -->
+    @can('admin')
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
+        <!-- Forms -->
+        <li class="menu-item @if (Request::is('set*')) active open @endif">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Setting">Setting</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item @if (Request::is('setpengguna')) active open @endif">
+                    <a href="{{ route('setpengguna.index') }}" class="menu-link">
+                        <div data-i18n="Pengguna Aplikasi">Pengguna Aplikasi</div>
+                    </a>
+                </li>
+                <li class="menu-item @if (Request::is('setparam*')) active open @endif">
+                    <a href="{{ route('setparam.index') }}" class="menu-link">
+                        <div data-i18n="Parameter">Parameter</div>
+                    </a>
+                </li>
+                <li class="menu-item @if (Request::is('setting/sima_klpbu')) active open @endif">
+                    <a href="{{ route('set_simaklpbu') }}" class="menu-link">
+                        <div data-i18n="Sima KLPBU">Sima KLPBU</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    @endcan
 
 
-        <!-- Misc -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
-        <li class="menu-item">
-            <a href="{{ kontak() }}" target="_blank" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-support"></i>
-                <div data-i18n="Support">Support</div>
-            </a>
-        </li>
-        <li class="menu-item @if (Request::is('myprofile')) active @endif">
-            <a href="{{ route('myprofile.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="My Profile">My Profile</div>
-            </a>
-        </li>
-        {{-- <li class="menu-item pb-3">
-            <form action="{{ route('logout.post') }}" method="post">
-                @csrf
-                <button type="submit" href="{{ route('myprofile.index') }}" class="menu-link btn btn-outline-secondary px-3 py-2 ">
-                    <i class="menu-icon tf-icons bx bx-power-off"></i>
-                    <div data-i18n="Logout">Logout</div>
-                </button>
-            </form>
-        </li> --}}
+    <!-- Misc -->
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+
+    <li class="menu-item @if (Request::is('myprofile')) active @endif">
+        <a href="{{ route('myprofile.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="My Profile">My Profile</div>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="{{ kontak() }}" target="_blank" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-support"></i>
+            <div data-i18n="Support">Support</div>
+        </a>
+    </li>
     </ul>
 </aside>

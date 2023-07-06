@@ -18,14 +18,15 @@ class UserSeeder extends Seeder
             'username' => 'yohana',
         ]);
         User::create([
-            'username' => 'putri',
-        ]);
-        User::create([
-            'username' => 'sani',
-        ]);
-        User::create([
             'username' => 'gilang',
         ]);
+        User::create([
+            'username' => 'putri123',
+        ]);
+        User::create([
+            'username' => 'sani123',
+        ]);
+
         // User::factory(10)->create(); // untuk memasukkan data dummy kedalam tabel user
     }
 }
