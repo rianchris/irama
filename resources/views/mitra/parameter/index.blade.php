@@ -127,7 +127,7 @@
                                                     <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'a' }}">
                                                         <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 0) checked @endif @endif @can('warga') disabled @endcan/>
                                                         <span class="custom-option-body">
-                                                            <span class="custom-option-header">{{ $deskripsiskor->skor0 }} </span>
+                                                            <span class="custom-option-header">0) {{ $deskripsiskor->skor0 }} </span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -135,7 +135,7 @@
                                                     <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'b' }}">
                                                         <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 1) checked @endif @endif @can('warga') disabled @endcan/>
                                                         <span class="custom-option-body">
-                                                            <span class="custom-option-header">{{ $deskripsiskor->skor1 }}</span>
+                                                            <span class="custom-option-header">1) {{ $deskripsiskor->skor1 }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -143,7 +143,7 @@
                                                     <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'c' }}">
                                                         <input name="skor" class="form-check-input" type="radio" value="2" id="{{ $deskripsiskor->id . 'c' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 2) checked @endif @endif @can('warga') disabled @endcan/>
                                                         <span class="custom-option-body">
-                                                            <span class="custom-option-header">{{ $deskripsiskor->skor2 }}</span>
+                                                            <span class="custom-option-header">2) {{ $deskripsiskor->skor2 }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -151,7 +151,7 @@
                                                     <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'd' }}">
                                                         <input name="skor" class="form-check-input" type="radio" value="3" id="{{ $deskripsiskor->id . 'd' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 3) checked @endif @endif @can('warga') disabled @endcan/>
                                                         <span class="custom-option-body">
-                                                            <span class="custom-option-header">{{ $deskripsiskor->skor3 }}</span>
+                                                            <span class="custom-option-header">3) {{ $deskripsiskor->skor3 }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -159,7 +159,7 @@
                                                     <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'e' }}">
                                                         <input name="skor" class="form-check-input" type="radio" value="4" id="{{ $deskripsiskor->id . 'e' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 4) checked @endif @endif @can('warga') disabled @endcan/>
                                                         <span class="custom-option-body">
-                                                            <span class="custom-option-header">{{ $deskripsiskor->skor4 }}</span>
+                                                            <span class="custom-option-header">4) {{ $deskripsiskor->skor4 }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -167,7 +167,7 @@
                                                     <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'f' }}">
                                                         <input name="skor" class="form-check-input" type="radio" value="5" id="{{ $deskripsiskor->id . 'f' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 5) checked @endif @endif @can('warga') disabled @endcan/>
                                                         <span class="custom-option-body">
-                                                            <span class="custom-option-header">{{ $deskripsiskor->skor5 }}</span>
+                                                            <span class="custom-option-header">5) {{ $deskripsiskor->skor5 }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
