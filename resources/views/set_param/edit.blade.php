@@ -120,7 +120,6 @@
     @endpush
 
     @push('pagejs')
-        {{-- <script src="{{ asset('assets/js/app-user-list.js') }}"></script> --}}
     @endpush
     <!-- Ineline JS-->.
     @push('inlinejs')

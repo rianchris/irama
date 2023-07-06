@@ -7,12 +7,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('qa.index') }}"><i class='bx bx-left-arrow-alt me-2'></i>Quality Assurance</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bx bx-bell me-1"></i> Notifications</a>
-                    </li> --}}
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bx bx-link-alt me-1"></i> Connections</a>
-                    </li> --}}
                 </ul>
 
 
