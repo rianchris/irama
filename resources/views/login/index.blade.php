@@ -5,7 +5,7 @@
             <!-- /Left Text -->
             <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center m-0 p-0">
                 <div class="w-100 d-flex justify-content-center">
-                    <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid" alt="Login image" width="100%" style="filter: grayscale(100%)" />
+                    <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3" alt="Login image" width="65%" style="filter: grayscale(100%)" />
                 </div>
             </div>
             <!-- /Left Text -->
@@ -17,13 +17,12 @@
                     <div class="app-brand mb-5">
                         <a href="index.html" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
-                                Irama
+                                <img src="{{ asset('assets/img/branding/logo-forsa-irama.png') }}" alt="" width="200px">
                             </span>
-                            <span class="app-brand-text demo text-body fw-bolder">Irama App</span>
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to self assessment management risk! 👋</h4>
+                    <h4 class="mb-2">Welcome to integrated risk maturity application! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                     <form id="formAuthentication" class="mb-3" action="{{ route('login.post') }}" method="POST">
@@ -42,34 +41,42 @@
                     </form>
                     <div class="card">
                         <div class="card-body">
-                            <ul>
-                                <h5 class="fw-semibold p-1 card-header"> Admin</h5>
-                                <ol>username: adminirama</ol>
-                                <ol>password: password</ol>
-                            </ul>
-
-                            <ul>
-                                <h5 class="fw-semibold p-1 card-header"> Bu 1</h5>
-                                <li> Mitra
-                                    <ol>username: yohana</ol>
-                                    <ol>password: password</ol>
-                                </li>
-                                <li> Warga
-                                    <ol>username: putri123</ol>
-                                    <ol>password: password</ol>
-                                </li>
-                            </ul>
-                            <ul>
-                                <h5 class="fw-semibold p-1 card-header"> Bu 2</h5>
-                                <li> Mitra
-                                    <ol>username: gilang</ol>
-                                    <ol>password: password</ol>
-                                </li>
-                                <li> Warga
-                                    <ol>username: sani123</ol>
-                                    <ol>password: password</ol>
-                                </li>
-                            </ul>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Role</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Admin</td>
+                                        <td>adminirama</td>
+                                        <td>password</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mitra 1</td>
+                                        <td>yohana</td>
+                                        <td>password</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Warga 1</td>
+                                        <td>putri123</td>
+                                        <td>password</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mitra 2</td>
+                                        <td>gilang</td>
+                                        <td>password</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Warga 2</td>
+                                        <td>sani123</td>
+                                        <td>password</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

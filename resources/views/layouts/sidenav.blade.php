@@ -2,9 +2,9 @@
     <div class="app-brand demo">
         <a href="{{ route('dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                brand-logo
+                <img src="{{ asset('assets/img/branding/logo-forsa-irama.png') }}" alt="" width="150px">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Irama </span>
+            {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Irama </span> --}}
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
