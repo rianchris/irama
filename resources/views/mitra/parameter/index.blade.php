@@ -220,7 +220,7 @@
                                                 <div class="card ">
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            <div class="col">
+                                                            <div class="col mt-1">
                                                                 <div class="form-check custom-option custom-option-icon">
                                                                     <label class="form-check-label custom-option-content" for="skorwarga">
                                                                         <span class="custom-option-body">
@@ -230,7 +230,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col">
+                                                            <div class="col mt-1">
                                                                 <div class="form-check custom-option custom-option-icon">
                                                                     <label class="form-check-label custom-option-content" for="skorwarga1">
                                                                         <span class="custom-option-body">
@@ -240,7 +240,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col">
+                                                            <div class="col mt-1">
                                                                 <div class="form-check custom-option custom-option-icon">
                                                                     <label class="form-check-label custom-option-content" for="skorwarga2">
                                                                         <span class="custom-option-body">
@@ -250,7 +250,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col">
+                                                            <div class="col mt-1">
                                                                 <div class="form-check custom-option custom-option-icon">
                                                                     <label class="form-check-label custom-option-content" for="skorwarga3">
                                                                         <span class="custom-option-body">
@@ -260,7 +260,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col">
+                                                            <div class="col mt-1">
                                                                 <div class="form-check custom-option custom-option-icon">
                                                                     <label class="form-check-label custom-option-content" for="skorwarga4">
                                                                         <span class="custom-option-body">
@@ -270,7 +270,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col">
+                                                            <div class="col mt-1">
                                                                 <div class="form-check custom-option custom-option-icon">
                                                                     <label class="form-check-label custom-option-content" for="skorwarga5">
                                                                         <span class="custom-option-body">

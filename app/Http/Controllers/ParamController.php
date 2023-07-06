@@ -20,6 +20,7 @@ class ParamController extends Controller
     public function index()
     {
 
+
         //session pegawai
         $pegawai = session('pegawai');
         $pengguna = MyProfile::where('id', $pegawai->id)->first();
@@ -46,7 +47,7 @@ class ParamController extends Controller
         // data bu param
         $buparam = BuParam::where('param_id', $request['param'])->where('bu_id', $pengguna->buMitra->id)->first();
 
-        // dd($buparam);
+        // dd($bu->where('id', 1)->get());
 
         $data = [
             'bu' => $bu,
