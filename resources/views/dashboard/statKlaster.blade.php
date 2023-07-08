@@ -13,7 +13,7 @@
                                      @if ($bu->avatar)
                                          <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
                                      @else
-                                         <div class="avatar avatar-sm me-2">
+                                         <div class="avatar avatar-sm">
                                              @if (isset($bu->sima_klpbu))
                                                  <span class="avatar-initial rounded-circle bg-danger">
                                                      {{ Str::limit(Str::after($bu->sima_klpbu->nama_klpbu, 'PT '), 2, '') }}
@@ -21,7 +21,7 @@
                                              @endif
                                          </div>
                                      @endif
-                                     <div class="d-flex w-100 align-items-start gap-2">
+                                     <div class="d-flex w-100 align-items-start gap-2 ps-2">
                                          <div class="d-flex justify-content-between flex-grow-1 ">
                                              <div class="col-9">
                                                  {{-- {{ dd($bu->id) }} --}}

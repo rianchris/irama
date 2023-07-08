@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Klaster;
-use App\Models\MyProfile;
+use App\Models\Myprofile;
 use App\Models\Bu;
 use App\Models\Dimensi;
 use App\Models\Sima_klpbu;

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Param;
-use App\Models\BuParam;
+use App\Models\Buparam;
 use App\Models\BadanUsaha;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;

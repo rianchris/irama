@@ -2,12 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Param;
-use App\Models\BuParam;
-use App\Models\BadanUsaha;
-use App\Models\Deskripsiskor;
-use App\Models\Filependukung;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

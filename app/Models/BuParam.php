@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BuParam extends Model
+class Buparam extends Model
 {
-    use HasFactory;
+    public $table = 'bu_params';
     public $guarded = ['id'];
-
-    public function filependukung()
-    {
-        return $this->hasManyThrough(Filependukung::class, 'bu_param_id', 'id');
-    }
+    use HasFactory;
 }

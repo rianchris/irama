@@ -11,18 +11,18 @@
             <!-- /Left Text -->
 
             <!-- Login -->
-            <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
-                <div class="w-px-400 mx-auto">
+            <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 ">
+                <div class="w-px-350 mx-auto">
                     <!-- Logo -->
                     <div class="app-brand mb-5">
-                        <a href="index.html" class="app-brand-link gap-2">
+                        <a href="{{ route('login') }}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <img src="{{ asset('assets/img/branding/logo-forsa-irama.png') }}" alt="" width="200px">
                             </span>
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to integrated risk maturity application! 👋</h4>
+                    <h4 class="mb-2">Welcome to Integrated Risk Maturity Application! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                     <form id="formAuthentication" class="mb-3" action="{{ route('login.post') }}" method="POST">
@@ -32,16 +32,19 @@
                             <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" />
                         </div>
                         <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Password</label>
+                            </div>
                             <div class="input-group input-group-merge">
                                 <input type="password" id="password" class="form-control" name="password" aria-describedby="password" />
-                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                <span class="input-group-text cursor-pointer"></span>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary d-grid w-100">Sign in</button>
                     </form>
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-bordered">
+                    <div class="table-responsive">
+                        <small>
+                            <table class="table table-responsive table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Role</th>
@@ -77,7 +80,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </small>
                     </div>
                 </div>
             </div>

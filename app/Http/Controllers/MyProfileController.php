@@ -28,12 +28,12 @@ class MyprofileController extends Controller
     }
 
 
-    public function show(MyProfile $myprofile)
+    public function show(Myprofile $myprofile)
     {
         //
     }
 
-    public function edit(MyProfile $myprofile)
+    public function edit(Myprofile $myprofile)
     {
         //
     }
@@ -62,7 +62,7 @@ class MyprofileController extends Controller
     }
 
 
-    public function destroy(MyProfile $myprofile)
+    public function destroy(Myprofile $myprofile)
     {
         //
     }

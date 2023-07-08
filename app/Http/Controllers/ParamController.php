@@ -5,25 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Param;
 use App\Models\Dimensi;
 use App\Models\Bu;
-use App\Models\BuParam;
+use App\Models\Buparam;
 use Illuminate\Http\Request;
 use App\Models\Deskripsiskor;
-use App\Models\MyProfile;
+use App\Models\Myprofile;
 
 class ParamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-
-
         //session pegawai
         $pegawai = session('pegawai');
-        $pengguna = MyProfile::where('id', $pegawai->id)->first();
+        $pengguna = Myprofile::where('id', $pegawai->id)->first();
 
         //request url
         $request_dimensi = request('dimensi');
@@ -45,7 +38,7 @@ class ParamController extends Controller
         // $param = Param::first();
 
         // data bu param
-        $buparam = BuParam::where('param_id', $request['param'])->where('bu_id', $pengguna->buMitra->id)->first();
+        $buparam = Buparam::where('param_id', $request['param'])->where('bu_id', $pengguna->buMitra->id)->first();
 
         // dd($bu->where('id', 1)->get());
 
@@ -89,9 +82,9 @@ class ParamController extends Controller
                 'filexlsx' => $request->input('filexlsx'),
                 'filedocx' => $request->input('filedocx'),
             ];
-            BuParam::where('id', $buparamid)->where('tahun', date("Y"))->update($data);
+            Buparam::where('id', $buparamid)->where('tahun', date("Y"))->update($data);
         } elseif ($buparamid == null) {
-            $buparam = new BuParam();
+            $buparam = new Buparam();
             $buparam->tahun = date("Y");
             // $buparam->id = $request->input('bu_param_id');
             $buparam->bu_id = $request->input('bu_id');
@@ -105,44 +98,24 @@ class ParamController extends Controller
         return redirect()->back()->with('success', 'Simpan data berhasil!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Param  $param
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($param)
     {
+        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Param  $param
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Param $param)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateParamRequest  $request
-     * @param  \App\Models\Param  $param
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Param $param)
     {
+        //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Param  $param
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Param $param)
     {
         //

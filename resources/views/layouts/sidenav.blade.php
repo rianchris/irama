@@ -1,10 +1,12 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
+    <div class="app-brand demo ps-3">
         <a href="{{ route('dashboard') }}" class="app-brand-link">
-            <span class="app-brand-logo demo">
-                <img src="{{ asset('assets/img/branding/logo-forsa-irama.png') }}" alt="" width="150px">
+            <span class="app-brand-logo demo fw-bolder">
+                FORSA
             </span>
-            {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Irama </span> --}}
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">
+                <img src="{{ asset('assets/img/branding/logo-irama.png') }}" alt="" width="60px" class="img-fluid">
+            </span>
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>

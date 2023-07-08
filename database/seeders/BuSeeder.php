@@ -26,15 +26,5 @@ class BuSeeder extends Seeder
             'myprofile_warga_id' => '5',
             'klaster_id' => '3',
         ]);
-        // Bu::create([
-        //     'kode_klpbu_id' => '734',
-        //     'myprofile_mitra_id' => '4',
-        //     'klaster_id' => '1',
-        // ]);
-        // Bu::create([
-        //     'kode_klpbu_id' => '735',
-        //     'myprofile_mitra_id' => '5',
-        //     'klaster_id' => '1',
-        // ]);
     }
 }

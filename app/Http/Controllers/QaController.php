@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bu;
 
 use App\Models\Param;
-use App\Models\BuParam;
+use App\Models\Buparam;
 use App\Models\Dimensi;
 use App\Models\Myprofile;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class QaController extends Controller
     {
         //session pegawai
         $pegawai = session('pegawai');
-        $pengguna = MyProfile::where('id', $pegawai->id)->first();
+        $pengguna = Myprofile::where('id', $pegawai->id)->first();
 
         //request url
         $request_dimensi = request('dimensi');
@@ -39,7 +39,7 @@ class QaController extends Controller
         // $param = Param::first();
 
         // data bu param
-        $buparam = BuParam::where('param_id', $request['param'])->where('bu_id', $pengguna->buWarga->id)->first();
+        $buparam = Buparam::where('param_id', $request['param'])->where('bu_id', $pengguna->buWarga->id)->first();
 
         // dd($buparam);
 
@@ -91,7 +91,7 @@ class QaController extends Controller
 
     public function edit($id)
     {
-        $buParam = BuParam::where('bu_id', $id)->get();
+        $buParam = Buparam::where('bu_id', $id)->get();
         $bu = Bu::where('id', $id)->first();
         $param = Param::get();
         $data = [
@@ -114,16 +114,6 @@ class QaController extends Controller
 
         // Update the resource with the validated data
         $buparam->update($validatedData);
-
-        // // dd($id);
-        // $buparam = new BuParam();
-        // $buparam->id = $request->id;
-        // $buparam->bu_id = $request->input('bu_id');
-        // $buparam->param_id = $request->input('param_id');
-        // $buparam->tahun = date("Y");
-        // $buparam->hasilreviu = $request->input('hasilreviu');
-        // $buparam->skor_warga = $request->input('skorwarga');
-        // $buparam->save();
 
         return redirect()->back()->with('success', 'Simpan data berhasil!');
     }
