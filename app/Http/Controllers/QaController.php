@@ -73,40 +73,19 @@ class QaController extends Controller
 
     public function show($id)
     {
-        $bu_details = Bu::with('param', 'sima_klpbu')->findOrFail($id);
-        $skorparam = collect();
-        if ($bu_details) {
-            foreach ($bu_details->param as $param) {
-                $skorparam->push($param->pivot->skorparam);
-            }
-        } else {
-            return '';
-        }
-        $data = [
-            'bu_details' => $bu_details,
-            'body' => $skorparam
-        ];
-        return response()->json($data);
+        // 
     }
 
     public function edit($id)
     {
-        $buParam = Buparam::where('bu_id', $id)->get();
-        $bu = Bu::where('id', $id)->first();
-        $param = Param::get();
-        $data = [
-            'buParam' => $buParam,
-            'bu' => $bu,
-            'param' => $param
-        ];
-        return view('qa.edit', $data);
+        //
     }
 
     public function update(Request $request, $id)
     {
         // dd($request);
         // dd($request);
-        $buparam = BuParam::findOrFail($id);
+        $buparam = Buparam::findOrFail($id);
         $validatedData = $request->validate([
             'hasilreviu' => '',
             'skor_warga' => 'required'
