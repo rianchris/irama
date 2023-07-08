@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo ps-3">
-        <a href="{{ route('dashboard') }}" class="app-brand-link">
+        <a href="{{ route('dashboard.index') }}" class="app-brand-link">
             <span class="app-brand-logo demo fw-bolder">
                 FORSA
             </span>
@@ -16,14 +16,28 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboards -->
-        <li class="menu-item  @if (Request::is('/')) active open @endif">
-            <a href="{{ route('dashboard') }}" class="menu-link">
+
+        <!-- Dashboards-->
+        <li class="menu-item  @if (Request::is('dashboard*')) active open @endif">
+            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') menu-toggle @endcan">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
+            @can('admin')
+                <ul class="menu-sub">
+                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
+                        <a href="{{ route('dashboard.progres') }}" class="menu-link">
+                            <div data-18n="Progres">Progres</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('dashboard/rincian')) active open @endif">
+                        <a href="{{ route('dashboard.rincian') }}" class="menu-link">
+                            <div data-18n="Rincian">Rincian</div>
+                        </a>
+                    </li>
+                </ul>
+            @endcan
         </li>
-
         <!-- Mitra BPKP -->
         @can('mitra')
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>

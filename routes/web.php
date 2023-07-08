@@ -30,7 +30,12 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.pos
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout.post');
 
 //all
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/', [DashboardController::class, 'redirect'])->middleware('auth')->name('dashboard.redirect');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');
+Route::get('/dashboard/progres', [DashboardController::class, 'progress'])->middleware('admin')->name('dashboard.progres');
+Route::get('/dashboard/rincian', [DashboardController::class, 'rincian'])->middleware('admin')->name('dashboard.rincian');
+Route::get('/dashboard/show/{id}', [DashboardController::class, 'show'])->middleware('admin')->name('dashboard.show');
+
 Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 
 //mitra

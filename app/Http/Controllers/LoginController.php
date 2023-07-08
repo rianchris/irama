@@ -30,7 +30,7 @@ class LoginController extends Controller
             $finduser = User::where('username', $credentials['username'])->first();
             $findprofile = Myprofile::where('id', $finduser->id)->first();
             $request->session()->put('pegawai', $findprofile);
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('dashboard.index'));
         } else {
             // Authentication failed
             return redirect()->back()->with(['message' => 'Login Failed!']);

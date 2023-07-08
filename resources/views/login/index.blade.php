@@ -36,13 +36,13 @@
                                 <label class="form-label" for="password">Password</label>
                             </div>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" name="password" aria-describedby="password" />
+                                <input type="password" id="password" class="form-control" name="password" aria-describedby="password" placeholder="Enter your password" />
                                 <span class="input-group-text cursor-pointer"></span>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary d-grid w-100">Sign in</button>
                     </form>
-                    <div class="table-responsive">
+                    {{-- <div class="table-responsive">
                         <small>
                             <table class="table table-responsive table-bordered">
                                 <thead>
@@ -81,7 +81,7 @@
                                 </tbody>
                             </table>
                         </small>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!-- /Login -->

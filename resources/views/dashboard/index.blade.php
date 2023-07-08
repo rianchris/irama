@@ -4,20 +4,17 @@
         <div class="row">
             <div class="col-lg-8 mb-4 order-0">
                 @can('admin')
-                    @include('dashboard.welcomeAdmin')
+                    @include('dashboard.welcome.welcomeAdmin')
                 @endcan
                 @can('mitra')
-                    @include('dashboard.welcomeMitra')
+                    @include('dashboard.welcome.welcomeMitra')
                 @endcan
                 @can('warga')
-                    @include('dashboard.welcomeWarga')
+                    @include('dashboard.welcome.welcomeWarga')
                 @endcan
             </div>
             <div class="col-lg-4 col-md-4 order-1">
             </div>
-        </div>
-        <div class="row">
-            @include('dashboard.statKlaster')
         </div>
     </div>
     <!-- / Content -->
