@@ -40,14 +40,16 @@
                         <div class="demo-vertical-spacing ">
                             @foreach ($param as $p)
                                 @can('mitra')
-                                    @php   $url = route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id; @endphp
+                                    @php
+                                        $url = 'https://dan.bpkp.go.id/irama/parameter' . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
+                                    @endphp
                                 @endcan
                                 @can('warga')
                                     @php
-                                        $url = route('qa.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
+                                        $url = 'https://dan.bpkp.go.id/irama/qa' . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
                                     @endphp
                                 @endcan
-
+                                {{-- {{ dd($url) }} --}}
                                 <a href="{{ $url }}" type="button" class=" text-dark btn border-2 px-3 py-1 me-1
                                 @php if(Request::fullUrlIs($url) ){
                                     echo 'text-white btn-primary';
@@ -101,21 +103,21 @@
                                                 </div>
                                                 <div class="mb-3 input-group">
                                                     <a href="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" target="blank">
-                                                        <span class="input-group-text" id="basic-addon14"><i class='bx bx-md bxs-file-pdf size-lg'></i></span>
+                                                        <span class="input-group-text" id="filepdf"><i class='bx bx-md bxs-file-pdf size-lg'></i></span>
                                                     </a>
-                                                    <input name="filepdf" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon14" value="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" @can('warga')disabled @endcan />
+                                                    <input name="filepdf" type="text" class="form-control" id="filepdf" value="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" @can('warga')disabled @endcan />
                                                 </div>
                                                 <div class="mb-3 input-group">
                                                     <a href="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" target="blank">
-                                                        <span class="input-group-text" id="basic-addon14"><i class='bx bx-md bxs-file-doc'></i></span>
+                                                        <span class="input-group-text" id="filedocx"><i class='bx bx-md bxs-file-doc'></i></span>
                                                     </a>
-                                                    <input name="filedocx" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon14" value="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" @can('warga')disabled @endcan />
+                                                    <input name="filedocx" type="text" class="form-control" id="filedocx" value="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" @can('warga')disabled @endcan />
                                                 </div>
                                                 <div class="mb-3 input-group">
                                                     <a href="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" target="blank">
-                                                        <span class="input-group-text" id="basic-addon14"><i class='bx bx-md bxs-file'></i></span>
+                                                        <span class="input-group-text" id="filexlsx"><i class='bx bx-md bxs-file'></i></span>
                                                     </a>
-                                                    <input name="filexlsx" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon14" value="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" @can('warga')disabled @endcan />
+                                                    <input name="filexlsx" type="text" class="form-control" id="filexlsx" value="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" @can('warga')disabled @endcan />
                                                 </div>
                                             </div>
                                         </div>

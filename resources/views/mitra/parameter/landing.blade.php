@@ -13,7 +13,7 @@
                                     <div class="card border shadow-none">
                                         <div class="card-body text-center">
                                             @if (request('dimensi') == 1)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.jpg') }}" height="450" alt="Help center articles" />
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.JPG') }}" height="450" alt="Help center articles" />
                                                 <h5>Total Parameter : {{ $total = $dimensi->param->count() }}</h5>
                                                 <p>
                                                 </p>
@@ -22,7 +22,7 @@
                                                 <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
                                                 <p>Whether you're new or you're a power user</p>
                                             @elseif (request('dimensi') == 3)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen3.jpg') }}" height="450" alt="Help center articles" />
+                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen3.JPG') }}" height="450" alt="Help center articles" />
                                                 <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
                                                 <p>Whether you're new or you're a power user</p>
                                             @elseif (request('dimensi') == 4)

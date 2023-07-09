@@ -32,9 +32,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout.post');
 //all
 Route::get('/', [DashboardController::class, 'redirect'])->middleware('auth')->name('dashboard.redirect');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');
-Route::get('/dashboard/progres', [DashboardController::class, 'progress'])->middleware('admin')->name('dashboard.progres');
-Route::get('/dashboard/rincian', [DashboardController::class, 'rincian'])->middleware('admin')->name('dashboard.rincian');
-Route::get('/dashboard/show/{id}', [DashboardController::class, 'show'])->middleware('admin')->name('dashboard.show');
+
 
 Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 
@@ -49,3 +47,6 @@ Route::resource('/qa', QaController::class)->middleware('warga');
 Route::resource('/setpengguna', SetPenggunaController::class)->middleware('admin');
 Route::resource('/setparam', SetParamController::class)->middleware('admin');
 Route::get('/setting/sima_klpbu', [SettingController::class, 'sima_klpbu'])->middleware('admin')->name('set_simaklpbu');
+Route::get('/dashboard/progres', [DashboardController::class, 'progress'])->middleware('admin')->name('dashboard.progres');
+Route::get('/dashboard/rincian', [DashboardController::class, 'rincian'])->middleware('admin')->name('dashboard.rincian');
+Route::get('/dashboard/show/{id}', [DashboardController::class, 'show'])->middleware('admin')->name('dashboard.show');
