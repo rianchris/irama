@@ -49,7 +49,6 @@
                                         $url = 'https://dan.bpkp.go.id/irama/qa' . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
                                     @endphp
                                 @endcan
-                                {{-- {{ dd($url) }} --}}
                                 <a href="{{ $url }}" type="button" class=" text-dark btn border-2 px-3 py-1 me-1
                                 @php if(Request::fullUrlIs($url) ){
                                     echo 'text-white btn-primary';

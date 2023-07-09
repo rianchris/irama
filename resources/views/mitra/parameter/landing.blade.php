@@ -13,31 +13,68 @@
                                     <div class="card border shadow-none">
                                         <div class="card-body text-center">
                                             @if (request('dimensi') == 1)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.JPG') }}" height="450" alt="Help center articles" />
-                                                <h5>Total Parameter : {{ $total = $dimensi->param->count() }}</h5>
-                                                <p>
-                                                </p>
+                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.JPG') }}" />
+                                                <figure class="text-center mt-2">
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">Mengukur seberapa komprehensif program peningkatan skill manajemen risiko, kekuatan budaya manajemen risiko, serta relavansi RMA dengan praktik manajemen risiko secara keseluruhan</p>
+                                                    </blockquote>
+                                                    <figcaption class="blockquote-footer">
+                                                        <h6> Total Parameter : <cite>{{ $total = $dimensi->param->count() }}</cite></h6>
+                                                    </figcaption>
+                                                </figure>
                                             @elseif (request('dimensi') == 2)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen2.jpg') }}" height="450" alt="Help center articles" />
-                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
-                                                <p>Whether you're new or you're a power user</p>
+                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen2.jpg') }}" />
+                                                <figure class="text-center mt-2">
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">
+                                                            Mengukur kelengkapan organ, fungsi serta tugas dan tanggung jawab beserta kapasitas dari pengelola risiko sesuai dengan karakter perusahaan, serta tata kelola penerapan manajemen risiko
+                                                        </p>
+                                                    </blockquote>
+                                                    <figcaption class="blockquote-footer">
+                                                        <h6>Total Parameter : <cite>{{ $dimensi->param->count() }}</cite> </h6>
+                                                    </figcaption>
+                                                </figure>
                                             @elseif (request('dimensi') == 3)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen3.JPG') }}" height="450" alt="Help center articles" />
-                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
-                                                <p>Whether you're new or you're a power user</p>
+                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen3.JPG') }}" />
+                                                <figure class="text-center mt-2">
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">
+                                                            Mengukur efektifitas praktik manajemen risiko, kerangka kerja ERM dan kepatuhan serta relevansi ERM dengan perencanaan strategis
+                                                        </p>
+                                                    </blockquote>
+                                                    <figcaption class="blockquote-footer">
+                                                        <h6>Total Parameter : <cite>{{ $dimensi->param->count() }}</cite> </h6>
+                                                    </figcaption>
+                                                </figure>
                                             @elseif (request('dimensi') == 4)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen4.jpeg') }}" height="450" alt="Help center articles" />
-                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
-                                                <p>Whether you're new or you're a power user</p>
+                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen4.jpeg') }}" />
+                                                <figure class="text-center mt-2">
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">
+                                                            Mengukur tingkat efektifitas dan formalisasi prosedur penerapan dan kontrol manajemen risiko
+                                                        </p>
+                                                    </blockquote>
+                                                    <figcaption class="blockquote-footer">
+                                                        <h6>Total Parameter : <cite>{{ $dimensi->param->count() }}</cite> </h6>
+                                                    </figcaption>
+                                                </figure>
                                             @elseif (request('dimensi') == 5)
-                                                <img style="filter: grayscale(100)" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen5.jpg') }}" height="450" alt="Help center articles" />
-                                                <h5>Total Parameter : {{ $dimensi->param->count() }}</h5>
-                                                <p>Whether you're new or you're a power user</p>
+                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen5.jpg') }}" />
+                                                <figure class="text-center mt-2">
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">
+                                                            Mengukur kesiapan dan ketersediaan data, teknologi, dan model dalam penerapan manajemen risiko
+                                                        </p>
+                                                    </blockquote>
+                                                    <figcaption class="blockquote-footer">
+                                                        <h6>Total Parameter : <cite>{{ $dimensi->param->count() }}</cite> </h6>
+                                                    </figcaption>
+                                                </figure>
                                             @endif
                                             @if (auth()->user()->myprofile->role == 'mitra')
-                                                <a class="btn btn-label-primary" href="{{ route('parameter.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
+                                                <a class="mt-2 btn btn-label-primary" href="{{ route('parameter.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
                                             @elseif (auth()->user()->myprofile->role == 'warga')
-                                                <a class="btn btn-label-primary" href="{{ route('qa.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
+                                                <a class="mt-2 btn btn-label-primary" href="{{ route('qa.index') . '?dimensi=' . $dimensi->id . '&param=' . $dimensi->param->first()->id }}">Mulai</a>
                                             @endif
                                         </div>
                                     </div>
