@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
     public function redirect()
     {
-        redirect(route('dashboard.index'));
+        return redirect(route('dashboard.index'));
     }
 
     public function progress()
