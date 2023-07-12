@@ -42,7 +42,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary d-grid w-100">Sign in</button>
                     </form>
-                    <div class="table-responsive">
+                    {{-- <div class="table-responsive">
                         <small>
                             <table class="table table-responsive table-bordered">
                                 <thead>
@@ -81,7 +81,7 @@
                                 </tbody>
                             </table>
                         </small>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!-- /Login -->
