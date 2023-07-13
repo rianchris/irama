@@ -59,10 +59,11 @@ class DashboardController extends Controller
         if (!empty($buparam)) {
             foreach ($buparam as $buparams) {
                 $param = Param::where('id', $buparams->param_id)->first();
+                $dimensi = Dimensi::where('id', $param->dimensi_id)->first();
                 $html .= "
                 <tr>
                 <td>$buparams->param_id</td>
-                <td>$param->dimensi_id</td>
+                <td>$dimensi->deskripsi</td>
                 <td>$buparams->skor_mitra</td>
                 <td>$buparams->skor_warga</td>
                 </tr>
