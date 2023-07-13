@@ -25,7 +25,7 @@
                                         <td>{{ $bu->myprofileMitra->user->username }}</td>
                                         <td>{{ $bu->myprofileWarga->user->username }}</td>
                                         <td>
-                                            <a class="btn text-white btn-sm btn-info rincianskor" data-bs-toggle="modal" data-bs-target="#rincianbu" data-id-bu="{{ $bu->id }}">
+                                            <a class="btn text-white btn-sm btn-info rincianskor" data-bs-toggle="modal" data-bs-target="#rincianbu" data-id-bu="{{ $bu->id }}" data-nama-bu="{{ $bu->sima_klpbu->nama_klpbu }}">
                                                 Rincian
                                             </a>
                                         </td>
@@ -39,12 +39,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="rincianbu" tabindex="-1" aria-hidden="true">
+    <div class="modal modal-xl fade" id="rincianbu" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title"></h4>
-                    <h5 class="modal-title">Rincian Skor Parameter</h5>
+                    <h6 class="modal-title"> <span class="nama-bu fs-5"></span></h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -53,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Deskripsi</th>
                                     <th>Dimensi</th>
                                     <th>Skor Mitra</th>
                                     <th>Skor Warga</th>
@@ -92,6 +92,7 @@
                 //modal rincian
                 $('#rincian').on('click', '.rincianskor', function() {
                     var id_bu = $(this).attr('data-id-bu');
+                    var nama_bu = $(this).attr('data-nama-bu');
                     if (id_bu) {
                         var url = "{{ route('dashboard.show', [':id']) }}";
                         url = url.replace(':id', id_bu);
@@ -104,7 +105,9 @@
                                 $('#rincianbu tbody').html(response.html);
                             }
                         })
-                        $('#rincianTabel').DataTable();
+
+                        $('.nama-bu').html(nama_bu);
+                        // $('#rincianTabel').DataTable();
                     }
                 })
 

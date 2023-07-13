@@ -63,6 +63,7 @@ class DashboardController extends Controller
                 $html .= "
                 <tr>
                 <td>$buparams->param_id</td>
+                <td>$param->deskripsi</td>
                 <td>$dimensi->deskripsi</td>
                 <td>$buparams->skor_mitra</td>
                 <td>$buparams->skor_warga</td>
