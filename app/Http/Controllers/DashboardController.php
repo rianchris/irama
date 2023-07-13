@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bu;
+use App\Models\Param;
 use App\Models\Buparam;
 use App\Models\Dimensi;
 use App\Models\Klaster;
@@ -57,9 +58,11 @@ class DashboardController extends Controller
         $html = "";
         if (!empty($buparam)) {
             foreach ($buparam as $buparams) {
+                $param = Param::where('id', $buparams->param_id)->first();
                 $html .= "
                 <tr>
                 <td>$buparams->param_id</td>
+                <td>$param->dimensi_id</td>
                 <td>$buparams->skor_mitra</td>
                 <td>$buparams->skor_warga</td>
                 </tr>

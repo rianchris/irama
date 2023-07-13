@@ -39,5 +39,10 @@ class MyprofileSeeder extends Seeder
             'name' => 'Sani',
             'role' => 'warga',
         ]);
+        Myprofile::create([
+            'user_id' => '6',
+            'name' => 'Superadmin',
+            'role' => 'superadmin',
+        ]);
     }
 }

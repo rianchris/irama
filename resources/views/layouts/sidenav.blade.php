@@ -23,7 +23,7 @@
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
-            @can('admin')
+            @canany(['superadmin', 'admin'])
                 <ul class="menu-sub">
                     <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
                         <a href="{{ route('dashboard.progres') }}" class="menu-link">
@@ -124,7 +124,7 @@
     @endcan
 
     <!-- Administrator -->
-    @can('admin')
+    @canany(['superadmin', 'admin'])
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
         <!-- Forms -->
         <li class="menu-item @if (Request::is('set*')) active open @endif">

@@ -10,4 +10,9 @@ class Buparam extends Model
     public $table = 'bu_params';
     public $guarded = ['id'];
     use HasFactory;
+
+    public function param()
+    {
+        return $this->belongsTo(Param::class, 'param_id', 'id');
+    }
 }

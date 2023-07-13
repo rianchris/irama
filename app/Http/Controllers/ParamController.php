@@ -70,9 +70,15 @@ class ParamController extends Controller
     public function store(Request $request)
     {
 
-        $buparamid = $request->input('bu_param_id');
+        if (null !== $request->input('skor')) {
+            $buparamid = $request->input('bu_param_id');
+        } else {
+            return redirect()->back()->with('error', 'Skor wajib diisi!');
+        }
         // dd($buparamid);
+        // dd($request);
         if ($buparamid == true) {
+
             $data = [
                 'tahun' => date("Y"),
                 'bu_id' => $request->input('bu_id'),
@@ -82,6 +88,7 @@ class ParamController extends Controller
                 'filexlsx' => $request->input('filexlsx'),
                 'filedocx' => $request->input('filedocx'),
             ];
+
             Buparam::where('id', $buparamid)->where('tahun', date("Y"))->update($data);
         } elseif ($buparamid == null) {
             $buparam = new Buparam();

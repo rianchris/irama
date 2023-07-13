@@ -41,9 +41,13 @@
                                     <th>#</th>
                                     <th>Kode BU</th>
                                     <th>Nama BU</th>
-                                    <th>PIC</th>
+                                    <th>Klaster</th>
+                                    <th>PIC (Mitra)</th>
+                                    <th>Kontak PIC</th>
                                     <th>Warga QA</th>
-                                    <th>Actions</th>
+                                    @can('superadmin')
+                                        <th>Actions</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
@@ -60,10 +64,15 @@
                                                 {{ $bu->sima_klpbu->nama_klpbu }}
                                             @endif
                                         </td>
-                                        {{-- {{ dd($bu->myprofile->name) }} --}}
+                                        <td>{{ $bu->klaster->nama_klaster }}</td>
                                         <td>
                                             @if ($bu->myprofileMitra)
                                                 {{ $bu->myprofileMitra->user->username }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($bu->myprofileMitra)
+                                                {{ $bu->myprofileMitra->phone }}
                                             @endif
                                         </td>
                                         <td>
@@ -71,20 +80,22 @@
                                                 {{ $bu->myprofileWarga->user->username }}
                                             @endif
                                         </td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <form action="{{ route('setpengguna.destroy', $bu->id) }}" method="post">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>
-                                                    </form>
+                                        @can('superadmin')
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <form action="{{ route('setpengguna.destroy', $bu->id) }}" method="post">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')"><i class="bx bx-trash me-1"></i> Delete</button>
+                                                        </form>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                        @endcan
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -51,9 +51,10 @@
                         <table class="w-100 table table-bordered" id="rincianTabel">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Skor Warga</th>
+                                    <th>ID</th>
+                                    <th>FK</th>
                                     <th>Skor Mitra</th>
+                                    <th>Skor Warga</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,7 +64,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

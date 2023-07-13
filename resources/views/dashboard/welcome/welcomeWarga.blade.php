@@ -3,12 +3,23 @@
           <div class="col-sm-7">
               <div class="card-body">
                   <h5 class="card-title text-primary">Selamat Datang {{ auth()->user()->myprofile->name }} 🎉</h5>
-                  <p class="mb-4">
-                      You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                      your profile.
-                  </p>
+                  @if (isset(auth()->user()->myprofile->buWarga->param))
+                      @if (auth()->user()->myprofile->buWarga->param->count() == 0)
+                          <p class="mb-4">
+                              Silahkan mengisi kertas kerja pada menu "Self Assessment" atau menu dimensi dibawah ini.
+                          </p>
+                      @elseif(auth()->user()->myprofile->buWarga->param->count() == 106)
+                          <p class="mb-4">
+                              Selamat anda telah menginput seluruh skor parameter!
+                          </p>
+                      @else
+                          <p class="mb-4">
+                              Mitra telah menyelesaikan <span class="fw-bold">{{ auth()->user()->myprofile->buWarga->param->count() }} </span> isian paramater. Periksa dan lengkapi isian parameter pada menu "QA"
+                          </p>
+                      @endif
+                  @endif
 
-                  <a href="javascript:;" class="btn btn-sm btn-label-primary">View Badges</a>
+                  <a href="{{ route('qa.index') . '?dimensi=1' }}" class="btn btn-sm btn-label-primary">Mulai QA</a>
               </div>
           </div>
           <div class="col-sm-5 text-center text-sm-left">

@@ -11,6 +11,7 @@ class UserSeeder extends Seeder
     public function run()
     {
 
+
         User::create([
             'username' => 'adminirama',
         ]);
@@ -25,6 +26,9 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'username' => 'sani123',
+        ]);
+        User::create([
+            'username' => 'superadmin',
         ]);
 
         // User::factory(10)->create(); // untuk memasukkan data dummy kedalam tabel user

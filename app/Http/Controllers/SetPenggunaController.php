@@ -89,8 +89,16 @@ class SetPenggunaController extends Controller
 
     public function destroy($request)
     {
-        Myprofile::destroy($request);
-        User::destroy($request);
+        $bu = Bu::where('id', $request)->first();
+        Myprofile::where('id', $bu->myprofile_mitra_id)->delete();
+        Myprofile::where('id', $bu->myprofile_warga_id)->delete();
+
+        User::where('id', $bu->myprofile_mitra_id)->delete();
+        User::where('id', $bu->myprofile_warga_id)->delete();
+
+        Bu::where('id', $request)->delete();
+
+        // User::destroy($request);
         return redirect(route('setpengguna.index'))->with('deleted', 'User has been deleted!');
     }
 }

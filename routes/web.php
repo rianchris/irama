@@ -33,7 +33,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout.post');
 Route::get('/', [DashboardController::class, 'redirect'])->middleware('auth')->name('dashboard.redirect');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');
 
-
 Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 
 //mitra
@@ -43,10 +42,12 @@ Route::resource('/parameter', ParamController::class)->middleware('mitra');
 ///warga
 Route::resource('/qa', QaController::class)->middleware('warga');
 
-//admin
-Route::resource('/setpengguna', SetPenggunaController::class)->middleware('admin');
-Route::resource('/setparam', SetParamController::class)->middleware('admin');
-Route::get('/setting/sima_klpbu', [SettingController::class, 'sima_klpbu'])->middleware('admin')->name('set_simaklpbu');
-Route::get('/dashboard/progres', [DashboardController::class, 'progress'])->middleware('admin')->name('dashboard.progres');
-Route::get('/dashboard/rincian', [DashboardController::class, 'rincian'])->middleware('admin')->name('dashboard.rincian');
-Route::get('/dashboard/show/{id}', [DashboardController::class, 'show'])->middleware('admin')->name('dashboard.show');
+//admin dan superadmin
+Route::resource('/setpengguna', SetPenggunaController::class)->middleware(['superadmin', 'admin']);
+Route::resource('/setparam', SetParamController::class)->middleware(['superadmin', 'admin']);
+
+
+Route::get('/setting/sima_klpbu', [SettingController::class, 'sima_klpbu'])->middleware(['superadmin', 'admin'])->name('set_simaklpbu');
+Route::get('/dashboard/progres', [DashboardController::class, 'progress'])->middleware(['superadmin', 'admin'])->name('dashboard.progres');
+Route::get('/dashboard/rincian', [DashboardController::class, 'rincian'])->middleware(['superadmin', 'admin'])->name('dashboard.rincian');
+Route::get('/dashboard/show/{id}', [DashboardController::class, 'show'])->middleware(['superadmin', 'admin'])->name('dashboard.show');

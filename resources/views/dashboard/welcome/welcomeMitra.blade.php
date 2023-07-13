@@ -7,13 +7,13 @@
                       <p class="mb-4">
                           Silahkan mengisi kertas kerja pada menu "Self Assessment" atau menu dimensi dibawah ini.
                       </p>
-                  @elseif(auth()->user()->myprofile->buMitra->param->count() == 100)
+                  @elseif(auth()->user()->myprofile->buMitra->param->count() == 106)
                       <p class="mb-4">
                           Selamat anda telah menginput seluruh skor parameter!
                       </p>
                   @else
                       <p class="mb-4">
-                          Anda telah menyelesaikan <span class="fw-bold">{{ auth()->user()->myprofile->buMitra->param->count() }} dari 100</span> isian paramater. Periksa dan lengkapi isian parameter pada menu "Self Assessment" atau menu dibawah ini.
+                          Anda telah menyelesaikan <span class="fw-bold">{{ auth()->user()->myprofile->buMitra->param->count() }} </span> isian paramater. Periksa dan lengkapi isian parameter pada menu "Self Assessment" atau menu dibawah ini.
                       </p>
                   @endif
                   <a href="{{ route('parameter.index', 'dimensi=1') }}" class="m-1 btn btn-sm btn-label-primary">{{ $dimensi->find(1)->deskripsi }}</a>
