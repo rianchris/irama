@@ -183,7 +183,7 @@
                         <hr class="m-0">
                         <div class="card-body">
                             <section class="warga">
-                                <h5 class="card-title text-center text-primary "><i class='bx bx-check-shield bx-sm me-2'></i>Quality Assurance</h5>
+                                <h5 class="card-title text-center text-primary                                                          "><i class='bx bx-check-shield bx-sm me-2'></i>Quality Assurance</h5>
                                 <hr class="mx-auto p-0 m-0" width="10%">
                                 <form action="{{ route('qa.update', isset($buparams->id) ? $buparams->id : '') }}" method="post">
                                     @csrf

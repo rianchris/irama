@@ -1,11 +1,11 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme bg-primary">
     <div class="app-brand demo ps-3">
         <a href="{{ route('dashboard.index') }}" class="app-brand-link">
-            <span class="app-brand-logo demo fw-bolder">
+            <span class="app-brand-logo demo fw-bolder text-white">
                 FORSA
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <img src="{{ asset('assets/img/branding/logo-irama.png') }}" alt="" width="60px" class="img-fluid">
+                <img src="{{ asset('assets/img/branding/logo-irama-white.png') }}" alt="" width="60px" class="img-fluid">
             </span>
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
