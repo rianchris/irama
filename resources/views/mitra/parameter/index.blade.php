@@ -45,13 +45,14 @@
                         <div class="demo-vertical-spacing ">
                             @foreach ($param as $p)
                                 @can('mitra')
+                                    {{-- https://dan.bpkp.go.id/irama/qa?dimensi=1&param=1 --}}
                                     @php
                                         $url = route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
                                     @endphp
                                 @endcan
                                 @can('warga')
                                     @php
-                                        $url = route('qa.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
+                                        $url = 'https://dan.bpkp.go.id/irama/qa?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
                                     @endphp
                                 @endcan
                                 <a href="{{ $url }}" type="button" class=" text-dark btn border-secondary px-3 py-1 me-1
