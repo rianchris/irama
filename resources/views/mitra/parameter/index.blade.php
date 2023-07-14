@@ -197,7 +197,7 @@
                                         <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buWarga->id }}">
                                     @endcan
                                     <input type="hidden" name="param_id" value="{{ request('param') }}">
-                                    <div class="row mt-5 px-md-5">
+                                    <div class="row mt-2 px-md-5">
                                         <div class="col-lg-6 mt-3">
                                             <div class="row">
                                                 <label class="col-sm-3 col-form-label" for="hasilReviu">Hasil Reviu</label>
@@ -206,20 +206,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mt-3">
+                                        <div class="col-lg-6 mt-3 px-4">
                                             <div class="form-check custom-option custom-option-basic border-0">
-                                                <div class="row">
-                                                    <div class="col-2 p-0 ms-2">
-                                                        <div class="form-check custom-option custom-option-icon">
-                                                            <label class="form-check-label custom-option-content" for="skorwarga">
-                                                                <span class="custom-option-body">
-                                                                    <span class="custom-option-title">0</span>
-                                                                </span>
-                                                                <input name="skor_warga" class="form-check-input" type="radio" value="0" id="skorwarga" @if (isset($pivot->skor_warga)) @if ($pivot->skor_warga == 0) checked @endif @endif />
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 p-0 ms-2">
+                                                <div class="row d-flex justify-content-between">
+                                                    <div class="col-2 p-0">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga1">
                                                                 <span class="custom-option-body">
@@ -229,7 +219,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0 ms-2">
+                                                    <div class="col-2 p-0">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga2">
                                                                 <span class="custom-option-body">
@@ -239,7 +229,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0 ms-2">
+                                                    <div class="col-2 p-0">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga3">
                                                                 <span class="custom-option-body">
@@ -249,7 +239,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0 ms-2">
+                                                    <div class="col-2 p-0">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga4">
                                                                 <span class="custom-option-body">
@@ -259,7 +249,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0 ms-2">
+                                                    <div class="col-2 p-0">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga5">
                                                                 <span class="custom-option-body">
