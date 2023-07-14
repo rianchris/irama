@@ -42,14 +42,14 @@
         @can('mitra')
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
             <!-- Cards -->
-            <li class="menu-item @if (Request::is('profilebu')) active @endif">
+            <li class="menu-item @if (Request::is('profilebu')) open @endif">
                 <a href="{{ route('profilebu.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bxs-server"></i>
                     <div data-i18n="Profile">Profil</div>
                 </a>
             </li>
             <!-- Self Assessment -->
-            <li class="menu-item @if (Request::is('parameter*')) active open @endif">
+            <li class="menu-item @if (Request::is('parameter*')) open @endif">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
                     <div data-i18n="Self Assessment">Self Assessment</div>
@@ -87,7 +87,7 @@
         <!-- Warga -->
         @can('warga')
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Warga</span></li>
-            <li class="menu-item @if (Request::is('qa*')) active open @endif">
+            <li class="menu-item @if (Request::is('qa*')) open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class='menu-icon tf-icons bx bx-check-shield'></i>
                     <div data-i18n="Quality Assurance">Quality Assurance</div>
@@ -127,7 +127,7 @@
     @canany(['superadmin', 'admin'])
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
         <!-- Forms -->
-        <li class="menu-item @if (Request::is('set*')) active open @endif">
+        <li class="menu-item @if (Request::is('set*')) open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="Setting">Setting</div>
