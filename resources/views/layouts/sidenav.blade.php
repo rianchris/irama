@@ -18,7 +18,7 @@
     <ul class="menu-inner py-1">
 
         <!-- Dashboards-->
-        <li class="menu-item  @if (Request::is('dashboard*')) active open @endif">
+        <li class="menu-item  @if (Request::is('dashboard*')) open @endif">
             <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') menu-toggle @endcan">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
@@ -156,7 +156,7 @@
     <!-- Misc -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
 
-    <li class="menu-item @if (Request::is('myprofile')) active @endif">
+    <li class="menu-item @if (Request::is('myprofile'))  @endif">
         <a href="{{ route('myprofile.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-user"></i>
             <div data-i18n="My Profile">My Profile</div>
