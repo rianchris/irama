@@ -14,6 +14,28 @@
                 @endcan
             </div>
             <div class="col-lg-4 col-md-4 order-1">
+                <div class="col-lg-8 col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            @can('mitra')
+                                <div class="card-title text-warning fs-4 fw-semibold">
+                                    Skor Sementara
+                                </div>
+                                <p class="text-white fs-2 fw-bold bg-primary rounded-1 d-inline  py-2 px-3">
+                                    {{ round($skorAkhirMitra, 2) }}
+                                </p>
+                            @endcan
+                            @can('warga')
+                                <div class="card-title text-warning fs-4 fw-semibold">
+                                    Skor Sementara
+                                </div>
+                                <p class="text-white fs-2 fw-bold bg-primary rounded-1 d-inline py-2 px-3">
+                                    {{ round($skorAkhirWarga, 2) }}
+                                </p>
+                            @endcan
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

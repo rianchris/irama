@@ -35,8 +35,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 
+Route::resource('/profilebu', ProfilbuController::class);
+
 //mitra
-Route::resource('/profilebu', ProfilbuController::class)->middleware('mitra');
 Route::resource('/parameter', ParamController::class)->middleware('mitra');
 
 ///warga

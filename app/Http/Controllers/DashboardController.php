@@ -7,6 +7,7 @@ use App\Models\Param;
 use App\Models\Buparam;
 use App\Models\Dimensi;
 use App\Models\Klaster;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -15,11 +16,28 @@ class DashboardController extends Controller
         $klaster = Klaster::all();
         $bu = Bu::all();
         $dimensi = Dimensi::all();
+
+
+        $skorAkhirMitra = '';
+        $skorAkhirWarga = '';
+        if (auth()->user()->myprofile->role == 'mitra') {
+            $buMitra = auth()->user()->myprofile->buMitra;
+            $skorAkhirMitra = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buMitra->id)->avg('skor_mitra');
+        } elseif (auth()->user()->myprofile->role == 'warga') {
+            $buWarga = auth()->user()->myprofile->buWarga;
+            $skorAkhirWarga = DB::table('bu_params')->where('skor_warga', '<>', 0)->where('bu_id', $buWarga->id)->avg('skor_warga');
+        } else {
+        }
+
+        // dd($skor_akhir);
+
         // dd($klaster->first()->bu->first()->sima_klpbu);
         $data = [
             'klaster' => $klaster,
             'bu' => $bu,
-            'dimensi' => $dimensi
+            'dimensi' => $dimensi,
+            'skorAkhirMitra' => $skorAkhirMitra,
+            'skorAkhirWarga' => $skorAkhirWarga
         ];
         return view('dashboard.index', $data);
     }

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y ">
-        <div class="card overflow-hidden ">
+        <div class="card overflow-hidden  py-3">
             <!-- Popular Articles -->
             <div class="help-center-popular-articles py-4">
                 <div class="container-xl">
@@ -11,9 +11,9 @@
                             <div class="row mb-2 d-flex justify-content-center">
                                 <div class="col-md-8 mb-md-0 mb-2 ">
                                     <div class="card border shadow-none">
-                                        <div class="card-body text-center">
+                                        <div class="card-body text-center ">
                                             @if (request('dimensi') == 1)
-                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3 rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.JPG') }}" />
+                                                <img style="filter: grayscale(100); max-height:300px;" class="mb-3  rounded-1 img-fluid" src="{{ asset('assets/img/landing_dimensi/dimen1.JPG') }}" />
                                                 <figure class="text-center mt-2">
                                                     <blockquote class="blockquote">
                                                         <p class="mb-0">Mengukur seberapa komprehensif program peningkatan skill manajemen risiko, kekuatan budaya manajemen risiko, serta relavansi RMA dengan praktik manajemen risiko secara keseluruhan</p>

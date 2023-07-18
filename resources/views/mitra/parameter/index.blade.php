@@ -56,8 +56,8 @@
                                     @endphp
                                 @endcan
                                 <a href="{{ $url }}" type="button" class=" text-dark btn border-secondary px-3 py-1 me-1
-                                @php if(Request::fullUrlIs($url) ){
-                                    echo 'text-white btn-primary';
+                                @php if(Request::fullUrl() == $url){
+                                    echo 'text-white btn-primary border-primary';
                                 }
                                 else {
                                     echo 'text-secondary btn-outline-secondary';
@@ -83,15 +83,18 @@
                                 <input type="hidden" name="param_id" value="{{ request('param') }}">
                                 <div class="row mt-5 px-md-5">
                                     <div class="col-md-6">
-                                        <figure class="text-center mt-2">
+                                        <figure class="text-center">
                                             <blockquote class="blockquote">
                                                 <h3 class="card-title text-primary mt-1">
+                                                    {{ $param->where('id', request('param'))->first()->id . '. ' }}
+
                                                     {{ $param->where('id', request('param'))->first()->deskripsi }}
                                                 </h3>
                                             </blockquote>
                                             <figcaption class="blockquote-footer">
                                                 <h6 class="card-title mb-1 ">{{ $param->where('id', request('param'))->first()->tujuan }}</h6>
-                                            </figcaption><span class="mt-3 badge rounded-pill bg-info">Skor:
+                                            </figcaption>
+                                            <span class="mt-3 badge rounded-pill bg-info">Skor:
                                                 @if (isset($pivot))
                                                     {{ $pivot->skor_mitra }}
                                                 @endif
@@ -120,15 +123,15 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 align-self-center py-4">
-                                        {{-- <div class="form-check custom-option custom-option-basic mt-2">
-                                                        <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'a' }}">
-                                                            <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 0) checked @endif @endif @can('warga') disabled @endcan/>
-                                                            <span class="custom-option-body">
-                                                                <span class="custom-option-header">0) {{ $deskripsiskor->skor0 }} </span>
-                                                            </span>
-                                                        </label>
-                                                    </div> --}}
                                         <div class="form-check custom-option custom-option-basic">
+                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'a' }}">
+                                                <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 0) checked @endif @endif @can('warga') disabled @endcan/>
+                                                <span class="custom-option-body">
+                                                    <span class="custom-option-header">N/A</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check custom-option custom-option-basic mt-2">
                                             <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'b' }}">
                                                 <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 1) checked @endif @endif @can('warga') disabled @endcan/>
                                                 <span class="custom-option-body">
@@ -170,11 +173,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- @php
+                                    $dimensi = request('dimensi');
+                                    $prev = request('param') - 1;
+                                    $next = request('param') + 1;
+                                @endphp --}}
                                 @can('mitra')
                                     <div class="row mt-5">
+                                        {{-- <div class="col d-flex justify-content-center">
+                                            <a href="{{ route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $prev }}" class="btn btn-outline-secondary">Sebelumnya</a>
+                                        </div> --}}
                                         <div class="col d-flex justify-content-center">
                                             <button class="btn btn-primary" type="submit">Simpan</button>
                                         </div>
+                                        {{-- <div class="col d-flex justify-content-center">
+                                            <a href="{{ route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $next }}" class="btn btn-outline-secondary">Selanjutnya</a>
+                                        </div> --}}
                                     </div>
                                 @endcan
                             </form>

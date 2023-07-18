@@ -18,12 +18,20 @@
     <ul class="menu-inner py-1">
 
         <!-- Dashboards-->
-        <li class="menu-item  @if (Request::is('dashboard*')) open @endif">
-            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') menu-toggle @endcan">
+        <li class="menu-item  @if (Request::is('dashboard*')) @canany(['warga', 'mitra'])open @endcan @endif">
+            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') @endcan">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
-            @canany(['superadmin', 'admin'])
+
+        </li>
+
+        @canany(['superadmin', 'admin'])
+            <li class="menu-item  @if (Request::is('dashboard*')) open @endif">
+                <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') menu-toggle @endcan">
+                    <i class="menu-icon tf-icons bx bx-search-alt"></i>
+                    <div data-i18n="Monitoring">Monitoring</div>
+                </a>
                 <ul class="menu-sub">
                     <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
                         <a href="{{ route('dashboard.progres') }}" class="menu-link">
@@ -36,19 +44,58 @@
                         </a>
                     </li>
                 </ul>
-            @endcan
-        </li>
-        <!-- Mitra BPKP -->
-        @can('mitra')
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
-            <!-- Cards -->
-            <li class="menu-item @if (Request::is('profilebu')) open @endif">
-                <a href="{{ route('profilebu.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bxs-server"></i>
-                    <div data-i18n="Profile">Profil</div>
-                </a>
             </li>
-            <!-- Self Assessment -->
+        @endcan
+
+
+        <!-- Mitra BPKP -->
+        @canany(['mitra', 'warga'])
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
+            <!-- Data Assesment-->
+            <li class="menu-item @if (Request::is('profilebu')) open @endif">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bxs-server"></i>
+                    <div data-i18n="Data Assesment">Data Assesment</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item @if (Request::is('profilebu')) active open @endif">
+                        <a href="{{ route('profilebu.index') }}" class="menu-link">
+                            <div data-18n="Profil Badan Usaha">AD/ART Perusahaan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
+                        <a href="{{ route('profilebu.index') }}" class="menu-link">
+                            <div data-18n="Annual Report Perusahaan">Annual Report Perusahaan </div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
+                        <a href="{{ route('profilebu.index') }}" class="menu-link">
+                            <div data-18n="Risk Profile">Risk Profile</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
+                        <a href="{{ route('profilebu.index') }}" class="menu-link">
+                            <div data-18n="Pedoman Manajemen Risiko Perusahaan">Pedoman Manajemen Risiko Perusahaan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
+                        <a href="{{ route('profilebu.index') }}" class="menu-link">
+                            <div data-18n="Laporan Pelaksanaan MR">Laporan Pelaksanaan MR</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
+                        <a href="{{ route('profilebu.index') }}" class="menu-link">
+                            <div data-18n="Loss Event Database">Loss Event Database</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        @endcan
+
+
+        <!-- Self Assessment -->
+        @can('mitra')
             <li class="menu-item @if (Request::is('parameter*')) open @endif">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-add-to-queue"></i>

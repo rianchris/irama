@@ -10,8 +10,14 @@ class ProfilbuController extends Controller
 {
     public function index()
     {
-        $myprofileMitra_id = auth()->user()->id;
-        $bu = Bu::where('myprofile_mitra_id', $myprofileMitra_id)->first();
+        if (auth()->user()->myprofile->role == 'mitra') {
+            $myprofileMitra_id = auth()->user()->id;
+            $bu = Bu::where('myprofile_mitra_id', $myprofileMitra_id)->first();
+        } elseif (auth()->user()->myprofile->role == 'warga') {
+            $myprofileWarga_id = auth()->user()->id;
+            $bu = Bu::where('myprofile_Warga_id', $myprofileWarga_id)->first();
+        }
+
         $data = [
             'bu' => $bu,
         ];

@@ -6,17 +6,13 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <div class="col-md-12">
-                <div class="card mb-4">
-                    <ul class="nav nav-pills flex-column flex-md-row p-3">
-                        <li class="nav-item">
-                            <a class="m-1 btn btn-outline-primary" href="javascript:void(0);"><i class="bx bx-user me-1"></i> My Profile</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card mb-4">
-                    {{-- <h5 class="card-header">Profile Details</h5> --}}
+                <div class="card mb-4 ">
+                    <div class="card-header">
+                        <h5 class="card-title fw-semibold text-primary"> My Profile</h5>
+                        <hr class="m-0">
+                    </div>
                     @if (session()->has('success'))
-                        <div class="alert alert-primary alert-dismissible mx-4 mt-3" role="alert">
+                        <div class="alert alert-primary alert-dismissible mx-4" role="alert">
                             {{ session('success') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
