@@ -13,33 +13,53 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $auth = auth()->user()->myprofile->role;
         $klaster = Klaster::all();
         $bu = Bu::all();
         $dimensi = Dimensi::all();
-
-
         $skorAkhirMitra = '';
         $skorAkhirWarga = '';
-        if (auth()->user()->myprofile->role == 'mitra') {
+
+        // $data = [
+        if ($auth == 'mitra') {
             $buMitra = auth()->user()->myprofile->buMitra;
             $skorAkhirMitra = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buMitra->id)->avg('skor_mitra');
-        } elseif (auth()->user()->myprofile->role == 'warga') {
+
+            $skorAvgDimensi = [];
+            for ($dimensi_id = 1; $dimensi_id <= 5; $dimensi_id++) {
+                $skorAvg = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buMitra->id)->where('dimensi_id', $dimensi_id)->avg('skor_mitra');
+                $skorAvgDimensi[$dimensi_id] = $skorAvg;
+            }
+            $data = [
+                'klaster' => $klaster,
+                'bu' => $bu,
+                'dimensi' => $dimensi,
+                'skorAkhirMitra' => $skorAkhirMitra,
+                'skord1' => $skorAvgDimensi[1],
+                'skord2' => $skorAvgDimensi[2],
+                'skord3' => $skorAvgDimensi[3],
+                'skord4' => $skorAvgDimensi[4],
+                'skord5' => $skorAvgDimensi[5],
+            ];
+            return view('dashboard.mitra.index', $data);
+        } elseif ($auth == 'warga') {
             $buWarga = auth()->user()->myprofile->buWarga;
-            $skorAkhirWarga = DB::table('bu_params')->where('skor_warga', '<>', 0)->where('bu_id', $buWarga->id)->avg('skor_warga');
-        } else {
+            $skorAkhirWarga = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buWarga->id)->avg('skor_mitra');
+            $data = [
+                'klaster' => $klaster,
+                'bu' => $bu,
+                'dimensi' => $dimensi,
+                'skorAkhirWarga' => $skorAkhirWarga,
+            ];
+            return view('dashboard.warga.index', $data);
+        } elseif ($auth == 'admin') {
+            $data = [
+                'klaster' => $klaster,
+                'bu' => $bu,
+                'dimensi' => $dimensi,
+            ];
+            return view('dashboard.admin.index', $data);
         }
-
-        // dd($skor_akhir);
-
-        // dd($klaster->first()->bu->first()->sima_klpbu);
-        $data = [
-            'klaster' => $klaster,
-            'bu' => $bu,
-            'dimensi' => $dimensi,
-            'skorAkhirMitra' => $skorAkhirMitra,
-            'skorAkhirWarga' => $skorAkhirWarga
-        ];
-        return view('dashboard.index', $data);
     }
 
     public function redirect()

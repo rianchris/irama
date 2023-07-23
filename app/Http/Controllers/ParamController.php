@@ -75,15 +75,15 @@ class ParamController extends Controller
         } else {
             return redirect()->back()->with('error', 'Skor wajib diisi!');
         }
-        // dd($buparamid);
-        // dd($request);
-        if ($buparamid == true) {
 
+        if ($buparamid == true) {
             $data = [
                 'tahun' => date("Y"),
                 'bu_id' => $request->input('bu_id'),
+                'dimensi_id' => $request->input('dimensi_id'),
                 'param_id' => $request->input('param_id'),
                 'skor_mitra' => $request->input('skor'),
+                'catatan' => $request->input('catatan'),
                 'filepdf' => $request->input('filepdf'),
                 'filexlsx' => $request->input('filexlsx'),
                 'filedocx' => $request->input('filedocx'),
@@ -95,8 +95,10 @@ class ParamController extends Controller
             $buparam->tahun = date("Y");
             // $buparam->id = $request->input('bu_param_id');
             $buparam->bu_id = $request->input('bu_id');
+            $buparam->dimensi_id = $request->input('dimensi_id');
             $buparam->param_id = $request->input('param_id');
             $buparam->skor_mitra = $request->input('skor');
+            $buparam->catatan = $request->input('catatan');
             $buparam->filepdf = $request->input('filepdf');
             $buparam->filexlsx = $request->input('filexlsx');
             $buparam->filedocx = $request->input('filedocx');

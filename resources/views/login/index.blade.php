@@ -5,7 +5,17 @@
             <!-- /Left Text -->
             <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center m-0 p-0">
                 <div class="w-100 d-flex justify-content-center">
-                    <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3" alt="Login image" width="65%" style="filter: grayscale(100%)" />
+                    <div class="card shadow-lg">
+                        <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3 " style="height:90vh; width:62vw; object-fit:fill;" />
+                        <div class="px-0 card-img-overlay d-flex align-items-start justify-content-between" style="background-color: rgba(72, 66, 183, 0.46)">
+                            <a target="blank" href="https://bpkp.go.id" class="app-brand-link gap-2">
+                                <img src="{{ asset('assets/img/branding/logo_bpkp.png') }}" class="img-fluid bg-light rounded-end p-2" alt="" width="100px">
+                            </a>
+                            <a target="blank" href="https://dan.bpkp.go.id/portal/" class="app-brand-link gap-2">
+                                <img src="{{ asset('assets/img/branding/logoAN-hitam.png') }}" class="img-fluid bg-light rounded-start p-2" alt="" width="200px">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /Left Text -->
@@ -14,6 +24,16 @@
             <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 ">
                 <div class="w-px-350 mx-auto">
                     <!-- Logo -->
+                    <div class="app-brand mb-1 bg-light px-4 py-2 rounded-3 d-lg-none">
+                        <a target="blank" href="https://dan.bpkp.go.id/portal/" class="app-brand-link gap-2">
+                            <img src="{{ asset('assets/img/branding/logoAN-hitam.png') }}" class="img-fluid" alt="" width="200px">
+                        </a>
+                        <a target="blank" href="https://bpkp.go.id" class="app-brand-link gap-2 ms-3">
+                            <img src="{{ asset('assets/img/branding/logo_bpkp.png') }}" class="img-fluid" alt="" width="95px">
+                        </a>
+                    </div>
+                    <hr class="border-1 border-dark mb-5 d-lg-none">
+
                     <div class="app-brand mb-5">
                         <a href="{{ route('login') }}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">

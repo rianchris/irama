@@ -1,217 +1,222 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="row">
-            <div class="col">
-                <div class="card ">
-                    <div class="card-header">
-                        {{-- ambil data pivot parameter --}}
-                        @php
-                            $role = auth()->user()->myprofile->role;
-                            
-                            if ($role == 'mitra') {
-                                $tes = $pengguna->buMitra->param->where('id', request('param'))->isNotEmpty();
-                                if ($tes) {
-                                    $pivot = $pengguna->buMitra->param->where('id', request('param'))->first()->pivot;
-                                    $buparams = $buparam;
-                                }
-                            } elseif ($role == 'warga') {
-                                $tes = $pengguna->buWarga->param->where('id', request('param'))->isNotEmpty();
-                                if ($tes) {
-                                    $pivot = $pengguna->buWarga->param->where('id', request('param'))->first()->pivot;
-                                    $buparams = $buparam;
-                                }
+        <div class="card">
+            <div class="container-xl">
+                <span class="text-capitalize text-wrap lh-sm badge bg-primary fs-6  text-start d-flex justify-content-start align-items-center mt-3 ps-3">
+                    Self Assessment <i class='bx bx-chevrons-right fs-3'></i> Dimensi <i class='bx bx-chevrons-right fs-3'></i>
+                    <span class="fw-bold"> {{ $dimensi->deskripsi }}</span>
+                </span>
+
+
+                <div class="row">
+                    {{-- ambil data pivot parameter --}}
+                    @php
+                        $role = auth()->user()->myprofile->role;
+                        if ($role == 'mitra') {
+                            $tes = $pengguna->buMitra->param->where('id', request('param'))->isNotEmpty();
+                            if ($tes) {
+                                $pivot = $pengguna->buMitra->param->where('id', request('param'))->first()->pivot;
+                                $buparams = $buparam;
                             }
-                            $deskripsiskor = $param
-                                ->where('id', request('param'))
-                                ->first()
-                                ->deskripsiskor->first();
-                            // dd($tes);
-                        @endphp
-                        @if (session()->has('success'))
-                            <div class="alert alert-primary alert-dismissible " role="alert">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @elseif (session()->has('error'))
-                            <div class="alert alert-danger alert-dismissible " role="alert">
-                                {{ session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
-                        <h4 class="card-title text-dark">
-                            Dimensi : {{ $param->first()->dimensi->deskripsi }}
-                        </h4>
-                        <div class="demo-vertical-spacing ">
-                            @foreach ($param as $p)
-                                @can('mitra')
-                                    {{-- https://dan.bpkp.go.id/irama/qa?dimensi=1&param=1 --}}
-                                    @php
-                                        $url = route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
-                                    @endphp
-                                @endcan
-                                @can('warga')
-                                    @php
-                                        $url = 'https://dan.bpkp.go.id/irama/qa?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
-                                    @endphp
-                                @endcan
-                                <a href="{{ $url }}" type="button" class=" text-dark btn border-secondary px-3 py-1 me-1
-                                @php if(Request::fullUrl() == $url){
-                                    echo 'text-white btn-primary border-primary';
-                                }
-                                else {
-                                    echo 'text-secondary btn-outline-secondary';
-                                } @endphp">
+                        } elseif ($role == 'warga') {
+                            $tes = $pengguna->buWarga->param->where('id', request('param'))->isNotEmpty();
+                            if ($tes) {
+                                $pivot = $pengguna->buWarga->param->where('id', request('param'))->first()->pivot;
+                                $buparams = $buparam;
+                            }
+                        }
+                        $deskripsiskor = $param
+                            ->where('id', request('param'))
+                            ->first()
+                            ->deskripsiskor->first();
+                        // dd($tes);
+                    @endphp
+
+                    <div class="demo-vertical-spacing m-0">
+                        @foreach ($param as $p)
+                            @can('mitra')
+                                @php
+                                    $url = route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
+                                @endphp
+                                <a href="{{ $url }}" type="button" class="btn border-secondary text-secondary px-3 py-1 me-1
+                                   @if (Request::is('parameter') && Request::query('dimensi') == $p->dimensi_id && Request::query('param') == $p->id) bg-primary text-white border-primary px-4 py-2
+                                   @else text-secondary btn-outline-secondary @endif">
                                     {{ $p->id }}
                                 </a>
-                            @endforeach
-                        </div>
-                    </div>
-                    <hr class="m-0">
-                    <div class="card-body">
-                        <section class="mitra">
-                            @can('warga')
-                                <h5 class="card-title text-center text-primary "><i class='bx bx-user-pin bx-sm me-2'></i></i>Data Self Assessment </h5>
-                                <hr class="mx-auto p-0 m-0" width="10%">
                             @endcan
-                            <form action="{{ route('parameter.store') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="bu_param_id" value="@if (isset($buparams->id)) {{ $buparams->id }} @endif">
-                                @if ($role == 'mitra')
-                                    <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buMitra->id }}">
-                                @endif
-                                <input type="hidden" name="param_id" value="{{ request('param') }}">
-                                <div class="row mt-5 px-md-5">
-                                    <div class="col-md-6">
-                                        <figure class="text-center">
-                                            <blockquote class="blockquote">
-                                                <h3 class="card-title text-primary mt-1">
-                                                    {{ $param->where('id', request('param'))->first()->id . '. ' }}
+                            @can('warga')
+                                @php
+                                    $url = route('qa.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
+                                @endphp
+                                <a href="{{ $url }}" type="button" class="btn border-secondary text-secondary px-3 py-1 me-1
+                                   @if (Request::is('qa') && Request::query('dimensi') == $p->dimensi_id && Request::query('param') == $p->id) bg-primary text-white border-primary px-4 py-2
+                                   @else text-secondary btn-outline-secondary @endif">
+                                    {{ $p->id }}
+                                </a>
+                            @endcan
+                        @endforeach
+                        {{-- <hr class="my-1 pb-3"> --}}
+                    </div>
+                </div>
 
-                                                    {{ $param->where('id', request('param'))->first()->deskripsi }}
-                                                </h3>
-                                            </blockquote>
-                                            <figcaption class="blockquote-footer">
-                                                <h6 class="card-title mb-1 ">{{ $param->where('id', request('param'))->first()->tujuan }}</h6>
-                                            </figcaption>
-                                            <span class="mt-3 badge rounded-pill bg-info">Skor:
-                                                @if (isset($pivot))
-                                                    {{ $pivot->skor_mitra }}
-                                                @endif
-                                            </span>
-                                        </figure>
-                                        <div class="demo-inline-spacing d-flex justify-content-between align-items-center mb-3">
-                                            <h6 class="card-title ">Url File Pendukung :</h6>
-                                        </div>
-                                        <div class="mb-3 input-group">
-                                            <a href="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" target="blank">
-                                                <span class="input-group-text" id="filepdf"><i class='bx bx-md bxs-file-pdf size-lg'></i></span>
-                                            </a>
-                                            <input name="filepdf" type="text" class="form-control" id="filepdf" value="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" @can('warga')disabled @endcan />
-                                        </div>
-                                        <div class="mb-3 input-group">
-                                            <a href="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" target="blank">
-                                                <span class="input-group-text" id="filedocx"><i class='bx bx-md bxs-file-doc'></i></span>
-                                            </a>
-                                            <input name="filedocx" type="text" class="form-control" id="filedocx" value="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" @can('warga')disabled @endcan />
-                                        </div>
-                                        <div class="mb-3 input-group">
-                                            <a href="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" target="blank">
-                                                <span class="input-group-text" id="filexlsx"><i class='bx bx-md bxs-file'></i></span>
-                                            </a>
-                                            <input name="filexlsx" type="text" class="form-control" id="filexlsx" value="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" @can('warga')disabled @endcan />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 align-self-center py-4">
-                                        <div class="form-check custom-option custom-option-basic">
-                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'a' }}">
-                                                <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 0) checked @endif @endif @can('warga') disabled @endcan/>
-                                                <span class="custom-option-body">
-                                                    <span class="custom-option-header">N/A</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="form-check custom-option custom-option-basic mt-2">
-                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'b' }}">
-                                                <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 1) checked @endif @endif @can('warga') disabled @endcan/>
-                                                <span class="custom-option-body">
-                                                    <span class="custom-option-header">1) {{ $deskripsiskor->skor1 }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="form-check custom-option custom-option-basic mt-2">
-                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'c' }}">
-                                                <input name="skor" class="form-check-input" type="radio" value="2" id="{{ $deskripsiskor->id . 'c' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 2) checked @endif @endif @can('warga') disabled @endcan/>
-                                                <span class="custom-option-body">
-                                                    <span class="custom-option-header">2) {{ $deskripsiskor->skor2 }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="form-check custom-option custom-option-basic mt-2">
-                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'd' }}">
-                                                <input name="skor" class="form-check-input" type="radio" value="3" id="{{ $deskripsiskor->id . 'd' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 3) checked @endif @endif @can('warga') disabled @endcan/>
-                                                <span class="custom-option-body">
-                                                    <span class="custom-option-header">3) {{ $deskripsiskor->skor3 }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="form-check custom-option custom-option-basic mt-2">
-                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'e' }}">
-                                                <input name="skor" class="form-check-input" type="radio" value="4" id="{{ $deskripsiskor->id . 'e' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 4) checked @endif @endif @can('warga') disabled @endcan/>
-                                                <span class="custom-option-body">
-                                                    <span class="custom-option-header">4) {{ $deskripsiskor->skor4 }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                        <div class="form-check custom-option custom-option-basic mt-2">
-                                            <label class="form-check-label custom-option-content" for="{{ $deskripsiskor->id . 'f' }}">
-                                                <input name="skor" class="form-check-input" type="radio" value="5" id="{{ $deskripsiskor->id . 'f' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 5) checked @endif @endif @can('warga') disabled @endcan/>
-                                                <span class="custom-option-body">
-                                                    <span class="custom-option-header">5) {{ $deskripsiskor->skor5 }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
+                @if (session()->has('success'))
+                    <div class="mt-2 alert alert-success alert-dismissible" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif (session()->has('error'))
+                    <div class="mt-2 alert alert-danger alert-dismissible" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                {{-- Form Input Parameter --}}
+
+                <form action="{{ route('parameter.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="bu_param_id" value="@if (isset($buparams->id)) {{ $buparams->id }} @endif">
+                    @if ($role == 'mitra')
+                        <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buMitra->id }}">
+                    @endif
+                    <input type="hidden" name="dimensi_id" value="{{ request('dimensi') }}">
+                    <input type="hidden" name="param_id" value="{{ request('param') }}">
+                    <div class="row g-1 pt-2">
+                        <div class="col-lg-6 col-md-6 mx-auto">
+                            <div class="card-body">
+                                <figure class="text-center">
+                                    <blockquote class="blockquote">
+                                        <h4 class="card-title text-primary">
+                                            {{ $param->where('id', request('param'))->first()->id . '. ' }}
+
+                                            {{ $param->where('id', request('param'))->first()->deskripsi }}
+                                        </h4>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">
+                                        <h6 class="card-title mb-1 ">{{ $param->where('id', request('param'))->first()->tujuan }}</h6>
+                                    </figcaption>
+                                    <span class="mt-3 badge rounded-pill bg-warning">Skor:
+                                        @if (isset($pivot))
+                                            {{ $pivot->skor_mitra }}
+                                        @endif
+                                    </span>
+                                </figure>
+                                <div class="demo-inline-spacing d-flex justify-content-between align-items-center mb-2">
+                                    <p class="fw-semibold">Url File Pendukung</p>
+                                </div>
+                                <div class="mb-3 input-group">
+                                    <a href="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" target="blank">
+                                        <span class="input-group-text" id="filepdf"><i class='bx bx-md bxs-file-pdf size-lg'></i></span>
+                                    </a>
+                                    <input name="filepdf" type="text" class="form-control" id="filepdf" value="@if (isset($pivot)) {{ $pivot->filepdf }} @endif" @can('warga')disabled @endcan />
+                                </div>
+                                <div class="mb-3 input-group">
+                                    <a href="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" target="blank">
+                                        <span class="input-group-text" id="filedocx"><i class='bx bx-md bxs-file-doc'></i></span>
+                                    </a>
+                                    <input name="filedocx" type="text" class="form-control" id="filedocx" value="@if (isset($pivot)) {{ $pivot->filedocx }} @endif" @can('warga')disabled @endcan />
+                                </div>
+                                <div class="mb-3 input-group">
+                                    <a href="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" target="blank">
+                                        <span class="input-group-text" id="filexlsx"><i class='bx bx-md bxs-file'></i></span>
+                                    </a>
+                                    <input name="filexlsx" type="text" class="form-control" id="filexlsx" value="@if (isset($pivot)) {{ $pivot->filexlsx }} @endif" @can('warga')disabled @endcan />
+                                </div>
+
+                                <div class="row">
+                                    <label class="col-12 col-form-label  text-capitalize fs-6" for="catatan">Catatan </label>
+                                    <div class="col-12">
+                                        <textarea id="catatan" class="form-control" name="catatan" rows="3" @can('warga')disabled @endcan>{{ isset($pivot->catatan) ? $pivot->catatan : '' }}</textarea>
                                     </div>
                                 </div>
-                                {{-- @php
-                                    $dimensi = request('dimensi');
-                                    $prev = request('param') - 1;
-                                    $next = request('param') + 1;
-                                @endphp --}}
-                                @can('mitra')
-                                    <div class="row mt-5">
-                                        {{-- <div class="col d-flex justify-content-center">
-                                            <a href="{{ route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $prev }}" class="btn btn-outline-secondary">Sebelumnya</a>
-                                        </div> --}}
-                                        <div class="col d-flex justify-content-center">
-                                            <button class="btn btn-primary" type="submit">Simpan</button>
-                                        </div>
-                                        {{-- <div class="col d-flex justify-content-center">
-                                            <a href="{{ route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $next }}" class="btn btn-outline-secondary">Selanjutnya</a>
-                                        </div> --}}
-                                    </div>
-                                @endcan
-                            </form>
-                        </section>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card-body">
+                                {{-- <div class="form-check custom-option custom-option-basic">
+                                    <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'a' }}">
+                                        <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 0) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <span class="custom-option-body">
+                                            <span class="custom-option-header">N/A</span>
+                                        </span>
+                                    </label>
+                                </div> --}}
+                                <div class="form-check custom-option custom-option-basic">
+                                    <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'b' }}">
+                                        <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 1) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <span class="custom-option-body">
+                                            <span class="custom-option-header">1) {{ $deskripsiskor->skor1 }}</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class=" form-check custom-option custom-option-basic mt-2">
+                                    <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'c' }}">
+                                        <input name="skor" class="form-check-input" type="radio" value="2" id="{{ $deskripsiskor->id . 'c' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 2) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <span class="custom-option-body">
+                                            <span class="custom-option-header">2) {{ $deskripsiskor->skor2 }}</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check custom-option custom-option-basic mt-2">
+                                    <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'd' }}">
+                                        <input name="skor" class="form-check-input" type="radio" value="3" id="{{ $deskripsiskor->id . 'd' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 3) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <span class="custom-option-body">
+                                            <span class="custom-option-header">3) {{ $deskripsiskor->skor3 }}</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check custom-option custom-option-basic mt-2">
+                                    <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'e' }}">
+                                        <input name="skor" class="form-check-input" type="radio" value="4" id="{{ $deskripsiskor->id . 'e' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 4) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <span class="custom-option-body">
+                                            <span class="custom-option-header">4) {{ $deskripsiskor->skor4 }}</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check custom-option custom-option-basic mt-2">
+                                    <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'f' }}">
+                                        <input name="skor" class="form-check-input" type="radio" value="5" id="{{ $deskripsiskor->id . 'f' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 5) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <span class="custom-option-body">
+                                            <span class="custom-option-header">5) {{ $deskripsiskor->skor5 }}</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    @can('warga')
+                    <div class="row">
+                        @can('mitra')
+                            <div class="row my-3">
+                                <div class="col d-flex justify-content-center">
+                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                </div>
+                            </div>
+                        @endcan
+                    </div>
+                </form>
+                {{-- End Form Input Parameter --}}
+
+                {{-- Quality Assurance --}}
+                @can('warga')
+                    <form action="{{ route('qa.update', isset($buparams->id) ? $buparams->id : '') }}" method="post">
+                        @csrf
+                        @method('put')
+                        <input type="hidden" name="bu_param_id" value="@if (isset($buparams->id)) {{ $buparams->id }} @endif">
+                        @can('mitra')
+                            <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buMitra->id }}">
+                        @endcan
+                        @can('warga')
+                            <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buWarga->id }}">
+                        @endcan
+                        <input type="hidden" name="param_id" value="{{ request('param') }}">
                         <hr class="m-0">
-                        <div class="card-body">
-                            <section class="warga">
-                                <h5 class="card-title text-center text-primary                                                          "><i class='bx bx-check-shield bx-sm me-2'></i>Quality Assurance</h5>
-                                <hr class="mx-auto p-0 m-0" width="10%">
-                                <form action="{{ route('qa.update', isset($buparams->id) ? $buparams->id : '') }}" method="post">
-                                    @csrf
-                                    @method('put')
-                                    <input type="hidden" name="bu_param_id" value="@if (isset($buparams->id)) {{ $buparams->id }} @endif">
-                                    @can('mitra')
-                                        <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buMitra->id }}">
-                                    @endcan
-                                    @can('warga')
-                                        <input type="hidden" name="bu_id" value="{{ auth()->user()->myprofile->buWarga->id }}">
-                                    @endcan
-                                    <input type="hidden" name="param_id" value="{{ request('param') }}">
-                                    <div class="row mt-2 px-md-5">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center text-primary"><i class='bx bx-check-shield bx-sm me-2'></i>Quality Assurance</h5>
+                                    <div class="row mt-2">
                                         <div class="col-lg-6 mt-3">
                                             <div class="row">
                                                 <label class="col-sm-3 col-form-label" for="hasilReviu">Hasil Reviu</label>
@@ -282,11 +287,12 @@
                                             <button class="btn btn-primary" type="submit">Simpan</button>
                                         </div>
                                     </div>
-                                </form>
-                            </section>
+                                </div>
+                            </div>
                         </div>
-                    @endcan
-                </div>
+                    </form>
+                @endcan
+                {{-- End Quality Asssurance  --}}
             </div>
         </div>
     </div>
@@ -307,6 +313,9 @@
             if (textarea) {
                 autosize(textarea);
             }
+
+            // Check selected custom option
+            window.Helpers.initCustomOptionCheck();
         </script>
     @endpush
 @endsection

@@ -1,31 +1,35 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme bg-primary">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <!-- Logo -->
     <div class="app-brand demo ps-3">
         <a href="{{ route('dashboard.index') }}" class="app-brand-link">
-            <span class="app-brand-logo demo fw-bolder text-white">
+            <span class="app-brand-logo demo fw-bolder text-primary">
                 FORSA
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <img src="{{ asset('assets/img/branding/logo-irama-white.png') }}" alt="" width="60px" class="img-fluid">
+                <img src="{{ asset('assets/img/branding/logo-irama.png') }}" alt="" width="60px" class="img-fluid">
             </span>
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
+    <!--End Logo -->
 
+    <!--Menu -->
     <div class="menu-inner-shadow"></div>
-
     <ul class="menu-inner py-1">
+        <!-- Dashboards -->
 
-        <!-- Dashboards-->
-        <li class="menu-item  @if (Request::is('dashboard*')) @canany(['warga', 'mitra'])open @endcan @endif">
+        <!-- Dashboards Mitra, Warga -->
+        <li class="menu-item  @if (Request::is('dashboard*')) @canany(['warga', 'mitra'])open active @endcan @endif">
             <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') @endcan">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
-
         </li>
+        <!-- End Dashboards Mitra, Warga -->
 
+        <!-- Dashboards SuperAdmin, Admin -->
         @canany(['superadmin', 'admin'])
             <li class="menu-item  @if (Request::is('dashboard*')) open @endif">
                 <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') menu-toggle @endcan">
@@ -46,174 +50,112 @@
                 </ul>
             </li>
         @endcan
+        <!-- End Dashboards SuperAdmin, Admin -->
 
 
-        <!-- Mitra BPKP -->
+        <!--Self & Data Assesment -->
         @canany(['mitra', 'warga'])
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mitra BPKP</span></li>
             <!-- Data Assesment-->
-            <li class="menu-item @if (Request::is('profilebu')) open @endif">
-                <a href="#" class="menu-link menu-toggle">
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Assessment</span></li>
+            <li class="menu-item @if (Request::is('profilebu')) fw-bold bg-primary @endif">
+                <a href="{{ route('profilebu.index') }}" class="menu-link @if (Request::is('profilebu')) text-white @endif">
+                    <i class="menu-icon tf-icons bx bx-server"></i>
+                    <div data-i18n="Data Umum">Data Umum</div>
+                </a>
+            </li>
+            <li class="menu-item @if (Request::is('tes')) fw-bold bg-primary @endif">
+                <a href="{{ route('profilebu.index') }}" class="menu-link @if (Request::is('tes')) text-white @endif">
                     <i class="menu-icon tf-icons bx bxs-server"></i>
-                    <div data-i18n="Data Assesment">Data Assesment</div>
+                    <div data-i18n="Data Pendukung">Data Pendukung</div>
                 </a>
-                <ul class="menu-sub">
-                    <li class="menu-item @if (Request::is('profilebu')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-18n="Profil Badan Usaha">AD/ART Perusahaan</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-18n="Annual Report Perusahaan">Annual Report Perusahaan </div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-18n="Risk Profile">Risk Profile</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-18n="Pedoman Manajemen Risiko Perusahaan">Pedoman Manajemen Risiko Perusahaan</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-18n="Laporan Pelaksanaan MR">Laporan Pelaksanaan MR</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('dashboard/progres')) active open @endif">
-                        <a href="{{ route('profilebu.index') }}" class="menu-link">
-                            <div data-18n="Loss Event Database">Loss Event Database</div>
-                        </a>
-                    </li>
-
-                </ul>
             </li>
-        @endcan
+            <!-- End Data Assesment-->
 
 
-        <!-- Self Assessment -->
-        @can('mitra')
-            <li class="menu-item @if (Request::is('parameter*')) open @endif">
-                <a href="javascript:void(0)" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
-                    <div data-i18n="Self Assessment">Self Assessment</div>
+            <!-- Self Assesment-->
+            @php
+                function role()
+                {
+                    if (auth()->user()->myprofile->role == 'mitra') {
+                        return 'parameter';
+                    } elseif (auth()->user()->myprofile->role == 'warga') {
+                        return 'qa';
+                    }
+                }
+            @endphp
+            @can('mitra')
+                <li class="menu-header small text-uppercase"><span class="menu-header-text">Self Assessment</span></li>
+            @endcan
+            @can('warga')
+                <li class="menu-header small text-uppercase"><span class="menu-header-text">Quality Assurance</span></li>
+            @endcan
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 1) fw-bold bg-primary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=1' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 1) text-white @endif">
+                    <i class="menu-icon tf-icons bx bxs-donate-heart"></i>
+                    <div data-i18n="Budaya dan Kapabilitas Risiko">Budaya dan Kapabilitas Risiko</div>
                 </a>
-                <ul class="menu-sub">
-                    <li class="menu-item @if (Request::is('parameter') && Request::query('dimensi') == 1) active open @endif">
-                        <a href="{{ route('parameter.index') . '?dimensi=1' }}" class="menu-link">
-                            <div data-i18n="Dimensi 1">Dimensi 1</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('parameter') && Request::query('dimensi') == 2) active open @endif">
-                        <a href="{{ route('parameter.index') . '?dimensi=2' }}" class="menu-link">
-                            <div data-i18n="Dimensi 2">Dimensi 2</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('parameter') && Request::query('dimensi') == 3) active open @endif">
-                        <a href="{{ route('parameter.index') . '?dimensi=3' }}" class="menu-link">
-                            <div data-i18n="Dimensi 3">Dimensi 3</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('parameter') && Request::query('dimensi') == 4) active open @endif">
-                        <a href="{{ route('parameter.index') . '?dimensi=4' }}" class="menu-link">
-                            <div data-i18n="Dimensi 4">Dimensi 4</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('parameter') && Request::query('dimensi') == 5) active open @endif">
-                        <a href="{{ route('parameter.index') . '?dimensi=5' }}" class="menu-link">
-                            <div data-i18n="Dimensi 5">Dimensi 5</div>
-                        </a>
-                    </li>
-                </ul>
             </li>
-        @endcan
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 2) fw-bold bg-primary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=2' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 2) text-white @endif">
+                    <i class="menu-icon tf-icons bx bxs-universal-access"></i>
+                    <div data-i18n="Organisasi dan Tata Kelola Risiko">Organisasi dan Tata Kelola Risiko</div>
+                </a>
+            </li>
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 3) fw-bold bg-primary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=3' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 3) text-white @endif">
+                    <i class="menu-icon tf-icons bx bx-shape-circle"></i>
+                    <div data-i18n="Kerangka Risiko dan Kepatuhan">Kerangka Risiko dan Kepatuhan</div>
+                </a>
+            </li>
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 4) fw-bold bg-primary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=4' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 4) text-white @endif">
+                    <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                    <div data-i18n="Proses dan Kontrol Risiko">Proses dan Kontrol Risiko</div>
 
-        <!-- Warga -->
-        @can('warga')
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Warga</span></li>
-            <li class="menu-item @if (Request::is('qa*')) open @endif">
+                </a>
+            </li>
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 5) fw-bold bg-primary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=5' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 5) text-white @endif">
+                    <i class="menu-icon tf-icons bx bx-code-alt"></i>
+                    <div data-i18n="Model, Data dan Teknologi Risiko">Model, Data dan Teknologi Risiko </div>
+
+                </a>
+            </li>
+            {{-- </li> --}}
+            <!--End Self Assesment-->
+        @endcan
+        <!--Self & Data Assesment -->
+
+        <!-- Setting Admin dan SuperAdmin -->
+        @canany(['superadmin', 'admin'])
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
+            <!-- Forms -->
+            <li class="menu-item @if (Request::is('set*')) open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class='menu-icon tf-icons bx bx-check-shield'></i>
-                    <div data-i18n="Quality Assurance">Quality Assurance</div>
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Setting">Setting</div>
                 </a>
                 <ul class="menu-sub">
-                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 1) active open @endif">
-                        <a href="{{ route('qa.index') . '?dimensi=1' }}" class="menu-link">
-                            <div data-i18n="Dimensi 1">Dimensi 1</div>
+                    <li class="menu-item @if (Request::is('setpengguna')) active open @endif">
+                        <a href="{{ route('setpengguna.index') }}" class="menu-link">
+                            <div data-i18n="Pengguna Aplikasi">Pengguna Aplikasi</div>
                         </a>
                     </li>
-                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 2) active open @endif">
-                        <a href="{{ route('qa.index') . '?dimensi=2' }}" class="menu-link">
-                            <div data-i18n="Dimensi 2">Dimensi 2</div>
+                    <li class="menu-item @if (Request::is('setting/sima_klpbu')) active open @endif">
+                        <a href="{{ route('set_simaklpbu') }}" class="menu-link">
+                            <div data-i18n="Sima KLPBU">Sima KLPBU</div>
                         </a>
                     </li>
-                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 3) active open @endif">
-                        <a href="{{ route('qa.index') . '?dimensi=3' }}" class="menu-link">
-                            <div data-i18n="Dimensi 3">Dimensi 3</div>
+                    <li class="menu-item @if (Request::is('setparam*')) active open @endif">
+                        <a href="{{ route('setparam.index') }}" class="menu-link">
+                            <div data-i18n="Parameter">Parameter</div>
                         </a>
                     </li>
-                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 4) active open @endif">
-                        <a href="{{ route('qa.index') . '?dimensi=4' }}" class="menu-link">
-                            <div data-i18n="Dimensi 4">Dimensi 4</div>
-                        </a>
-                    </li>
-                    <li class="menu-item @if (Request::is('qa') && Request::query('dimensi') == 5) active open @endif">
-                        <a href="{{ route('qa.index') . '?dimensi=5' }}" class="menu-link">
-                            <div data-i18n="Dimensi 5">Dimensi 5</div>
-                        </a>
-                    </li>
+                </ul>
             </li>
-        </ul>
-        </li>
-    @endcan
+        @endcan
+        <!-- End Setting Admin dan SuperAdmin -->
 
-    <!-- Administrator -->
-    @canany(['superadmin', 'admin'])
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
-        <!-- Forms -->
-        <li class="menu-item @if (Request::is('set*')) open @endif">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
-                <div data-i18n="Setting">Setting</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item @if (Request::is('setpengguna')) active open @endif">
-                    <a href="{{ route('setpengguna.index') }}" class="menu-link">
-                        <div data-i18n="Pengguna Aplikasi">Pengguna Aplikasi</div>
-                    </a>
-                </li>
-                <li class="menu-item @if (Request::is('setparam*')) active open @endif">
-                    <a href="{{ route('setparam.index') }}" class="menu-link">
-                        <div data-i18n="Parameter">Parameter</div>
-                    </a>
-                </li>
-                <li class="menu-item @if (Request::is('setting/sima_klpbu')) active open @endif">
-                    <a href="{{ route('set_simaklpbu') }}" class="menu-link">
-                        <div data-i18n="Sima KLPBU">Sima KLPBU</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-    @endcan
-
-
-    <!-- Misc -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
-
-    <li class="menu-item @if (Request::is('myprofile'))  @endif">
-        <a href="{{ route('myprofile.index') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-user"></i>
-            <div data-i18n="My Profile">My Profile</div>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="{{ kontak() }}" target="_blank" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-support"></i>
-            <div data-i18n="Support">Support</div>
-        </a>
-    </li>
     </ul>
+    <!--End Menu -->
 </aside>
