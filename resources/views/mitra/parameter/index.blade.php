@@ -82,9 +82,9 @@
                     @endif
                     <input type="hidden" name="dimensi_id" value="{{ request('dimensi') }}">
                     <input type="hidden" name="param_id" value="{{ request('param') }}">
-                    <div class="row g-1 pt-2">
-                        <div class="col-lg-6 col-md-6 mx-auto">
-                            <div class="card-body">
+                    <div class="row  pt-2">
+                        <div class="col-lg-6 col-md-6 me-auto">
+                            <div class="card-body px-0">
                                 <figure class="text-center">
                                     <blockquote class="blockquote">
                                         <h4 class="card-title text-primary">
@@ -133,8 +133,8 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="card-body">
+                        <div class="col-lg-5 col-md-6 ms-auto">
+                            <div class="card-body px-0">
                                 {{-- <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'a' }}">
                                         <input name="skor" class="form-check-input" type="radio" value="0" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 0) checked @endif @endif @can('warga') disabled @endcan/>
@@ -214,21 +214,31 @@
                         <hr class="m-0">
                         <div class="row">
                             <div class="col">
-                                <div class="card-body">
+                                <div class="card-body px-0">
                                     <h5 class="card-title text-center text-primary"><i class='bx bx-check-shield bx-sm me-2'></i>Quality Assurance</h5>
                                     <div class="row mt-2">
                                         <div class="col-lg-6 mt-3">
                                             <div class="row">
-                                                <label class="col-sm-3 col-form-label" for="hasilReviu">Hasil Reviu</label>
-                                                <div class="col-lg-9 col-md-8 col-sm-12">
+                                                <label class="col-lg-3 col-md-2 col-sm-3 col-form-label" for="hasilReviu">Hasil Reviu</label>
+                                                <div class="col-lg-9 col-md-10 col-sm-9">
                                                     <textarea id="hasilReviu" class="form-control" name="hasilreviu" rows="3">{{ isset($pivot->hasilreviu) ? $pivot->hasilreviu : '' }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 mt-3 px-4">
+                                        <div class="col-lg-6 mt-3">
                                             <div class="form-check custom-option custom-option-basic border-0">
-                                                <div class="row d-flex justify-content-between">
-                                                    <div class="col-2 p-0">
+                                                <div class="row g-2 d-flex justify-content-between">
+                                                    <div class="col-lg-2 col-md-4 col-6 px-1">
+                                                        <div class="form-check custom-option custom-option-icon">
+                                                            <label class="form-check-label custom-option-content" for="skorwarga0">
+                                                                <span class="custom-option-body">
+                                                                    <span class="custom-option-title">N/A</span>
+                                                                </span>
+                                                                <input name="skor_warga" class="form-check-input" type="radio" value="0" id="skorwarga0" @if (isset($pivot->skor_warga)) @if ($pivot->skor_warga == 0) checked @endif @endif />
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-4 col-6 px-1">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga1">
                                                                 <span class="custom-option-body">
@@ -238,7 +248,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0">
+                                                    <div class="col-lg-2 col-md-4 col-6 px-1">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga2">
                                                                 <span class="custom-option-body">
@@ -248,7 +258,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0">
+                                                    <div class="col-lg-2 col-md-4 col-6 px-1">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga3">
                                                                 <span class="custom-option-body">
@@ -258,7 +268,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0">
+                                                    <div class="col-lg-2 col-md-4 col-6 px-1">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga4">
                                                                 <span class="custom-option-body">
@@ -268,7 +278,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 p-0">
+                                                    <div class="col-lg-2 col-md-4 col-6 px-1">
                                                         <div class="form-check custom-option custom-option-icon">
                                                             <label class="form-check-label custom-option-content" for="skorwarga5">
                                                                 <span class="custom-option-body">
