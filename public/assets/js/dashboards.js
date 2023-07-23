@@ -94,7 +94,7 @@
     const salesStatsEl = document.querySelector("#salesStats"),
         salesStatsOptions = {
             chart: {
-                height: 340,
+                height: 280,
                 type: "radialBar",
             },
             series: [ref_series],
