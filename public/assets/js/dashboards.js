@@ -251,6 +251,8 @@
                 },
             },
             yaxis: {
+                tickAmount: 4,
+                min: 1,
                 max: 5,
                 labels: {
                     style: {
