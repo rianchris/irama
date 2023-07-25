@@ -90,15 +90,14 @@
     // --------------------------------------------------------------------
     var skor = document.querySelector("#salesStats").getAttribute("data-skor");
     var ref_series = skor * 20;
-    var ref_labels = skor;
     const salesStatsEl = document.querySelector("#salesStats"),
         salesStatsOptions = {
             chart: {
-                height: 280,
+                height: 200,
                 type: "radialBar",
             },
             series: [ref_series],
-            labels: [ref_labels],
+            labels: ["Skor"],
             plotOptions: {
                 radialBar: {
                     startAngle: 0,
@@ -119,26 +118,26 @@
                     dataLabels: {
                         show: true,
                         name: {
-                            offsetY: 20,
+                            offsetY: 50,
                             show: true,
-                            color: headingColor,
-                            fontSize: "42px",
+                            color: labelColor,
+                            fontSize: "16px",
                         },
                         value: {
                             formatter: function (val) {
-                                return parseInt(val);
+                                return parseInt(val) / 20;
                             },
-                            offsetY: 20,
+                            offsetY: 0,
                             color: headingColor,
                             fontSize: "32px",
-                            show: false,
+                            show: true,
                         },
                     },
                 },
             },
             fill: {
                 type: "solid",
-                colors: config.colors.success,
+                colors: config.colors.primary,
             },
             stroke: {
                 lineCap: "round",
@@ -178,7 +177,7 @@
                 },
             ],
             chart: {
-                height: 350,
+                height: 300,
                 stacked: true,
                 type: "bar",
                 toolbar: { show: true },
@@ -251,8 +250,8 @@
                 },
             },
             yaxis: {
-                tickAmount: 4,
-                min: 1,
+                tickAmount: 5,
+                min: 0,
                 max: 5,
                 labels: {
                     style: {
@@ -439,5 +438,142 @@
             totalRevenueChartOptions
         );
         totalRevenueChart.render();
+    }
+
+    const performanceChartEl = document.querySelector("#performanceChart"),
+        performanceChartConfig = {
+            series: [
+                {
+                    name: "Self Assesment",
+                    data: [skord1, skord2, skord3, skord4, skord5],
+                },
+                {
+                    name: "Quality Assurance",
+                    data: [3, 4, 5, 3, 4],
+                },
+            ],
+            chart: {
+                height: 280,
+                type: "radar",
+                toolbar: {
+                    show: true,
+                },
+                dropShadow: {
+                    enabled: true,
+                    enabledOnSeries: undefined,
+                    top: 6,
+                    left: 0,
+                    blur: 6,
+                    color: "#000",
+                    opacity: 0.14,
+                },
+            },
+            plotOptions: {
+                radar: {
+                    polygons: {
+                        strokeColors: borderColor,
+                        connectorColors: borderColor,
+                    },
+                },
+            },
+            stroke: {
+                show: false,
+                width: 0,
+            },
+            legend: {
+                show: true,
+                fontSize: "13px",
+                position: "bottom",
+                labels: {
+                    colors: "#aab3bf",
+                    useSeriesColors: false,
+                },
+                markers: {
+                    height: 10,
+                    width: 10,
+                    offsetX: -3,
+                },
+                itemMargin: {
+                    horizontal: 10,
+                },
+                onItemHover: {
+                    highlightDataSeries: false,
+                },
+            },
+            colors: [config.colors.primary, config.colors.info],
+            fill: {
+                opacity: [0.8, 0.9],
+            },
+            markers: {
+                size: 0,
+            },
+            grid: {
+                show: false,
+                padding: {
+                    top: -8,
+                    bottom: -5,
+                },
+            },
+            xaxis: {
+                categories: [
+                    ["Budaya dan", "Kapabilitas Risiko"],
+                    ["Organisasi dan", "Tata Kelola Risiko"],
+                    ["Kerangka Risiko", "dan Kepatuhan"],
+                    ["Proses dan", "Kontrol Risiko"],
+                    ["Model, Data dan", "Teknologi Risiko"],
+                ],
+                labels: {
+                    show: true,
+                    style: {
+                        colors: [
+                            labelColor,
+                            labelColor,
+                            labelColor,
+                            labelColor,
+                            labelColor,
+                            labelColor,
+                        ],
+                        fontSize: "10px",
+                        fontFamily: "Public Sans",
+                    },
+                },
+            },
+            yaxis: {
+                show: false,
+                min: 0,
+                max: 5,
+                tickAmount: 4,
+            },
+            dataLabels: {
+                enabled: true,
+                background: {
+                    enabled: true,
+                    borderRadius: 2,
+                },
+            },
+
+            responsive: [
+                {
+                    breakpoint: 1000,
+                    options: {
+                        plotOptions: {
+                            radar: {
+                                borderRadius: 10,
+                                columnWidth: "32%",
+                            },
+                        },
+                    },
+                },
+            ],
+        };
+    if (
+        typeof performanceChartEl !== undefined &&
+        performanceChartEl !== null
+    ) {
+        const performanceChart = new ApexCharts(
+            performanceChartEl,
+            performanceChartConfig
+        );
+        performanceChart.render();
     }
 })();

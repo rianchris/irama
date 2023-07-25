@@ -20,7 +20,7 @@
 
     <!-- Icons -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/boxicons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
 
     <!-- Core CSS -->
@@ -45,7 +45,7 @@
     @endphp
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
+        <div class="layout-container bg-label-secondary">
             <!-- Menu -->
             @include('layouts.sidenav')
             <!-- / Menu -->
@@ -53,13 +53,12 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-
                 @include('layouts.header')
 
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
-                <div class="content-wrapper">
+                <div class="content-wrapper ">
                     <!-- Content -->
                     @yield('content')
                     <!-- / Content -->

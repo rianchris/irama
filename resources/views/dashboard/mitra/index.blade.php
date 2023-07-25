@@ -3,11 +3,11 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         {{-- baris 1 --}}
         <div class="row g-3">
-            <div class="col-lg-8 ">
+            <div class="col-lg-8 col-md-8">
                 @include('dashboard.mitra.welcome')
             </div>
-            <div class="col-lg-4 ">
-                @include('dashboard.mitra.timeline')
+            <div class="col-lg-4 col-md-4">
+                @include('dashboard.mitra.skor_akhir')
             </div>
 
             <div class="col-lg-12">

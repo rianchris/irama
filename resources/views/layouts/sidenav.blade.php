@@ -1,16 +1,16 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+<aside id="layout-menu" class="layout-menu menu-vertical menu accent shadow-lg bg-primary">
     <!-- Logo -->
     <div class="app-brand demo ps-3">
         <a href="{{ route('dashboard.index') }}" class="app-brand-link">
-            <span class="app-brand-logo demo fw-bolder text-primary">
+            <span class="app-brand-logo demo fw-bolder text-white">
                 FORSA
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <img src="{{ asset('assets/img/branding/logo-irama.png') }}" alt="" width="60px" class="img-fluid">
+                <img src="{{ asset('assets/img/branding/logo-irama-white.png') }}" alt="" width="60px" class="img-fluid">
             </span>
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            <i class="bx bx-chevron-left bx-sm align-middle "></i>
         </a>
     </div>
     <!--End Logo -->
@@ -21,8 +21,8 @@
         <!-- Dashboards -->
 
         <!-- Dashboards Mitra, Warga -->
-        <li class="menu-item  @if (Request::is('dashboard*')) @canany(['warga', 'mitra'])open active @endcan @endif">
-            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') @endcan">
+        <li class="menu-item  @if (Request::is('dashboard*')) @canany(['warga', 'mitra']) bg-label-secondary @endcan @endif">
+            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') @endcan @if (Request::is('dashboard*')) @canany(['warga', 'mitra']) text-primary fw-semibold @endcan @else text-white @endif">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
@@ -57,14 +57,14 @@
         @canany(['mitra', 'warga'])
             <!-- Data Assesment-->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Assessment</span></li>
-            <li class="menu-item @if (Request::is('profilebu')) fw-bold bg-primary @endif">
-                <a href="{{ route('profilebu.index') }}" class="menu-link @if (Request::is('profilebu')) text-white @endif">
+            <li class="menu-item @if (Request::is('profilebu')) fw-semibold bg-label-secondary @endif">
+                <a href="{{ route('profilebu.index') }}" class="menu-link  @if (Request::is('profilebu')) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bx-server"></i>
                     <div data-i18n="Data Umum">Data Umum</div>
                 </a>
             </li>
-            <li class="menu-item @if (Request::is('tes')) fw-bold bg-primary @endif">
-                <a href="{{ route('profilebu.index') }}" class="menu-link @if (Request::is('tes')) text-white @endif">
+            <li class="menu-item @if (Request::is('tes')) fw-semibold bg-label-secondary @endif">
+                <a href="{{ route('profilebu.index') }}" class="menu-link text-white @if (Request::is('tes')) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bxs-server"></i>
                     <div data-i18n="Data Pendukung">Data Pendukung</div>
                 </a>
@@ -89,33 +89,33 @@
             @can('warga')
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Quality Assurance</span></li>
             @endcan
-            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 1) fw-bold bg-primary @endif">
-                <a href="{{ route(role() . '.index') . '?dimensi=1' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 1) text-white @endif">
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 1) fw-bold bg-label-secondary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=1' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 1) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bxs-donate-heart"></i>
                     <div data-i18n="Budaya dan Kapabilitas Risiko">Budaya dan Kapabilitas Risiko</div>
                 </a>
             </li>
-            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 2) fw-bold bg-primary @endif">
-                <a href="{{ route(role() . '.index') . '?dimensi=2' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 2) text-white @endif">
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 2) fw-bold bg-label-secondary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=2' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 2) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bxs-universal-access"></i>
                     <div data-i18n="Organisasi dan Tata Kelola Risiko">Organisasi dan Tata Kelola Risiko</div>
                 </a>
             </li>
-            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 3) fw-bold bg-primary @endif">
-                <a href="{{ route(role() . '.index') . '?dimensi=3' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 3) text-white @endif">
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 3) fw-bold bg-label-secondary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=3' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 3) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bx-shape-circle"></i>
                     <div data-i18n="Kerangka Risiko dan Kepatuhan">Kerangka Risiko dan Kepatuhan</div>
                 </a>
             </li>
-            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 4) fw-bold bg-primary @endif">
-                <a href="{{ route(role() . '.index') . '?dimensi=4' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 4) text-white @endif">
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 4) fw-bold bg-label-secondary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=4' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 4) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
                     <div data-i18n="Proses dan Kontrol Risiko">Proses dan Kontrol Risiko</div>
 
                 </a>
             </li>
-            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 5) fw-bold bg-primary @endif">
-                <a href="{{ route(role() . '.index') . '?dimensi=5' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 5) text-white @endif">
+            <li class="menu-item @if (Request::is(role()) && Request::query('dimensi') == 5) fw-bold bg-label-secondary @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=5' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 5) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bx-code-alt"></i>
                     <div data-i18n="Model, Data dan Teknologi Risiko">Model, Data dan Teknologi Risiko </div>
 
@@ -131,7 +131,7 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator</span></li>
             <!-- Forms -->
             <li class="menu-item @if (Request::is('set*')) open @endif">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <a href="javascript:void(0);" class="menu-link text-white menu-toggle">
                     <i class="menu-icon tf-icons bx bx-cog"></i>
                     <div data-i18n="Setting">Setting</div>
                 </a>
