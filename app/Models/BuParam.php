@@ -15,4 +15,14 @@ class Buparam extends Model
     {
         return $this->belongsTo(Param::class, 'param_id', 'id');
     }
+
+    public function dimensi()
+    {
+        return $this->belongsTo(Dimensi::class, 'dimensi_id', 'id');
+    }
+
+    public function data()
+    {
+        return $this->belongsToMany(Data::class, 'bu_params_data', 'bu_param_id', 'data_id');
+    }
 }

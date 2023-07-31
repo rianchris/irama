@@ -93,7 +93,7 @@
     const salesStatsEl = document.querySelector("#salesStats"),
         salesStatsOptions = {
             chart: {
-                height: 200,
+                height: 160,
                 type: "radialBar",
             },
             series: [ref_series],
@@ -118,18 +118,18 @@
                     dataLabels: {
                         show: true,
                         name: {
-                            offsetY: 50,
+                            offsetY: 40,
                             show: true,
                             color: labelColor,
-                            fontSize: "16px",
+                            fontSize: "12px",
                         },
                         value: {
                             formatter: function (val) {
                                 return parseInt(val) / 20;
                             },
-                            offsetY: 0,
+                            offsetY: -5,
                             color: headingColor,
-                            fontSize: "32px",
+                            fontSize: "28px",
                             show: true,
                         },
                     },
@@ -177,7 +177,7 @@
                 },
             ],
             chart: {
-                height: 300,
+                height: 260,
                 stacked: true,
                 type: "bar",
                 toolbar: { show: true },
@@ -191,7 +191,25 @@
                     endingShape: "rounded",
                 },
             },
-            colors: [config.colors.primary, config.colors.info],
+            colors: [
+                function ({ value, seriesIndex, w }) {
+                    if (value < 3) {
+                        return config.colors.danger;
+                    } else if (value == 3) {
+                        return config.colors.warning;
+                    } else if (value >= 4) {
+                        return config.colors.success;
+                    }
+                },
+                // function ({ value, seriesIndex, w }) {
+                //     if (value < 5) {
+                //         return "#7E36AF";
+                //     } else {
+                //         return "#D9534F";
+                //     }
+                // },
+            ],
+
             dataLabels: {
                 enabled: false,
             },

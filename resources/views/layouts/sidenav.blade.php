@@ -1,4 +1,4 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu accent shadow-lg bg-primary">
+<aside id="layout-menu" class="layout-menu menu-vertical menu accent shadow bg-primary" style="background-color:rgb(38,60,146) !imprtant;">
     <!-- Logo -->
     <div class="app-brand demo ps-3">
         <a href="{{ route('dashboard.index') }}" class="app-brand-link">
@@ -22,7 +22,7 @@
 
         <!-- Dashboards Mitra, Warga -->
         <li class="menu-item  @if (Request::is('dashboard*')) @canany(['warga', 'mitra']) bg-label-secondary @endcan @endif">
-            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') @endcan @if (Request::is('dashboard*')) @canany(['warga', 'mitra']) text-primary fw-semibold @endcan @else text-white @endif">
+            <a href="{{ route('dashboard.index') }}" class="menu-link @can('admin') @endcan @if (Request::is('dashboard*')) @canany(['warga', 'mitra']) text-dark fw-semibold @endcan @else text-white @endif">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
@@ -57,18 +57,18 @@
         @canany(['mitra', 'warga'])
             <!-- Data Assesment-->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Assessment</span></li>
-            <li class="menu-item @if (Request::is('profilebu')) fw-semibold bg-label-secondary @endif">
-                <a href="{{ route('profilebu.index') }}" class="menu-link  @if (Request::is('profilebu')) text-primary @else text-white @endif">
+            <li class="menu-item @if (Request::is('dataumum')) bg-label-secondary @endif">
+                <a href="{{ route('dataumum.index') }}" class="menu-link  @if (Request::is('dataumum')) text-primary fw-semibold @else text-white @endif">
                     <i class="menu-icon tf-icons bx bx-server"></i>
                     <div data-i18n="Data Umum">Data Umum</div>
                 </a>
             </li>
-            <li class="menu-item @if (Request::is('tes')) fw-semibold bg-label-secondary @endif">
+            {{-- <li class="menu-item @if (Request::is('tes')) fw-semibold bg-label-secondary @endif">
                 <a href="{{ route('profilebu.index') }}" class="menu-link text-white @if (Request::is('tes')) text-primary @else text-white @endif">
                     <i class="menu-icon tf-icons bx bxs-server"></i>
                     <div data-i18n="Data Pendukung">Data Pendukung</div>
                 </a>
-            </li>
+            </li> --}}
             <!-- End Data Assesment-->
 
 

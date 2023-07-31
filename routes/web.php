@@ -10,6 +10,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfilbuController;
 use App\Http\Controllers\SetParamController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataUmumController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\SetKlasterController;
 use App\Http\Controllers\SetPenggunaController;
@@ -36,9 +37,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::resource('/myprofile', MyProfileController::class)->middleware('auth');
 
 Route::resource('/profilebu', ProfilbuController::class);
+Route::resource('/dataumum', DataUmumController::class)->middleware('dataumum');
 
 //mitra
-Route::resource('/parameter', ParamController::class)->middleware('mitra');
+Route::resource('/parameter', ParamController::class)->middleware('checkdata');
 
 ///warga
 Route::resource('/qa', QaController::class)->middleware('warga');

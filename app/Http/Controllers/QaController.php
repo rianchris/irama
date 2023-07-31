@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bu;
 
+use App\Models\Data;
 use App\Models\Param;
 use App\Models\Buparam;
 use App\Models\Dimensi;
@@ -42,13 +43,15 @@ class QaController extends Controller
         $buparam = Buparam::where('param_id', $request['param'])->where('bu_id', $pengguna->buWarga->id)->first();
 
         // dd($buparam);
+        $datas = Data::all();
 
         $data = [
             'bu' => $bu,
             'dimensi' => $dimensi,
             'param' => $param,
             'pengguna' => $pengguna,
-            'buparam' => $buparam
+            'buparam' => $buparam,
+            'dataumum' => $datas
         ];
 
         if (request('dimensi')) {

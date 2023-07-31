@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Param;
-use App\Models\Dimensi;
 use App\Models\Bu;
+use App\Models\Data;
+use App\Models\Param;
 use App\Models\Buparam;
+use App\Models\Dimensi;
+use App\Models\Myprofile;
 use Illuminate\Http\Request;
 use App\Models\Deskripsiskor;
-use App\Models\Myprofile;
 
 class ParamController extends Controller
 {
@@ -42,15 +43,16 @@ class ParamController extends Controller
 
         // dd($bu->where('id', 1)->get());
 
+        $datas = Data::all();
+
         $data = [
             'bu' => $bu,
             'dimensi' => $dimensi,
             'param' => $param,
             'pengguna' => $pengguna,
-            'buparam' => $buparam
+            'buparam' => $buparam,
+            'dataumum' => $datas
         ];
-
-
 
         if (request('dimensi')) {
             if (request('param')) {
@@ -84,9 +86,6 @@ class ParamController extends Controller
                 'param_id' => $request->input('param_id'),
                 'skor_mitra' => $request->input('skor'),
                 'catatan' => $request->input('catatan'),
-                'filepdf' => $request->input('filepdf'),
-                'filexlsx' => $request->input('filexlsx'),
-                'filedocx' => $request->input('filedocx'),
             ];
 
             Buparam::where('id', $buparamid)->where('tahun', date("Y"))->update($data);
@@ -99,9 +98,6 @@ class ParamController extends Controller
             $buparam->param_id = $request->input('param_id');
             $buparam->skor_mitra = $request->input('skor');
             $buparam->catatan = $request->input('catatan');
-            $buparam->filepdf = $request->input('filepdf');
-            $buparam->filexlsx = $request->input('filexlsx');
-            $buparam->filedocx = $request->input('filedocx');
             $buparam->save();
         }
         return redirect()->back()->with('success', 'Simpan data berhasil!');

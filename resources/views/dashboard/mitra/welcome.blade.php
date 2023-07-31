@@ -1,4 +1,4 @@
-  <div class="card h-100 ">
+  <div class="card h-100">
       <div class="d-flex align-items-end row">
 
           <div class="col-lg-8 col-md-12">
@@ -36,7 +36,7 @@
           </div>
           <div class="col-lg-4 text-center text-sm-left d-none d-lg-block">
               <div class="card-body pb-0 px-0 px-md-4">
-                  <img src="{{ asset('assets/img/illustrations/man-with-laptop-light.png') }}" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                  <img src="{{ asset('assets/img/illustrations/man-with-laptop-light-linkedin.png') }}" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
               </div>
           </div>
       </div>

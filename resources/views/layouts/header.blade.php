@@ -1,4 +1,4 @@
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center " id="layout-navbar">
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center" id="layout-navbar" style="background-image:linear-gradient(-45deg, rgba(0, 160, 255, 0.86), rgb(38,60,146)) !important">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none ">
         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
             <i class="bx bx-menu bx-sm"></i>
@@ -10,11 +10,11 @@
         <div class="navbar-nav align-items-center">
             <div class="nav-item navbar-search-wrapper mb-0 d-flex flex-row align-items-center">
                 @if (isset($pegawai->buMitra->sima_klpbu))
-                    <a href="{{ route('profilebu.index') }}" class="fw-semibold fs-5 text-primary d-none d-md-block ms-1 m-0">
+                    <a href="{{ route('profilebu.index') }}" class="fw-semibold fs-5 text-white d-none d-md-block ms-1 m-0">
                         {{ Str::limit($pegawai->buMitra->sima_klpbu->nama_klpbu, 48, ' ...') }}
                     </a>
                 @elseif(isset($pegawai->buWarga->sima_klpbu))
-                    <a href="{{ route('profilebu.index') }}" class="fw-semibold fs-5 text-primary d-none d-md-block ms-1 m-0">
+                    <a href="{{ route('profilebu.index') }}" class="fw-semibold fs-5 text-white d-none d-md-block ms-1 m-0">
                         {{ Str::limit($pegawai->buWarga->sima_klpbu->nama_klpbu, 48, ' ...') }}
                     </a>
                 @endif

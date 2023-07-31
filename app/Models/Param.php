@@ -18,7 +18,7 @@ class Param extends Model
 
     public function bu()
     {
-        return $this->belongsToMany(Bu::class, 'bu_params', 'bu_id', 'param_id')->withPivot('tahun', 'skor_mitra', 'skor_warga', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'filepdf', 'filedocx', 'filexlsx', 'sumberinfo', 'catatan', 'hasilreviu');
+        return $this->belongsToMany(Bu::class, 'bu_params', 'bu_id', 'param_id')->withPivot('tahun', 'skor_mitra', 'skor_warga', 'per_inf_d', 'per_inf_w', 'per_inf_k', 'per_inf_o', 'sumberinfo', 'catatan', 'hasilreviu');
     }
 
     public function dimensi()

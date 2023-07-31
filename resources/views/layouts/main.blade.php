@@ -37,15 +37,19 @@
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
     <script src="{{ asset('assets/js/config.js') }}"></script>
+
+
 </head>
 
 <body>
     @php
         $pegawai = session('pegawai');
     @endphp
+
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container bg-label-secondary">
+        <div class="layout-container" style="background-color:#EDF2F9">
             <!-- Menu -->
             @include('layouts.sidenav')
             <!-- / Menu -->
@@ -58,27 +62,26 @@
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
-                <div class="content-wrapper ">
-                    <!-- Content -->
-                    @yield('content')
-                    <!-- / Content -->
+                <!-- Content -->
+                @yield('content')
+                <!-- / Content -->
 
-                    <!-- Footer -->
-                    @include('layouts.footer')
-                    <!-- / Footer -->
+                <!-- Footer -->
+                @include('layouts.footer')
+                <!-- / Footer -->
 
-                    <div class="content-backdrop fade"></div>
-                </div>
-                <!-- Content wrapper -->
+                <div class="content-backdrop fade"></div>
             </div>
-            <!-- / Layout page -->
+            <!-- Content wrapper -->
         </div>
+        <!-- / Layout page -->
+    </div>
 
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
 
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-        <div class="drag-target"></div>
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
     </div>
     <!-- / Layout wrapper -->
 
@@ -107,6 +110,7 @@
 
     <!-- Ineline JS-->
     @stack('inlinejs')
+
 </body>
 
 </html>
