@@ -26,13 +26,7 @@
             <div class="col-lg-12">
                 @include('dashboard.mitra.skor_full')
             </div>
-            {{-- 
-            <div class="col-lg-8">
 
-            </div>
-            <div class="col-lg-4">
-                @include('dashboard.mitra.skor_akhir')
-            </div> --}}
         </div>
 
         {{-- baris 2 --}}
@@ -58,6 +52,6 @@
     @push('pagejs')
         <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
         {{-- <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script> --}}
-        <script src="{{ asset('assets/js/dashboards.js') }}"></script>
+        <script src="{{ asset('assets/js/dashboards-mitra.js') }}"></script>
     @endpush
 @endsection

@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     @if (session()->has('success'))
-                        <div class="alert alert-primary alert-dismissible mx-4 mt-3" role="alert">
+                        <div class="alert alert-success alert-dismissible mx-4 mt-3" role="alert">
                             {{ session('success') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -15,8 +15,8 @@
                     <div class="card-body">
                         {{-- {{ dd($bu->sima_klpbu->nama_klpbu) }} --}}
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            @if (isset($bu->avatar))
-                                <img src="{{ asset('assets/img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+                            @if (isset($bu->logo))
+                                <img src="{{ asset('assets/img/logo/' . $bu->logo) }}" alt="user-avatar" class="d-block " width="60" id="uploadedAvatar" />
                             @else
                                 <div class="avatar avatar-md me-2">
                                     <span class="avatar-initial rounded-circle bg-danger">

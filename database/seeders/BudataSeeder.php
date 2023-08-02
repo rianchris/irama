@@ -53,13 +53,13 @@ class BudataSeeder extends Seeder
         Budata::create([
             "tahun" => "2023",
             "bu_id" => 2,
-            "data_id" => 12,
+            "data_id" => 3,
             "link" => "https://bpkp.go.id",
         ]);
         Budata::create([
             "tahun" => "2023",
             "bu_id" => 2,
-            "data_id" => 5,
+            "data_id" => 4,
             "link" => "https://pusdiklatwas.bpkp.go.id",
         ]);
     }

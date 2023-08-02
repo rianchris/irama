@@ -5,9 +5,11 @@
         <div class="row g-3">
             <div class="col-xl-4 col-lg-5 col-md-5 ">
                 <!-- Tentang Perusahaan  -->
-                <div class="card mb-4 sticky-top" style="top:84px; right:900px; left:285px; bottom:30px; ">
+                <div class="card mb-4 sticky-top" style="top:84px; right:900px; left:285px; bottom:30px; background-color:rgba(255,255,255,0.8)">
                     <div class="card-body">
-                        <small class="text-primary fw-bold text-uppercase">Profil Perusahaan </small>
+                        <h5><small class="text-primary fw-bold text-uppercase">
+                                Profil Perusahaan
+                            </small></h5>
                         <ul class="list-unstyled mb-4 mt-3 text-primary">
                             <li class="d-flex align-items-center mb-3">
                                 <i class='bx bx-rename'></i> <span class="fw-semibold mx-2">{{ $bu->sima_klpbu->nama_klpbu }}</span>
@@ -25,7 +27,8 @@
                                 <i class='bx bx-building'></i></i><span class="fw-semibold mx-2">{{ $bu->kodepos }}</span>
                             </li>
                         </ul>
-                        <small class="text-primary fw-bold text-uppercase">Kontak Perusahaan</small>
+                        <hr>
+                        <h5><small class="text-primary fw-bold text-uppercase">Kontak Perusahaan</small></h5>
                         <ul class="list-unstyled mb-4 mt-3 text-primary">
                             <li class="d-flex align-items-center mb-3">
                                 <i class="bx bx-phone"></i><span class="fw-semibold mx-2">{{ $bu->phone }}</span>
@@ -34,7 +37,8 @@
                                 <i class="bx bx-envelope"></i><span class="fw-semibold mx-2">{{ $bu->email }}</span>
                             </li>
                         </ul>
-                        <small class="text-primary fw-bold text-uppercase">PIC assessor</small>
+                        <hr>
+                        <h5><small class="text-primary fw-bold text-uppercase">PIC assessor</small></h5>
                         <ul class="list-unstyled mb-4 mt-3 text-primary">
                             <li class="d-flex align-items-center mb-3">
                                 <i class="bx bx-user"></i><span class="fw-semibold mx-2">{{ $bu->myprofileMitra->name }}
@@ -52,7 +56,7 @@
                 <!--/ Tentang Perusahaan -->
             </div>
             <div class="col-xl-8 col-lg-7 col-md-7">
-                <div class="card" style="background-color:transparent !important">
+                <div class="card shadow-none" style="background-color:transparent !important">
                     {{-- <div class="card-body shadow-lg"> --}}
                     @if (session()->has('success'))
                         <div class="mt-2 alert alert-success alert-dismissible" role="alert">
@@ -74,44 +78,46 @@
                             @endphp
 
                             <div class="col-lg-6">
-                                <div class="card-body shadow rounded bg-white">
-                                    @if (session()->has($update))
-                                        <div class="mt-2 alert alert-success alert-dismissible" role="alert">
-                                            {{ session($update) }}
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
-                                    @endif
-                                    {{-- Form action jika sudah ada data maka update jika belum maka store --}}
-                                    <form @if (isset($budatas_id)) action="{{ route('dataumum.update', $budatas_id->id) }}" @else action="{{ route('dataumum.store') }}" @endif method="post">
-                                        @if (isset($budatas_id))
-                                            @method('put')
-                                        @endif
-                                        @csrf
-                                        @if ($myprofile->role == 'mitra')
-                                            <input type="hidden" name="bu_id" value="{{ $bu->id }}">
-                                        @endif
-                                        <input type="hidden" name="data_id" value="{{ $datas->id }}">
-                                        <div class="mb-4">
-                                            {{-- {{ dd($budatas->where('data_id', $datas->id)->first()) }} --}}
-                                            <small class="fw-bold mb-1">
-                                                {{ $datas->deskripsi }}
-                                            </small>
-                                            <div class="input-group input-group-merge mb-2">
-                                                <span id="{{ $datas->deskripsi }}" class="input-group-text">
-                                                    <a href="{{ $link }}" target="blank"><i class="bx bx-link-alt"></i></a>
-                                                </span>
-                                                <input type="text" name="link" class="form-control" value="@if (isset($budatas->where('data_id', $datas->id)->first()->link)) {{ $budatas->where('data_id', $datas->id)->first()->link }} @endif" aria-describedby="{{ $datas->deskripsi }}" name="link" @if ($myprofile->role == 'warga') readonly @endif />
+                                <div class="card" style="background-color:rgba(255,255,255,0.9)">
+                                    <div class="card-body">
+                                        @if (session()->has($update))
+                                            <div class="mt-2 alert alert-success alert-dismissible" role="alert">
+                                                {{ session($update) }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
+                                        @endif
+                                        {{-- Form action jika sudah ada data maka update jika belum maka store --}}
+                                        <form @if (isset($budatas_id)) action="{{ route('dataumum.update', $budatas_id->id) }}" @else action="{{ route('dataumum.store') }}" @endif method="post">
+                                            @if (isset($budatas_id))
+                                                @method('put')
+                                            @endif
+                                            @csrf
+                                            @if ($myprofile->role == 'mitra')
+                                                <input type="hidden" name="bu_id" value="{{ $bu->id }}">
+                                            @endif
+                                            <input type="hidden" name="data_id" value="{{ $datas->id }}">
+                                            <div class="mb-4">
+                                                {{-- {{ dd($budatas->where('data_id', $datas->id)->first()) }} --}}
+                                                <small class="fw-bold mb-1">
+                                                    {{ $datas->deskripsi }}
+                                                </small>
+                                                <div class="input-group input-group-merge mb-2">
+                                                    <span id="{{ $datas->deskripsi }}" class="input-group-text">
+                                                        <a href="{{ $link }}" target="blank"><i class="bx bx-link-alt"></i></a>
+                                                    </span>
+                                                    <input type="text" name="link" class="form-control" value="@if (isset($budatas->where('data_id', $datas->id)->first()->link)) {{ $budatas->where('data_id', $datas->id)->first()->link }} @endif" aria-describedby="{{ $datas->deskripsi }}" name="link" @if ($myprofile->role == 'warga') readonly @endif />
+                                                </div>
 
-                                            <div class="input-group input-group-merge mb-2">
-                                                <span id="{{ $datas->deskripsi . 'catatan' }}" class="input-group-text"><i class="bx bx-comment"></i></span>
-                                                <textarea rows="3" name="catatan" class="form-control" @if ($myprofile->role == 'warga') readonly @endif> @if (isset($budatas->where('data_id', $datas->id)->first()->catatan))
+                                                <div class="input-group input-group-merge mb-2">
+                                                    <span id="{{ $datas->deskripsi . 'catatan' }}" class="input-group-text"><i class="bx bx-comment"></i></span>
+                                                    <textarea rows="2" name="catatan" class="form-control" @if ($myprofile->role == 'warga') readonly @endif> @if (isset($budatas->where('data_id', $datas->id)->first()->catatan))
 {{ $budatas->where('data_id', $datas->id)->first()->catatan }}
 @endif </textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-sm btn-primary" @if ($myprofile->role == 'warga') disabled @endif>Simpan</button>
                                             </div>
-                                            <button type="submit" class="btn btn-sm btn-primary" @if ($myprofile->role == 'warga') disabled @endif>Simpan</button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

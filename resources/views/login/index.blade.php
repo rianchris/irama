@@ -6,7 +6,7 @@
             <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center m-0 p-0">
                 <div class="w-100 d-flex justify-content-center">
                     <div class="card shadow-lg">
-                        <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3 " style="height:90vh; width:62vw; object-fit:fill;" />
+                        <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3 " style="height:90vh; width:50vw; object-fit:fill;" />
                         <div class="px-0 card-img-overlay d-flex align-items-start justify-content-between" style="background-color: rgba(24, 58, 100, 0.56)">
                             <a target="blank" href="https://bpkp.go.id" class="app-brand-link gap-2">
                                 <img src="{{ asset('assets/img/branding/logo_bpkp.png') }}" class="img-fluid bg-light rounded-end p-2" alt="" width="100px">
@@ -38,12 +38,12 @@
                         <div class="app-brand mb-5">
                             <a href="{{ route('login') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
-                                    <img src="{{ asset('assets/img/branding/logo-forsa-irama-dark.png') }}" alt="" width="200px">
+                                    <img src="{{ asset('assets/img/branding/logo-forsa-arms.png') }}" alt="" width="200px">
                                 </span>
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Integrated Risk Maturity Application! 👋</h4>
+                        <h5 class="fw-semibold mb-4 lh-3">Welcome to Assessment of Risk Maturity for State-owned enterprise 👋👋👋</h5>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                         <form id="formAuthentication" class="mb-3" action="{{ route('login.post') }}" method="POST">

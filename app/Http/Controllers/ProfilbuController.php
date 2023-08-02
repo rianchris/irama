@@ -44,9 +44,12 @@ class ProfilbuController extends Controller
         //
     }
 
-    public function update(Request $request, Bu $profilbu)
+    public function update(Request $request, $profilbu)
     {
-        $bu =  Bu::find(1);
+        $request->validate(['logo' => 'image|max:2048']);
+
+        // dd($profilbu);
+        $bu =  Bu::findOrFail($profilbu);
         // dd($bu);
         $bu->website = $request->input('website');
         $bu->email = $request->input('email');
@@ -54,6 +57,13 @@ class ProfilbuController extends Controller
         $bu->alamat = $request->input('alamat');
         $bu->kodepos = $request->input('kodepos');
         $bu->skorsebelumnya = $request->input('skorsebelumnya');
+
+
+
+        $fileName = time() . '.' . $request->logo->extension();
+        $request->image->storeAs('public/logos', $fileName);
+
+        $bu->logo = $fileName;
         $bu->save();
         return redirect()->back()->with('success', 'Profil Badan Usaha berhasil disimpan!');
     }

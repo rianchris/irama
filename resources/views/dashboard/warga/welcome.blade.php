@@ -1,4 +1,4 @@
-  <div class="card">
+  <div class="card" style="background-color:rgba(255,255,255,0.8)">
       <div class="d-flex align-items-end row">
           <div class="col-sm-7">
               <div class="card-body">
@@ -19,7 +19,11 @@
                       @endif
                   @endif
 
-                  <a href="{{ route('qa.index') . '?dimensi=1' }}" class="btn btn-sm btn-label-primary">Mulai QA</a>
+                  @foreach ($dimensi as $dimensi)
+                      <a href="{{ route('qa.index', 'dimensi=' . $loop->iteration) }}" class="mb-1 fw-semibold btn btn-sm btn-label-linkedin">
+                          {{ $dimensi->deskripsi }}
+                      </a>
+                  @endforeach
               </div>
           </div>
           <div class="col-sm-5 text-center text-sm-left">

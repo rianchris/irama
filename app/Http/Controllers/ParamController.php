@@ -71,6 +71,7 @@ class ParamController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
 
         if (null !== $request->input('skor')) {
             $buparamid = $request->input('bu_param_id');
@@ -86,6 +87,18 @@ class ParamController extends Controller
                 'param_id' => $request->input('param_id'),
                 'skor_mitra' => $request->input('skor'),
                 'catatan' => $request->input('catatan'),
+                'du1' => $request->input('du1'),
+                'du2' => $request->input('du2'),
+                'du3' => $request->input('du3'),
+                'du4' => $request->input('du4'),
+                'du5' => $request->input('du5'),
+                'du6' => $request->input('du6'),
+                'du7' => $request->input('du7'),
+                'du8' => $request->input('du8'),
+                'du9' => $request->input('du9'),
+                'du10' => $request->input('du10'),
+                'du11' => $request->input('du11'),
+                'du12' => $request->input('du12'),
             ];
 
             Buparam::where('id', $buparamid)->where('tahun', date("Y"))->update($data);
@@ -98,6 +111,18 @@ class ParamController extends Controller
             $buparam->param_id = $request->input('param_id');
             $buparam->skor_mitra = $request->input('skor');
             $buparam->catatan = $request->input('catatan');
+            $buparam->du1 = $request->input('du1');
+            $buparam->du2 = $request->input('du2');
+            $buparam->du3 = $request->input('du3');
+            $buparam->du4 = $request->input('du4');
+            $buparam->du5 = $request->input('du5');
+            $buparam->du6 = $request->input('du6');
+            $buparam->du7 = $request->input('du7');
+            $buparam->du8 = $request->input('du8');
+            $buparam->du9 = $request->input('du9');
+            $buparam->du10 = $request->input('du10');
+            $buparam->du11 = $request->input('du11');
+            $buparam->du12 = $request->input('du12');
             $buparam->save();
         }
         return redirect()->back()->with('success', 'Simpan data berhasil!');

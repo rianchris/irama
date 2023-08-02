@@ -28,6 +28,18 @@ class CreateBuParamsTable extends Migration
             $table->string('sumberinfo')->nullable();
             $table->string('catatan')->nullable();
             $table->string('hasilreviu')->nullable();
+            $table->boolean('du1')->nullable();
+            $table->boolean('du2')->nullable();
+            $table->boolean('du3')->nullable();
+            $table->boolean('du4')->nullable();
+            $table->boolean('du5')->nullable();
+            $table->boolean('du6')->nullable();
+            $table->boolean('du7')->nullable();
+            $table->boolean('du8')->nullable();
+            $table->boolean('du9')->nullable();
+            $table->boolean('du10')->nullable();
+            $table->boolean('du11')->nullable();
+            $table->boolean('du12')->nullable();
             $table->timestamps();
         });
     }

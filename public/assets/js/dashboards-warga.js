@@ -86,19 +86,23 @@
         return radialBarChartOpt;
     }
 
-    // Sale Stats - Radial Bar Chart
+    // Skor Akhir Warga - Radial Bar Chart
     // --------------------------------------------------------------------
-    var skor = document.querySelector("#salesStats").getAttribute("data-skor");
-    var level = document.querySelector("#level").getAttribute("data-level");
-    var ref_series = skor * 20;
-    const salesStatsEl = document.querySelector("#salesStats"),
-        salesStatsOptions = {
+    var skor_warga = document
+        .querySelector("#skor_akhir_warga")
+        .getAttribute("data-skor");
+    var level_warga = document
+        .querySelector("#level_warga")
+        .getAttribute("data-level_warga");
+    var ref_series = skor_warga * 20;
+    const skor_akhir_warga = document.querySelector("#skor_akhir_warga"),
+        skorAkhirOptions = {
             chart: {
                 height: 170,
                 type: "radialBar",
             },
             series: [ref_series],
-            labels: [level],
+            labels: [level_warga],
             plotOptions: {
                 radialBar: {
                     startAngle: 0,
@@ -156,25 +160,51 @@
                 },
             },
         };
-    if (typeof salesStatsEl !== undefined && salesStatsEl !== null) {
-        const salesStats = new ApexCharts(salesStatsEl, salesStatsOptions);
-        salesStats.render();
+    if (typeof skor_akhir_warga !== undefined && skor_akhir_warga !== null) {
+        const saWarga = new ApexCharts(skor_akhir_warga, skorAkhirOptions);
+        saWarga.render();
     }
 
     //Ringkasan Skor
 
-    var skord1 = document.querySelector("#skordimensi").getAttribute("skord1");
-    var skord2 = document.querySelector("#skordimensi").getAttribute("skord2");
-    var skord3 = document.querySelector("#skordimensi").getAttribute("skord3");
-    var skord4 = document.querySelector("#skordimensi").getAttribute("skord4");
-    var skord5 = document.querySelector("#skordimensi").getAttribute("skord5");
+    var skord1sa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord1sa");
+    var skord2sa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord2sa");
+    var skord3sa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord3sa");
+    var skord4sa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord4sa");
+    var skord5sa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord5sa");
+
+    var skord1qa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord1qa");
+    var skord2qa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord2qa");
+    var skord3qa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord3qa");
+    var skord4qa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord4qa");
+    var skord5qa = document
+        .querySelector("#skordimensi")
+        .getAttribute("skord5qa");
 
     const totalRevenueChartEl = document.querySelector("#ringkasanskor"),
         totalRevenueChartOptions = {
             series: [
                 {
                     name: [],
-                    data: [skord1, skord2, skord3, skord4, skord5],
+                    data: [skord1qa, skord2qa, skord3qa, skord4qa, skord5qa],
                 },
             ],
             chart: {
@@ -464,11 +494,11 @@
             series: [
                 {
                     name: "Self Assesment",
-                    data: [skord1, skord2, skord3, skord4, skord5],
+                    data: [skord1sa, skord2sa, skord3sa, skord4sa, skord5sa],
                 },
                 {
                     name: "Quality Assurance",
-                    data: [3, 4, 5, 3, 4],
+                    data: [skord1qa, skord2qa, skord3qa, skord4qa, skord5qa],
                 },
             ],
             chart: {

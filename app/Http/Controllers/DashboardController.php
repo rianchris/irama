@@ -25,31 +25,61 @@ class DashboardController extends Controller
             $buMitra = auth()->user()->myprofile->buMitra;
             $skorAkhirMitra = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buMitra->id)->avg('skor_mitra');
 
-            $skorAvgDimensi = [];
+            $skorAvgSaDimensi = [];
             for ($dimensi_id = 1; $dimensi_id <= 5; $dimensi_id++) {
                 $skorAvg = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buMitra->id)->where('dimensi_id', $dimensi_id)->avg('skor_mitra');
-                $skorAvgDimensi[$dimensi_id] = $skorAvg;
+                $skorAvgSaDimensi[$dimensi_id] = $skorAvg;
+            }
+            $skorAvgQaDimensi = [];
+            for ($dimensi_id = 1; $dimensi_id <= 5; $dimensi_id++) {
+                $skorAvg = DB::table('bu_params')->where('skor_warga', '<>', 0)->where('bu_id', $buMitra->id)->where('dimensi_id', $dimensi_id)->avg('skor_warga');
+                $skorAvgQaDimensi[$dimensi_id] = $skorAvg;
             }
             $data = [
                 'klaster' => $klaster,
                 'bu' => $bu,
                 'dimensi' => $dimensi,
                 'skorAkhirMitra' => $skorAkhirMitra,
-                'skord1' => $skorAvgDimensi[1],
-                'skord2' => $skorAvgDimensi[2],
-                'skord3' => $skorAvgDimensi[3],
-                'skord4' => $skorAvgDimensi[4],
-                'skord5' => $skorAvgDimensi[5],
+                'skord1sa' => $skorAvgSaDimensi[1],
+                'skord2sa' => $skorAvgSaDimensi[2],
+                'skord3sa' => $skorAvgSaDimensi[3],
+                'skord4sa' => $skorAvgSaDimensi[4],
+                'skord5sa' => $skorAvgSaDimensi[5],
+                'skord1qa' => $skorAvgQaDimensi[1],
+                'skord2qa' => $skorAvgQaDimensi[2],
+                'skord3qa' => $skorAvgQaDimensi[3],
+                'skord4qa' => $skorAvgQaDimensi[4],
+                'skord5qa' => $skorAvgQaDimensi[5],
             ];
             return view('dashboard.mitra.index', $data);
         } elseif ($auth == 'warga') {
             $buWarga = auth()->user()->myprofile->buWarga;
-            $skorAkhirWarga = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buWarga->id)->avg('skor_mitra');
+            $skorAkhirWarga = DB::table('bu_params')->where('skor_warga', '<>', 0)->where('bu_id', $buWarga->id)->avg('skor_warga');
+            $skorAvgSaDimensi = [];
+            for ($dimensi_id = 1; $dimensi_id <= 5; $dimensi_id++) {
+                $skorAvg = DB::table('bu_params')->where('skor_mitra', '<>', 0)->where('bu_id', $buWarga->id)->where('dimensi_id', $dimensi_id)->avg('skor_mitra');
+                $skorAvgSaDimensi[$dimensi_id] = $skorAvg;
+            }
+            $skorAvgQaDimensi = [];
+            for ($dimensi_id = 1; $dimensi_id <= 5; $dimensi_id++) {
+                $skorAvg = DB::table('bu_params')->where('skor_warga', '<>', 0)->where('bu_id', $buWarga->id)->where('dimensi_id', $dimensi_id)->avg('skor_warga');
+                $skorAvgQaDimensi[$dimensi_id] = $skorAvg;
+            }
             $data = [
                 'klaster' => $klaster,
                 'bu' => $bu,
                 'dimensi' => $dimensi,
                 'skorAkhirWarga' => $skorAkhirWarga,
+                'skord1sa' => $skorAvgSaDimensi[1],
+                'skord2sa' => $skorAvgSaDimensi[2],
+                'skord3sa' => $skorAvgSaDimensi[3],
+                'skord4sa' => $skorAvgSaDimensi[4],
+                'skord5sa' => $skorAvgSaDimensi[5],
+                'skord1qa' => $skorAvgQaDimensi[1],
+                'skord2qa' => $skorAvgQaDimensi[2],
+                'skord3qa' => $skorAvgQaDimensi[3],
+                'skord4qa' => $skorAvgQaDimensi[4],
+                'skord5qa' => $skorAvgQaDimensi[5],
             ];
             return view('dashboard.warga.index', $data);
         } elseif ($auth == 'admin') {

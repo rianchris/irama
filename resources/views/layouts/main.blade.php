@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Forsa Irama | Integrated Risk Maturity Application</title>
+    <title>Forsa Arms | Assessment of Risk Maturity for State-owned enterprise</title>
 
     <meta name="description" content="" />
 
@@ -48,8 +48,8 @@
 
 
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container" style="background-color:#EDF2F9">
+    <div class="layout-wrapper layout-content-navbar" style="background-image:url('assets/img/backgrounds/11.jpg');  background-attachment: fixed; background-position:center;">
+        <div class="layout-container">
             <!-- Menu -->
             @include('layouts.sidenav')
             <!-- / Menu -->

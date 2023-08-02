@@ -1,14 +1,12 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="card" style="background-image: url('')">
+        <div class="card" style="background-color:rgba(255,255,255,0.9);">
             <div class="container-xl">
-                <span class="text-capitalize text-wrap lh-sm badge bg-linkedin fs-6  text-start d-flex justify-content-start align-items-center mt-3 ps-3">
+                <span class="text-capitalize text-wrap lh-sm badge bg-primary fs-6  text-start d-flex justify-content-start align-items-center mt-3 ps-3">
                     Self Assessment <i class='bx bx-chevrons-right fs-3'></i> Dimensi <i class='bx bx-chevrons-right fs-3'></i>
                     <span class="fw-bold"> {{ $dimensi->deskripsi }}</span>
                 </span>
-
-
                 <div class="row">
                     {{-- ambil data pivot parameter --}}
                     @php
@@ -40,7 +38,7 @@
                                     $url = route('parameter.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
                                 @endphp
                                 <a href="{{ $url }}" type="button" class="btn border-secondary text-secondary px-3 py-1 me-1
-                                   @if (Request::is('parameter') && Request::query('dimensi') == $p->dimensi_id && Request::query('param') == $p->id) bg-linkedin text-white border-linkedin px-4 py-2
+                                   @if (Request::is('parameter') && Request::query('dimensi') == $p->dimensi_id && Request::query('param') == $p->id) bg-primary text-white border-primary px-4 py-2
                                    @else text-secondary btn-outline-secondary @endif">
                                     {{ $p->id }}
                                 </a>
@@ -50,7 +48,7 @@
                                     $url = route('qa.index') . '?dimensi=' . $p->dimensi_id . '&param=' . $p->id;
                                 @endphp
                                 <a href="{{ $url }}" type="button" class="btn border-secondary text-secondary px-3 py-1 me-1
-                                   @if (Request::is('qa') && Request::query('dimensi') == $p->dimensi_id && Request::query('param') == $p->id) bg-linkedin text-white border-primary px-4 py-2
+                                   @if (Request::is('qa') && Request::query('dimensi') == $p->dimensi_id && Request::query('param') == $p->id) bg-primary text-white border-primary px-4 py-2
                                    @else text-secondary btn-outline-secondary @endif">
                                     {{ $p->id }}
                                 </a>
@@ -111,11 +109,17 @@
                                         <p class="fw-semibold">Data Umum:</p>
                                     </div>
                                     <div class="row">
+
+                                        @php
+                                            if (isset($buparam)) {
+                                                $buparam = [$buparam->du1, $buparam->du2, $buparam->du3, $buparam->du4, $buparam->du5, $buparam->du6, $buparam->du7, $buparam->du8, $buparam->du9, $buparam->du10, $buparam->du11, $buparam->du12];
+                                            }
+                                        @endphp
                                         @foreach ($dataumum as $datas)
                                             <div class="col-lg-6 col-md-12 col-sm-6 mb-md-2 mb-2">
                                                 <div class="form-check custom-option custom-option-basic">
                                                     <label class="form-check-label custom-option-content py-2" for="{{ $datas->deskripsi }}">
-                                                        <input class="form-check-input" type="checkbox" value="" id="{{ $datas->deskripsi }}" @if ($pengguna->role == 'warga') disabled @endif />
+                                                        <input class="form-check-input" name="{{ 'du' . $loop->iteration }}" type="checkbox" value="1" id="{{ $datas->deskripsi }}" @if ($pengguna->role == 'warga') disabled @endif @if (isset($buparam[$loop->iteration - 1])) @if ($buparam[$loop->iteration - 1] == 1) checked @endif @endif />
                                                         <span class="custom-option-header">
                                                             <small> <span class="fw-semibold mb-0">{{ $datas->deskripsi }}</span></small>
                                                         </span>
@@ -130,8 +134,8 @@
                                 <div class="card-body p-0">
                                     <p class="fw-semibold mb-2">Skor:</p>
                                     <div class="form-check custom-option custom-option-basic">
-                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'b' }}">
-                                            <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 1) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'a' }}">
+                                            <input name="skor" class="form-check-input" type="radio" value="1" id="{{ $deskripsiskor->id . 'a' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 1) checked @endif @endif @can('warga') disabled @endcan @can('warga') disabled @endcan />
                                             <span class="custom-option-body">
                                                 <span class="custom-option-header">
                                                     <span class="align-self-start me-2 text-start">1.</span> {{ $deskripsiskor->skor1 }}</span>
@@ -139,8 +143,8 @@
                                         </label>
                                     </div>
                                     <div class=" form-check custom-option custom-option-basic mt-2">
-                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'c' }}">
-                                            <input name="skor" class="form-check-input" type="radio" value="2" id="{{ $deskripsiskor->id . 'c' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 2) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'b' }}">
+                                            <input name="skor" class="form-check-input" type="radio" value="2" id="{{ $deskripsiskor->id . 'b' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 2) checked @endif @endif @can('warga') disabled @endcan/>
                                             <span class="custom-option-body">
                                                 <span class="custom-option-header">
                                                     <span class="align-self-start me-2">2.</span> {{ $deskripsiskor->skor2 }}</span>
@@ -148,8 +152,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check custom-option custom-option-basic mt-2">
-                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'd' }}">
-                                            <input name="skor" class="form-check-input" type="radio" value="3" id="{{ $deskripsiskor->id . 'd' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 3) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'c' }}">
+                                            <input name="skor" class="form-check-input" type="radio" value="3" id="{{ $deskripsiskor->id . 'c' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 3) checked @endif @endif @can('warga') disabled @endcan/>
                                             <span class="custom-option-body">
                                                 <span class="custom-option-header">
                                                     <span class="align-self-start me-2">3.</span> {{ $deskripsiskor->skor3 }}</span>
@@ -157,8 +161,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check custom-option custom-option-basic mt-2">
-                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'e' }}">
-                                            <input name="skor" class="form-check-input" type="radio" value="4" id="{{ $deskripsiskor->id . 'e' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 4) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'd' }}">
+                                            <input name="skor" class="form-check-input" type="radio" value="4" id="{{ $deskripsiskor->id . 'd' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 4) checked @endif @endif @can('warga') disabled @endcan/>
                                             <span class="custom-option-body">
                                                 <span class="custom-option-header">
                                                     <span class="align-self-start me-2">4.</span> {{ $deskripsiskor->skor4 }}</span>
@@ -166,8 +170,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check custom-option custom-option-basic mt-2">
-                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'f' }}">
-                                            <input name="skor" class="form-check-input" type="radio" value="5" id="{{ $deskripsiskor->id . 'f' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 5) checked @endif @endif @can('warga') disabled @endcan/>
+                                        <label class="form-check-label custom-option-content py-2" for="{{ $deskripsiskor->id . 'e' }}">
+                                            <input name="skor" class="form-check-input" type="radio" value="5" id="{{ $deskripsiskor->id . 'e' }}" @if (isset($pivot->skor_mitra)) @if ($pivot->skor_mitra == 5) checked @endif @endif @can('warga') disabled @endcan/>
                                             <span class="custom-option-body">
                                                 <span class="custom-option-header">
                                                     <span class="align-self-start me-2">5.</span> {{ $deskripsiskor->skor5 }}</span>
@@ -178,7 +182,7 @@
                                 <div class="row">
                                     <label class="col-12 col-form-label  text-capitalize fs-6" for="catatan">Catatan: </label>
                                     <div class="col-12">
-                                        <textarea id="catatan" class="form-control" name="catatan" rows="3" @can('warga')disabled @endcan>{{ isset($pivot->catatan) ? $pivot->catatan : '' }}</textarea>
+                                        <textarea id="catatan" class="form-control" name="catatan" rows="3" @can('warga')readonly @endcan>{{ isset($pivot->catatan) ? $pivot->catatan : '' }}</textarea>
                                     </div>
                                 </div>
                             </div>

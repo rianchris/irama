@@ -2,12 +2,16 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         {{-- baris 1 --}}
-        <div class="row">
-            <div class="col-lg-8 col-md-8 order-0">
+        <div class="row g-4">
+            <div class="col-lg-8 col-md-8">
                 @include('dashboard.warga.welcome')
             </div>
-            <div class="col-lg-4 col-md-4 order-1">
+            <div class="col-lg-4 col-md-4">
                 @include('dashboard.warga.skor_akhir')
+            </div>
+
+            <div class="col-lg-12">
+                @include('dashboard.warga.skor_full')
             </div>
         </div>
 
@@ -31,6 +35,6 @@
     @push('pagejs')
         <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
         {{-- <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script> --}}
-        <script src="{{ asset('assets/js/dashboards.js') }}"></script>
+        <script src="{{ asset('assets/js/dashboards-warga.js') }}"></script>
     @endpush
 @endsection

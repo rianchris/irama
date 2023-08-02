@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="card overflow-hidden pb-4 ">
+        <div class="card overflow-hidden pb-4" style="background-color:rgba(255,255,255,0.85);">
             <div class="container-xl">
-                <span class="text-capitalize text-wrap lh-sm badge bg-linkedin fs-6  text-start d-flex justify-content-start align-items-center my-3 ps-3">
+                <span class="text-capitalize text-wrap lh-sm badge bg-primary fs-6  text-start d-flex justify-content-start align-items-center my-3 ps-3">
                     Self Assessment <i class='bx bx-chevrons-right fs-3'></i> Dimensi <i class='bx bx-chevrons-right fs-3'></i>
                     <span class="fw-bold"> {{ $dimensi->deskripsi }}</span>
                 </span>
