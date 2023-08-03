@@ -49,6 +49,7 @@ class SetParamController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         // dd($id);
         $dataParam = [
             'dimensi_id' => $request->dimensi,

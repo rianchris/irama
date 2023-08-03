@@ -1,4 +1,4 @@
-  <div class="card h-100" style="background-color:rgba(255,255,255,0.7);">
+  <div class="card h-100" style="background-color:rgba(255,255,255,0.9);">
       <div class="d-flex align-items-end row">
 
           <div class="col-lg-8 col-md-12">

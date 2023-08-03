@@ -1,4 +1,4 @@
-<div class="card h-100" style="background-color:rgba(255,255,255,0.7);">
+<div class="card h-100" style="background-color:rgba(255,255,255,0.9);">
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center text-primary fw-semibold">
             <i class='bx bxs-award fs-1'></i>

@@ -3,10 +3,10 @@
     <div class="authentication-wrapper authentication-cover">
         <div class="authentication-inner row m-0">
             <!-- /Left Text -->
-            <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center m-0 p-0">
+            <div class="d-none d-lg-flex col-lg-7 col-xl-7 align-items-center m-0 p-0">
                 <div class="w-100 d-flex justify-content-center">
                     <div class="card shadow-lg">
-                        <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3 " style="height:90vh; width:50vw; object-fit:fill;" />
+                        <img src="{{ asset('assets/img/backgrounds/login.png') }}" class="img-fluid rounded-3 " style="height:85vh; width:45vw; object-fit:fill;" />
                         <div class="px-0 card-img-overlay d-flex align-items-start justify-content-between" style="background-color: rgba(24, 58, 100, 0.56)">
                             <a target="blank" href="https://bpkp.go.id" class="app-brand-link gap-2">
                                 <img src="{{ asset('assets/img/branding/logo_bpkp.png') }}" class="img-fluid bg-light rounded-end p-2" alt="" width="100px">
@@ -21,9 +21,9 @@
             <!-- /Left Text -->
 
             <!-- Login -->
-            <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5  ">
+            <div class="d-flex col-12 col-lg-5 col-xl-5 align-items-center authentication-bg p-sm-5  ">
                 <div class="w-px-400 mx-auto ">
-                    <div class="card shadow-lg p-5 ">
+                    <div class="card shadow-lg p-5" style="height:85vh; width:25vw">
                         <!-- Logo -->
                         <div class="app-brand mb-1 bg-light px-4 py-2 rounded-3 d-lg-none">
                             <a target="blank" href="https://dan.bpkp.go.id/portal/" class="app-brand-link gap-2">

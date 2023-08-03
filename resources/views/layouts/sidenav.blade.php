@@ -1,4 +1,4 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu accent shadow-lg" style="background-color:rgba(243,174,95) !important;">
+<aside id="layout-menu" class="layout-menu menu-vertical menu accent shadow-lg" style="background-color:#f4ab34 !important;">
     <!-- Logo -->
     <div class="app-brand demo ps-2 rounded-1">
         <a href="{{ route('dashboard.index') }}" class="app-brand-link mt-0">
@@ -23,7 +23,7 @@
 
         <!-- Dashboards Mitra, Warga -->
         <li class="menu-item">
-            <a href="{{ route('dashboard.index') }}" class="menu-link @if (Request::is('dashboard')) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+            <a href="{{ route('dashboard.index') }}" class="menu-link @if (Request::is('dashboard')) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
@@ -65,13 +65,13 @@
             </li>
 
             <li class="menu-item">
-                <a href="{{ route('profilebu.index') }}" class="menu-link  @if (Request::is('profilebu')) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route('profilebu.index') }}" class="menu-link  @if (Request::is('profilebu')) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bx-server"></i>
                     <div data-i18n="Profil Perusahaan">Profil Perusahaan</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route('dataumum.index') }}" class="menu-link  @if (Request::is('dataumum')) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route('dataumum.index') }}" class="menu-link  @if (Request::is('dataumum')) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bx-server"></i>
                     <div data-i18n="Data Umum">Data Umum</div>
                 </a>
@@ -101,32 +101,32 @@
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Quality Assurance</span></li>
             @endcan
             <li class="menu-item">
-                <a href="{{ route(role() . '.index') . '?dimensi=1' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 1) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=1' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 1) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bxs-donate-heart"></i>
                     <div data-i18n="Budaya dan Kapabilitas Risiko">Budaya dan Kapabilitas Risiko</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route(role() . '.index') . '?dimensi=2' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 2) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=2' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 2) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bxs-universal-access"></i>
                     <div data-i18n="Organisasi dan Tata Kelola Risiko">Organisasi dan Tata Kelola Risiko</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route(role() . '.index') . '?dimensi=3' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 3) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=3' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 3) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bx-shape-circle"></i>
                     <div data-i18n="Kerangka Risiko dan Kepatuhan">Kerangka Risiko dan Kepatuhan</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route(role() . '.index') . '?dimensi=4' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 4) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=4' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 4) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
                     <div data-i18n="Proses dan Kontrol Risiko">Proses dan Kontrol Risiko</div>
 
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route(role() . '.index') . '?dimensi=5' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 5) fw-semibold bg-label-primary rounded-1 @else text-dark fw-bold @endif">
+                <a href="{{ route(role() . '.index') . '?dimensi=5' }}" class="menu-link @if (Request::is(role()) && Request::query('dimensi') == 5) fw-semibold bg-label-primary rounded-1 @else text-dark fw-semibold @endif">
                     <i class="menu-icon tf-icons bx bx-code-alt"></i>
                     <div data-i18n="Model, Data dan Teknologi Risiko">Model, Data dan Teknologi Risiko </div>
 

@@ -22,7 +22,7 @@
                             <tbody class="table-border-bottom-0">
                                 @foreach ($sima_klpbu as $data)
                                     <tr>
-                                        <td>{{ $data->kode_klpbu }}</td>
+                                        <td>{{ $data->id }}</td>
                                         <td>{{ $data->nama_klpbu }}</td>
                                     </tr>
                                 @endforeach

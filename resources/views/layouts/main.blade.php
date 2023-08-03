@@ -48,14 +48,14 @@
 
 
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar" style="background-image:url('assets/img/backgrounds/11.jpg');  background-attachment: fixed; background-position:center;">
+    <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
             @include('layouts.sidenav')
             <!-- / Menu -->
 
             <!-- Layout container -->
-            <div class="layout-page">
+            <div class="layout-page" style="background-image:url('assets/img/backgrounds/login.png');  background-attachment: fixed; background-position:right; background-size:contain; background-repeat: repeat-x; ">
                 <!-- Navbar -->
                 @include('layouts.header')
 
