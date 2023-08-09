@@ -227,7 +227,7 @@
                         return config.colors.danger;
                     } else if (value == 3) {
                         return config.colors.warning;
-                    } else if (value >= 4) {
+                    } else if (value > 3) {
                         return config.colors.success;
                     }
                 },

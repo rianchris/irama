@@ -23,7 +23,7 @@
             <!-- Login -->
             <div class="d-flex col-12 col-lg-5 col-xl-5 align-items-center authentication-bg p-sm-5  ">
                 <div class="w-px-400 mx-auto ">
-                    <div class="card shadow-lg p-5" style="height:85vh; width:25vw">
+                    <div class="card shadow-lg p-5">
                         <!-- Logo -->
                         <div class="app-brand mb-1 bg-light px-4 py-2 rounded-3 d-lg-none">
                             <a target="blank" href="https://dan.bpkp.go.id/portal/" class="app-brand-link gap-2">
